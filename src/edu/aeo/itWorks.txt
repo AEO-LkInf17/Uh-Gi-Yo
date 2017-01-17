@@ -1,1 +1,5 @@
 ¯\_ツ_/¯
+
+1.) Projekt via pull erstellen im hauptmenu
+2.) Bei Commits achten, dass man auch pushed!
+3.) Bei mir wurde ich nochmal einmalig aufgefordert mich einzuloggen
