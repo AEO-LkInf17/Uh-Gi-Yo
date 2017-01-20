@@ -1,1 +1,1 @@
-# Duel Monsters INF 17
+# ProjectX17 (Yu-Gi-Oh clone)
