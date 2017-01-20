@@ -7,7 +7,7 @@ import de.aeoinf17.project_x17.Game;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.title = "Hello World";
+		config.title = "Hello World!";
 		config.width = 800;
 		config.height = 600;
 		new LwjglApplication(new Game(), config);
