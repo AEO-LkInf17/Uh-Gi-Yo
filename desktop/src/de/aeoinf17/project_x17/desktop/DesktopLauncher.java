@@ -2,7 +2,7 @@ package de.aeoinf17.project_x17.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import de.aeoinf17.project_x17.Game;
+import de.aeoinf17.project_x17.CardGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -10,6 +10,6 @@ public class DesktopLauncher {
 		config.title = "Hello World!";
 		config.width = 800;
 		config.height = 600;
-		new LwjglApplication(new Game(), config);
+		new LwjglApplication(new CardGame(), config);
 	}
 }
