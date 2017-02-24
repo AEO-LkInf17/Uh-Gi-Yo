@@ -11,7 +11,6 @@ public class Spieler {
     private int lebenspunkte;
     private int punkte;
     // Referenzen
-    private DesktopLauncher desktopLauncher;
     private ArrayList<Deck> decks;
     private Deck momentanesDeck;
     private Hand hand;
