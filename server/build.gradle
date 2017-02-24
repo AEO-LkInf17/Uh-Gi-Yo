@@ -3,9 +3,10 @@ version '1.0'
 apply plugin: 'java'
 
 sourceCompatibility = 1.8
+sourceSets.main.java.srcDirs = [ "src/" ]
 
 task run(dependsOn: classes, type: JavaExec) {
-    main = ""
+    main = "de.aeoinf17.project_x17.server.Main"
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = new File("resources");
