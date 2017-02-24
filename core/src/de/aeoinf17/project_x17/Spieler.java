@@ -19,4 +19,6 @@ public class Spieler {
     private Friedhof friedhof;
 
     // Methoden
+
+
 }
