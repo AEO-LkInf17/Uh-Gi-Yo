@@ -9,4 +9,8 @@ public class Spielfeldseite {
     // Referenzen
     private Spieler spieler;
     private ArrayList<Karte> karten;
+    //andere
+    public void nimmKarteHeraus(Karte a){
+        karten.remove(a);
+    }
 }

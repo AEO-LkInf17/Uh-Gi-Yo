@@ -32,4 +32,7 @@ public class Hand {
     public void addKarte(Karte a){
         karten.add(a);
     }
+    public void nimmKarteHeraus(Karte a){
+        karten.remove(a);
+    }
 }

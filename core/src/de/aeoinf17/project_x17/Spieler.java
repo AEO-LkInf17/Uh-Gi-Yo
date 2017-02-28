@@ -94,8 +94,8 @@ public class Spieler {
         hand.addKarte(k);
         momentanesDeck.nimmKarteHeraus(k);
     }
-    public void setzen(){
-
+    public void setzen(Karte k){
+    //    spielfeldseite.
     }
 
 }
