@@ -8,9 +8,11 @@ public class Deck {
     // "ausstattung" speichert alle im Deck befindlichen Karten, damit
     // diese zu beginn eines neuen Spiels zurückgesetzt werden können.
     private ArrayList<Karte> ausstattung;
+
     // Referenzen
     private ArrayList<Karte> karten;
     private Spieler spieler;
+
     // Methoden
     // getter/setter
     public void setBezeichnung(String bezeichnung) {

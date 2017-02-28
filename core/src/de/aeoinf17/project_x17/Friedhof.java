@@ -17,4 +17,8 @@ public class Friedhof extends ArrayList<Karte> {
     public Karte gibObersteKarte(){
         return karten.get(0);
     }
+    public void fuegeKartehinzu (Karte k){
+        karten.add(k);
+    }
+
 }

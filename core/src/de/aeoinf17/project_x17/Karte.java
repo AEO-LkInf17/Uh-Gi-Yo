@@ -15,6 +15,10 @@ public abstract class Karte {
     // Methoden
     // getter / setter
 
+    public void Karte() {
+
+    }
+
     public void setName(String name) {
         this.name = name;
     }

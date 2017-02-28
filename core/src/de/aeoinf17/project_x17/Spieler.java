@@ -94,4 +94,12 @@ public class Spieler {
         k.aufdecken();
     }
 
+    public void zerstoeren(Karte k){
+        friedhof.add(k);
+        spielfeldseite.remove(k);
+    }
+    public void wiederbeleben(Karte k){
+        spielfeldseite.add(k);
+        friedhof.remove(k);
+    }
 }
