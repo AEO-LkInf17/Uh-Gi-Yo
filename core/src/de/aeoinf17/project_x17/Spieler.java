@@ -67,9 +67,7 @@ public class Spieler {
         return lebenspunkte;
     }
 
-    public int getPunkte() {
-        return punkte;
-    }
+    public int getPunkte() { return punkte; }
 
     public ArrayList<Deck> getDecks() {
         return decks;
@@ -91,6 +89,13 @@ public class Spieler {
         return friedhof;
     }
     // andere
+    public void zieheKarte(){
+        Karte k=momentanesDeck.gibObersteKarte();
+        hand.addKarte(k);
+        momentanesDeck.nimmKarteHeraus(k);
+    }
+    public void setzen(){
 
+    }
 
 }

@@ -69,7 +69,5 @@ public abstract class Karte {
         eigenschaften.add(a);
     }
 
-    public ArrayList getEigenschaften(){
-        return eigenschaften;
-    }
+    public ArrayList getEigenschaften(){ return eigenschaften; }
 }
