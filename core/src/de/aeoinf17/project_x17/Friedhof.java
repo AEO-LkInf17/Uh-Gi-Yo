@@ -2,13 +2,14 @@ package de.aeoinf17.project_x17;
 
 import java.util.ArrayList;
 
-/**
- * Created by schueler on 21.02.2017.
- */
-public class Friedhof {
+public class Friedhof extends ArrayList<Karte> {
     // Referenzen
     private Spieler spieler;
     private ArrayList<Karte> karten;
+
+    // getter/setter
+    public Spieler getSpieler() { return spieler; }
+    public ArrayList<Karte> getKarten() { return karten; }
     //andere
     public void nimmKarteHeraus(Karte a){
         karten.remove(a);

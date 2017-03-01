@@ -2,9 +2,6 @@ package de.aeoinf17.project_x17;
 
 import java.util.ArrayList;
 
-/**
- * Created by schueler on 21.02.2017.
- */
 public class Spieler {
     private String name;
     private String rang;
@@ -88,14 +85,29 @@ public class Spieler {
     public Friedhof getFriedhof() {
         return friedhof;
     }
+
     // andere
+
     public void zieheKarte(){
         Karte k=momentanesDeck.gibObersteKarte();
         hand.addKarte(k);
         momentanesDeck.nimmKarteHeraus(k);
     }
     public void setzen(Karte k){
-    //    spielfeldseite.
+        k.aufdecken();
+        spielfeldseite.addKarte(k);
+        hand.nimmKarteHeraus(k);
+    }
+    public void legen(Karte k){
+        k.verdecken();
+        spielfeldseite.addKarte(k);
+        hand.nimmKarteHeraus(k);
+    }
+    public void positionswechsel(Karte k){
+        k.moduswechsel();
+    }
+    public void flippen(Karte k){
+        k.aufdecken();
     }
 
 }

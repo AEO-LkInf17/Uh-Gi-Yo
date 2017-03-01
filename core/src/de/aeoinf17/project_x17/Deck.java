@@ -5,24 +5,23 @@ import java.util.Collections;
 
 public class Deck {
     private String bezeichnung;
+    // "ausstattung" speicher alle im Deck befindlichen Karten, damit
+    // diese zu beginn eines neuen Spiels zurückgesetzt werden können.
     private ArrayList<Karte> ausstattung;
     // Referenzen
     private ArrayList<Karte> karten;
     private Spieler spieler;
-    //Methoden
-
+    // Methoden
+    // getter/setter
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
-
     public void setAusstattung(){
         this.ausstattung = karten;
     }
-
     public void setKarten(ArrayList<Karte> karten) {
         this.karten = karten;
     }
-
     public void setSpieler(Spieler spieler) {
         this.spieler = spieler;
     }
@@ -30,11 +29,9 @@ public class Deck {
     public String getBezeichnung() {
         return bezeichnung;
     }
-
     public ArrayList<Karte> getKarten() {
         return karten;
     }
-
     public Spieler getSpieler() {
         return spieler;
     }

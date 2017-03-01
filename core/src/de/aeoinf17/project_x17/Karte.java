@@ -1,15 +1,13 @@
 package de.aeoinf17.project_x17;
 import java.util.ArrayList;
 
-/**
- * Created by schueler on 21.02.2017.
- */
 public abstract class Karte {
     protected String name;
     protected String typ;
     protected int prioritaet;
     protected int limitierung;
     protected boolean angriffsmodus;
+    protected boolean verdeckt;
     // Referenzen
     protected ArrayList<Deck> decks;
     protected ArrayList<String> eigenschaften;
@@ -20,19 +18,15 @@ public abstract class Karte {
     public void setName(String name) {
         this.name = name;
     }
-
     public void setTyp(String typ) {
         this.typ = typ;
     }
-
     public void setPrioritaet(int prioritaet) {
         this.prioritaet = prioritaet;
     }
-
     public void setLimitierung(int limitierung) {
         this.limitierung = limitierung;
     }
-
     public void setAngriffsmodus(boolean angriffsmodus) {
         this.angriffsmodus = angriffsmodus;
     }
@@ -40,15 +34,12 @@ public abstract class Karte {
     public String getName() {
         return name;
     }
-
     public String getTyp() {
         return typ;
     }
-
     public int getPrioritaet() {
         return prioritaet;
     }
-
     public int getLimitierung() {
         return limitierung;
     }
@@ -70,4 +61,15 @@ public abstract class Karte {
     }
 
     public ArrayList getEigenschaften(){ return eigenschaften; }
+
+    public void verdecken(){
+        verdeckt = true;
+    }
+    public void aufdecken(){
+        verdeckt = false;
+    }
+    public void moduswechsel(){
+        angriffsmodus = !angriffsmodus;
+    }
+
 }
