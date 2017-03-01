@@ -52,4 +52,9 @@ public class CardGame extends Game {
 		return s.getFriedhof().getKarten();
 	}
 
+	// Bei negativem Betrag werden Punkte abgezogen.
+	public void aendereLebenspunkte(Spieler s,int betrag){
+		s.setLebenspunkte(betrag);
+	}
+
 }

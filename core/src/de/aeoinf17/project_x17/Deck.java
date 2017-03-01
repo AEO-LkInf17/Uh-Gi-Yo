@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Deck {
     private String bezeichnung;
-    // "ausstattung" speicher alle im Deck befindlichen Karten, damit
+    // "ausstattung" speichert alle im Deck befindlichen Karten, damit
     // diese zu beginn eines neuen Spiels zurückgesetzt werden können.
     private ArrayList<Karte> ausstattung;
     // Referenzen
@@ -35,6 +35,7 @@ public class Deck {
     public Spieler getSpieler() {
         return spieler;
     }
+
     // andere
     public int getAnzahlKarten(){
         return karten.size();

@@ -11,6 +11,7 @@ public class Spielfeldseite extends ArrayList<Karte> {
     // getter/setter
     public Spieler getSpieler() { return spieler; }
     public ArrayList<Karte> getKarten() { return karten; }
+
     //andere
     public void nimmKarteHeraus(Karte a){
         karten.remove(a);

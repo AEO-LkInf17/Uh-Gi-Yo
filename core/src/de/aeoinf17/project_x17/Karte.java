@@ -30,6 +30,7 @@ public abstract class Karte {
     public void setAngriffsmodus(boolean angriffsmodus) {
         this.angriffsmodus = angriffsmodus;
     }
+    public void setVerdeckt (boolean verdeckt) { this.verdeckt = verdeckt; }
 
     public String getName() {
         return name;
@@ -43,24 +44,17 @@ public abstract class Karte {
     public int getLimitierung() {
         return limitierung;
     }
-
     public boolean isAngriffsmodus() {
         return angriffsmodus;
     }
+    public ArrayList getDecks(){ return decks; }
+    public ArrayList getEigenschaften(){ return eigenschaften; }
 
-    public void addDecks(Deck a){
-        decks.add(a);
-    }
-
-    public ArrayList getDecks(){
-        return decks;
-    }
-
+    // andere
+    public void addDecks(Deck a) { decks.add(a); }
     public void addEigenschaft(String a){
         eigenschaften.add(a);
     }
-
-    public ArrayList getEigenschaften(){ return eigenschaften; }
 
     public void verdecken(){
         verdeckt = true;

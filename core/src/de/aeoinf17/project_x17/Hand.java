@@ -6,6 +6,7 @@ public class Hand extends ArrayList<Karte> {
     // Referenz
     private Spieler spieler;
     private ArrayList<Karte> karten;
+
     // Methoden
     //getter/setter
     public void setSpieler(Spieler spieler) {
