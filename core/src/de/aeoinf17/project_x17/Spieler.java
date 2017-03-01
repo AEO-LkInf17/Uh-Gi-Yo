@@ -77,20 +77,20 @@ public class Spieler {
         hand.addKarte(k);
         momentanesDeck.nimmKarteHeraus(k);
     }
-    public void setzen(Karte k){
+    public void setzen(Monsterkarte k){
         k.aufdecken();
         spielfeldseite.addKarte(k);
         hand.nimmKarteHeraus(k);
     }
-    public void legen(Karte k){
+    public void legen(Monsterkarte k){
         k.verdecken();
         spielfeldseite.addKarte(k);
         hand.nimmKarteHeraus(k);
     }
-    public void positionswechsel(Karte k){
+    public void positionswechsel(Monsterkarte k){
         k.moduswechsel();
     }
-    public void flippen(Karte k){
+    public void flippen(Monsterkarte k){
         k.aufdecken();
     }
 
