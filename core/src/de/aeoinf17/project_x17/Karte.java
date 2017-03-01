@@ -6,8 +6,6 @@ public abstract class Karte {
     protected String typ;
     protected int prioritaet;
     protected int limitierung;
-    protected boolean angriffsmodus;
-    protected boolean verdeckt;
     // Referenzen
     protected ArrayList<Deck> decks;
     protected ArrayList<String> eigenschaften;
@@ -31,10 +29,6 @@ public abstract class Karte {
     public void setLimitierung(int limitierung) {
         this.limitierung = limitierung;
     }
-    public void setAngriffsmodus(boolean angriffsmodus) {
-        this.angriffsmodus = angriffsmodus;
-    }
-    public void setVerdeckt (boolean verdeckt) { this.verdeckt = verdeckt; }
 
     public String getName() {
         return name;
@@ -48,9 +42,6 @@ public abstract class Karte {
     public int getLimitierung() {
         return limitierung;
     }
-    public boolean isAngriffsmodus() {
-        return angriffsmodus;
-    }
     public ArrayList getDecks(){ return decks; }
     public ArrayList getEigenschaften(){ return eigenschaften; }
 
@@ -58,16 +49,6 @@ public abstract class Karte {
     public void addDecks(Deck a) { decks.add(a); }
     public void addEigenschaft(String a){
         eigenschaften.add(a);
-    }
-
-    public void verdecken(){
-        verdeckt = true;
-    }
-    public void aufdecken(){
-        verdeckt = false;
-    }
-    public void moduswechsel(){
-        angriffsmodus = !angriffsmodus;
     }
 
 }
