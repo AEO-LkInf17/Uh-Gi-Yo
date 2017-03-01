@@ -4,6 +4,8 @@ public class Monsterkarte extends Karte {
     protected int angriffspunkte;
     protected int verteidigungspunkte;
     protected int stufe;
+    protected boolean verdeckt;
+    protected boolean angriffsmodus;
 
     public void setAngriffspunkte(int angriffspunkte) {
         this.angriffspunkte = angriffspunkte;
@@ -27,6 +29,15 @@ public class Monsterkarte extends Karte {
 
     public int getStufe() {
         return stufe;
+    }
+    public void verdecken(){
+        verdeckt = true;
+    }
+    public void aufdecken(){
+        verdeckt = false;
+    }
+    public void moduswechsel(){
+        angriffsmodus = !angriffsmodus;
     }
 
 }
