@@ -1,6 +1,6 @@
 package de.aeoinf17.project_x17;
 
-public class Monsterkarte extends Karte {
+public class MonsterCard extends Card {
     protected int angriffspunkte;
     protected int verteidigungspunkte;
     protected int stufe;
@@ -30,13 +30,13 @@ public class Monsterkarte extends Karte {
     public int getStufe() {
         return stufe;
     }
-    public void verdecken(){
+    public void conceal(){
         verdeckt = true;
     }
-    public void aufdecken(){
+    public void reveal(){
         verdeckt = false;
     }
-    public void moduswechsel(){
+    public void changemode(){
         angriffsmodus = !angriffsmodus;
     }
 
