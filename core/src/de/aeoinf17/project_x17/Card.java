@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public abstract class Card {
     protected String name;
     protected String type;
-    protected int priotity;
+    protected int priority;
     protected int max;
     // Referenzen
     protected ArrayList<Deck> decks;
@@ -23,8 +23,8 @@ public abstract class Card {
     public void setType(String type) {
         this.type = type;
     }
-    public void setPriotity(int priotity) {
-        this.priotity = priotity;
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
     public void setMax(int max) {
         this.max = max;
@@ -36,8 +36,8 @@ public abstract class Card {
     public String getType() {
         return type;
     }
-    public int getPriotity() {
-        return priotity;
+    public int getPriority() {
+        return priority;
     }
     public int getMax() {
         return max;
@@ -47,7 +47,7 @@ public abstract class Card {
 
     // andere
     public void addDecks(Deck a) { decks.add(a); }
-    public void addEigenschaft(String a){
+    public void addProperty(String a){
         properties.add(a);
     }
 
