@@ -8,7 +8,7 @@ public abstract class Karte {
     protected int limitierung;
     // Referenzen
     protected ArrayList<Deck> decks;
-    protected ArrayList<Eingenschaft> eigenschaften;
+    protected ArrayList<Eigenschaft> eigenschaften;
 
     // Methoden
     // getter / setter

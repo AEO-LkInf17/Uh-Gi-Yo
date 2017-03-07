@@ -56,9 +56,9 @@ public class CardGame extends Game {
 	public ArrayList<Karte> getHandkarten(Spieler s){
 		return s.getHand().getKarten();
 	}
-	public ArrayList<Karte> getSpielfeldKarten(Spieler s){
-		return s.getSpielfeldseite().getKarten();
-	}
+	//public ArrayList<Karte> getSpielfeldKarten(Spieler s){
+	//	return s.getSpielfeldseite().getKarten();
+	//}
 	public ArrayList<Karte> getFriedhofKarten(Spieler s){
 		return s.getFriedhof().getKarten();
 	}

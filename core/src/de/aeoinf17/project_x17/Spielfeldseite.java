@@ -27,6 +27,5 @@ public class Spielfeldseite extends ArrayList<Karte> {
 
         //    }
         }
-
     }
 }
