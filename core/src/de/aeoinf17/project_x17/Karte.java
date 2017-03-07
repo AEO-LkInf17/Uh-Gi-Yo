@@ -8,7 +8,7 @@ public abstract class Karte {
     protected int limitierung;
     // Referenzen
     protected ArrayList<Deck> decks;
-    protected ArrayList<String> eigenschaften;
+    protected ArrayList<Eingenschaft> eigenschaften;
 
     // Methoden
     // getter / setter
@@ -43,7 +43,7 @@ public abstract class Karte {
 
     // andere
     public void addDecks(Deck a) { decks.add(a); }
-    public void addEigenschaft(String a){
+    public void addEigenschaft(Eigenschaft a){
         eigenschaften.add(a);
     }
 
