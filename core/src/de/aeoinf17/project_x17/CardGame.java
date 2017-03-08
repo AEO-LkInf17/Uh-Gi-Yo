@@ -41,7 +41,7 @@ public class CardGame extends Game {
 	}
 
 	public int getLifepoints(Player p){
-		return p.getLebenspunkte();
+		return p.getLifepoints();
 	}
 	public ArrayList<Karte> getDeckCards(Player p){
 		return p.getMomentanesDeck().getKarten();
