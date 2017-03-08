@@ -52,8 +52,8 @@ public class CardGame extends Game {
 	//public ArrayList<Karte> getSpielfeldKarten(Spieler s){
 	//	return s.getSpielfeldseite().getKarten();
 	//}
-	public ArrayList<Karte> getFriedhofKarten(Spieler s){
-		return s.getFriedhof().getKarten();
+	public ArrayList<Karte> getFriedhofKarten(Player p){
+		return p.getFriedhof().getKarten();
 	}
 	//// FEHLER
 	public void setPhase (int phase){ this.phase = phase; }
