@@ -11,13 +11,6 @@ import java.util.ArrayList;
 
 public class CardGame extends Game {
 
-	// Phasen: Draw- Standby- Main- Battle- Main2- End-
-	private static final int DRAW_PHASE = 0;
-	private static final int STANDBY_PHASE = 1;
-	private static final int MAIN_PHASE_I = 2;
-	private static final int BATTLE_PHASE = 3;
-	private static final int MAIN_PHASE_II = 4;
-	private static final int END_PHASE = 5;
 
 	private int phase;
 
@@ -47,14 +40,14 @@ public class CardGame extends Game {
 		font.dispose();
 	}
 
-	public int getLebenspunkte(Spieler s){
-		return s.getLebenspunkte();
+	public int getLifepoints(Player p){
+		return p.getLebenspunkte();
 	}
-	public ArrayList<Karte> getDeckKarten(Spieler s){
-		return s.getMomentanesDeck().getKarten();
+	public ArrayList<Karte> getDeckCards(Player p){
+		return p.getMomentanesDeck().getKarten();
 	}
-	public ArrayList<Karte> getHandkarten(Spieler s){
-		return s.getHand().getKarten();
+	public ArrayList<Karte> getHandkarten(Player p){
+		return p.getHand().getCards();
 	}
 	//public ArrayList<Karte> getSpielfeldKarten(Spieler s){
 	//	return s.getSpielfeldseite().getKarten();
