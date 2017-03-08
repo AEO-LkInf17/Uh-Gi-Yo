@@ -53,7 +53,7 @@ public class CardGame extends Game {
 	//	return s.getSpielfeldseite().getKarten();
 	//}
 	public ArrayList<Karte> getFriedhofKarten(Player p){
-		return p.getFriedhof().getKarten();
+		return p.getGraveyard().getKarten();
 	}
 	//// FEHLER
 	public void setPhase (int phase){ this.phase = phase; }
@@ -62,8 +62,8 @@ public class CardGame extends Game {
 	}
 
 	// Bei negativem Betrag werden Punkte abgezogen.
-	public void aendereLebenspunkte(Spieler s,int betrag){
-		s.setLebenspunkte(betrag);
+	public void aendereLebenspunkte(Player p,int betrag){
+		p.setLifepoints(betrag);
 	}
 
 
