@@ -4,53 +4,52 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
-    private String bezeichnung;
+    private String description;
     // "ausstattung" speichert alle im Deck befindlichen Karten, damit
     // diese zu beginn eines neuen Spiels zurückgesetzt werden können.
-    private ArrayList<Karte> ausstattung;
+    private ArrayList<Card> configuration;
+
     // Referenzen
-    private ArrayList<Karte> karten;
-    private Spieler spieler;
+    private ArrayList<Card> cards;
+    private Player player;
+
     // Methoden
     // getter/setter
-    public void setBezeichnung(String bezeichnung) {
-        this.bezeichnung = bezeichnung;
+    public void setDescription(String description) {
+        this.description = description;
     }
-    public void setAusstattung(){
-        this.ausstattung = karten;
+    public void setConfiguration(){
+        this.configuration = cards;
     }
-    public void setKarten(ArrayList<Karte> karten) {
-        this.karten = karten;
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
     }
-    public void setSpieler(Spieler spieler) {
-        this.spieler = spieler;
+    public void setPlayer(com.brashmonkey.spriter.Player player) {
+        this.player = player;
     }
 
-    public String getBezeichnung() {
-        return bezeichnung;
+    public String getDescription() {
+        return description;
     }
-    public ArrayList<Karte> getKarten() {
-        return karten;
+    public ArrayList<Card> getCards() {
+        return cards;
     }
-    public Spieler getSpieler() {
-        return spieler;
+    public Player getPlayer() {
+        return player;
     }
 
     // andere
-    public int getAnzahlKarten(){
-        return karten.size();
+    public int getSizeCards(){return cards.size();}
+    public void addCard(Card a){
+        cards.add(a);
     }
-    public void fuegeKarteHinzu(Karte a){
-        karten.add(a);
+    public void shuffle(){
+        Collections.shuffle(cards);
     }
-    public void mischen(){
-        Collections.shuffle(karten);
-    }
-    public Karte gibObersteKarte(){
-        return karten.get(0);
+    public Card giveTopCard(){return cards.get(0);
     }
     // nimmKarteHeraus wird während des Ziehens aufgerufen.
-    public void nimmKarteHeraus(Karte a){
-        karten.remove(a);
+    public void removeCard(Card a){
+        cards.remove(a);
     }
 }

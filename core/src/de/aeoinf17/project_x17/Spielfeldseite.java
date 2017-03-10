@@ -2,24 +2,24 @@ package de.aeoinf17.project_x17;
 
 import java.util.ArrayList;
 
-public class Spielfeldseite extends ArrayList<Karte> {
+public class Spielfeldseite extends ArrayList<Card> {
     // Referenzen
-    private Spieler spieler;
-    private ArrayList<Monsterkarte> monster;
-    private ArrayList<Karte> zauber;
+    private Player spieler;
+    private ArrayList<MonsterCard> monster;
+    private ArrayList<Card> zauber;
     private Zauberkarte feldzauber;
     // Methoden
     // getter/setter
-    public ArrayList<Monsterkarte> getMonster() {return monster;}
-    public ArrayList<Karte> getZauber() {return zauber;}
+    public ArrayList<MonsterCard> getMonster() {return monster;}
+    public ArrayList<Card> getZauber() {return zauber;}
     public Zauberkarte getFeldzauber() {return feldzauber;}
-    public Spieler getSpieler() { return spieler; }
+    public Player getSpieler() { return spieler; }
 
     //andere
-    public void addMonster(Monsterkarte k){monster.add(k);}
-    public void addZauber(Karte k){zauber.add(k);}
+    public void addMonster(MonsterCard k){monster.add(k);}
+    public void addZauber(Card k){zauber.add(k);}
     public void setFeldzauber(Zauberkarte k){feldzauber = k;}
-    public void nimmKarteHeraus(Karte a){
+    public void nimmKarteHeraus(Card a){
         //if a.getClass()==Monsterkarte {
         //    monster.remove(a);
         //}else if a.getClass()==Zauberkarte{
@@ -28,4 +28,4 @@ public class Spielfeldseite extends ArrayList<Karte> {
         //    }
         }
     }
-}
+

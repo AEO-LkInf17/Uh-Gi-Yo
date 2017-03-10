@@ -10,14 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 
 public class CardGame extends Game {
-
-	// Phasen: Draw- Standby- Main- Battle- Main2- End-
-	private static final int DRAW_PHASE = 0;
-	private static final int STANDBY_PHASE = 1;
-	private static final int MAIN_PHASE_I = 2;
-	private static final int BATTLE_PHASE = 3;
-	private static final int MAIN_PHASE_II = 4;
-	private static final int END_PHASE = 5;
+//idlasfzgf sdukh
 
 	private int phase;
 
@@ -47,20 +40,20 @@ public class CardGame extends Game {
 		font.dispose();
 	}
 
-	public int getLebenspunkte(Spieler s){
-		return s.getLebenspunkte();
+	public int getLifepoints(Player p){
+		return p.getLifepoints();
 	}
-	public ArrayList<Karte> getDeckKarten(Spieler s){
-		return s.getMomentanesDeck().getKarten();
+	public ArrayList<Card> getDeckCards(Player p){
+		return p.getMomentaryDeck().getCards();
 	}
-	public ArrayList<Karte> getHandkarten(Spieler s){
-		return s.getHand().getKarten();
+	public ArrayList<Card> getHandkarten(Player p){
+		return p.getHand().getCards();
 	}
 	//public ArrayList<Karte> getSpielfeldKarten(Spieler s){
 	//	return s.getSpielfeldseite().getKarten();
 	//}
-	public ArrayList<Karte> getFriedhofKarten(Spieler s){
-		return s.getFriedhof().getKarten();
+	public ArrayList<Card> getFriedhofKarten(Player p){
+		return p.getGraveyard().getKarten();
 	}
 	//// FEHLER
 	public void setPhase (int phase){ this.phase = phase; }
@@ -69,8 +62,8 @@ public class CardGame extends Game {
 	}
 
 	// Bei negativem Betrag werden Punkte abgezogen.
-	public void aendereLebenspunkte(Spieler s,int betrag){
-		s.setLebenspunkte(betrag);
+	public void aendereLebenspunkte(Player p,int betrag){
+		p.setLifepoints(betrag);
 	}
 
 
