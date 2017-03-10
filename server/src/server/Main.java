@@ -1,4 +1,4 @@
-package de.aeoinf17.project_x17.server;
+package server;
 
 
 /**
