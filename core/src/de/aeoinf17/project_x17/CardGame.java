@@ -43,16 +43,16 @@ public class CardGame extends Game {
 	public int getLifepoints(Player p){
 		return p.getLifepoints();
 	}
-	public ArrayList<Karte> getDeckCards(Player p){
-		return p.getMomentanesDeck().getKarten();
+	public ArrayList<Card> getDeckCards(Player p){
+		return p.getMomentaryDeck().getCards();
 	}
-	public ArrayList<Karte> getHandkarten(Player p){
+	public ArrayList<Card> getHandkarten(Player p){
 		return p.getHand().getCards();
 	}
 	//public ArrayList<Karte> getSpielfeldKarten(Spieler s){
 	//	return s.getSpielfeldseite().getKarten();
 	//}
-	public ArrayList<Karte> getFriedhofKarten(Player p){
+	public ArrayList<Card> getFriedhofKarten(Player p){
 		return p.getGraveyard().getKarten();
 	}
 	//// FEHLER
