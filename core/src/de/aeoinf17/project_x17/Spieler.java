@@ -79,12 +79,12 @@ public class Spieler {
     }
     public void setzen(Monsterkarte k){
         k.aufdecken();
-        spielfeldseite.addKarte(k);
+        spielfeldseite.addMonster(k);
         hand.nimmKarteHeraus(k);
     }
     public void legen(Monsterkarte k){
         k.verdecken();
-        spielfeldseite.addKarte(k);
+        spielfeldseite.addMonster(k);
         hand.nimmKarteHeraus(k);
     }
     public void positionswechsel(Monsterkarte k){

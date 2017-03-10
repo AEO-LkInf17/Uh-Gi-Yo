@@ -46,5 +46,5 @@ public abstract class Karte {
     public void addEigenschaft(Eigenschaft a){
         eigenschaften.add(a);
     }
-
+    //änderung Test
 }
