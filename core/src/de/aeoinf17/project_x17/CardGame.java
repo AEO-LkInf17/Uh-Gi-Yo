@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 
 public class CardGame extends Game {
-
+//idlasfzgf sdukh
 
 	private int phase;
 
