@@ -1,43 +1,43 @@
 package de.aeoinf17.project_x17;
 
 public class MonsterCard extends Card {
-    protected int angriffspunkte;
-    protected int verteidigungspunkte;
-    protected int stufe;
-    protected boolean verdeckt;
-    protected boolean angriffsmodus;
+    protected int attackpoints;
+    protected int defencepoints;
+    protected int rank;
+    protected boolean facedown;
+    protected boolean attackmode;
 
-    public void setAngriffspunkte(int angriffspunkte) {
-        this.angriffspunkte = angriffspunkte;
+    public void setAttackpoints(int attackpoints) {
+        this.attackpoints = attackpoints;
     }
 
-    public void setVerteidigungspunkte(int verteidigungspunkte) {
-        this.verteidigungspunkte = verteidigungspunkte;
+    public void setDefencepoints(int defencepoints) {
+        this.defencepoints = defencepoints;
     }
 
-    public void setStufe(int stufe) {
-        this.stufe = stufe;
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
-    public int getAngriffspunkte() {
-        return angriffspunkte;
+    public int getAttackpoints() {
+        return attackpoints;
     }
 
-    public int getVerteidigungspunkte() {
-        return verteidigungspunkte;
+    public int getDefencepoints() {
+        return defencepoints;
     }
 
-    public int getStufe() {
-        return stufe;
+    public int getRank() {
+        return rank;
     }
     public void conceal(){
-        verdeckt = true;
+        facedown = true;
     }
     public void reveal(){
-        verdeckt = false;
+        facedown = false;
     }
     public void changemode(){
-        angriffsmodus = !angriffsmodus;
+        attackmode = !attackmode;
     }
 
 }

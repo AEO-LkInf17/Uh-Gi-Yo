@@ -24,7 +24,7 @@ public class Deck {
     public void setCards(ArrayList<Card> cards) {
         this.cards = cards;
     }
-    public void setPlayer(com.brashmonkey.spriter.Player player) {
+    public void setPlayer(Player player) {
         this.player = player;
     }
 
@@ -39,7 +39,7 @@ public class Deck {
     }
 
     // andere
-    public int getSizeCards(){return cards.size();}
+    public int getAmountCards(){return cards.size();}
     public void addCard(Card a){
         cards.add(a);
     }

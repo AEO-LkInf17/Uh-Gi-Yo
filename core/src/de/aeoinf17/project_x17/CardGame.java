@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 
 public class CardGame extends Game {
-//idlasfzgf sdukh
+//test 3
 
 	private int phase;
 
@@ -46,24 +46,24 @@ public class CardGame extends Game {
 	public ArrayList<Card> getDeckCards(Player p){
 		return p.getMomentaryDeck().getCards();
 	}
-	public ArrayList<Card> getHandkarten(Player p){
+	public ArrayList<Card> getHand(Player p){
 		return p.getHand().getCards();
 	}
 	//public ArrayList<Karte> getSpielfeldKarten(Spieler s){
 	//	return s.getSpielfeldseite().getKarten();
 	//}
-	public ArrayList<Card> getFriedhofKarten(Player p){
-		return p.getGraveyard().getKarten();
+	public ArrayList<Card> getGraveyardCards(Player p){
+		return p.getGraveyard().getCards();
 	}
 	//// FEHLER
 	public void setPhase (int phase){ this.phase = phase; }
-	public void naechstePhase(){
+	public void nextPhase(){
 		this.phase = phase + 1;
 	}
 
 	// Bei negativem Betrag werden Punkte abgezogen.
-	public void aendereLebenspunkte(Player p,int betrag){
-		p.setLifepoints(betrag);
+	public void changeLifepoints(Player p, int amount){
+		p.setLifepoints(amount);
 	}
 
 

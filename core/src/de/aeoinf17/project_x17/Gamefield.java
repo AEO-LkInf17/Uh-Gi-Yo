@@ -5,18 +5,18 @@ import java.util.ArrayList;
 public class Gamefield extends ArrayList<Card> {
     // Referenzen
     private Player player;
-    private ArrayList<Card> karten;
+    private ArrayList<Card> cards;
 
     // Methoden
     // getter/setter
     public Player getPlayer() { return player; }
-    public ArrayList<Card> getKarten() { return karten; }
+    public ArrayList<Card> getCards() { return cards; }
 
     //andere
-    public void nimmKarteHeraus(Card a){
-        karten.remove(a);
+    public void removeCard(Card a){
+        cards.remove(a);
     }
     public void addCard(Card k){
-        karten.add(k);
+        cards.add(k);
     }
 }
