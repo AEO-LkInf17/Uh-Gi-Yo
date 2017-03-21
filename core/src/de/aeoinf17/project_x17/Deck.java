@@ -24,9 +24,9 @@ public class Deck {
     public void setCards(ArrayList<Card> cards) {
         this.cards = cards;
     }
-    public void setPlayer(com.brashmonkey.spriter.Player player) {
+    /*public void setPlayer(com.brashmonkey.spriter.Player player) {
         this.player = player;
-    }
+    }*/
 
     public String getDescription() {
         return description;
