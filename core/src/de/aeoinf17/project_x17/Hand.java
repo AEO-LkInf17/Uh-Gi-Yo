@@ -2,30 +2,30 @@ package de.aeoinf17.project_x17;
 
 import java.util.ArrayList;
 
-public class Hand extends ArrayList<Karte> {
+public class Hand extends ArrayList<Card> {
     // Referenz
-    private Spieler spieler;
-    private ArrayList<Karte> karten;
+    private Player player;
+    private ArrayList<Card> cards;
 
     // Methoden
     //getter/setter
-    public void setSpieler(Spieler spieler) {
-        this.spieler = spieler;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
-    public void setKarten(ArrayList<Karte> karten) {
-        this.karten = karten;
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
     }
-    public Spieler getSpieler() {
-        return spieler;
+    public Player getPlayer() {
+        return player;
     }
-    public ArrayList<Karte> getKarten() {
-        return karten;
+    public ArrayList<Card> getCards() {
+        return cards;
     }
     //andere
-    public void addKarte(Karte a){
-        karten.add(a);
+    public void addCard(Card a){
+        cards.add(a);
     }
-    public void nimmKarteHeraus(Karte a){
-        karten.remove(a);
+    public void removeCard(Card a){
+        cards.remove(a);
     }
 }
