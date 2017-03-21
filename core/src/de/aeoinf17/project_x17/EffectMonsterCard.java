@@ -7,4 +7,5 @@ class EffectMonsterCard extends MonsterCard {
         priority = p;
         max = m;
     }
+
 }
