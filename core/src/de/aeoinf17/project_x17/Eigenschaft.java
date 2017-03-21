@@ -1,7 +1,7 @@
 package de.aeoinf17.project_x17;
 
-public class Eigenschaft {
+class Propertie {
     private String bezeichnung;
 
-    public Eigenschaft (String a){bezeichnung = a;}
+    public Propertie (String a){bezeichnung = a;}
 }
