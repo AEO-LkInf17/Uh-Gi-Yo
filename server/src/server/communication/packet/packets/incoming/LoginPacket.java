@@ -11,6 +11,7 @@ public class LoginPacket extends IncomingPacket {
     private String version;
 
     public LoginPacket(JsonObject data) {
+        super();
         //parse packet data
         username = data.get("username").getAsString();
         version = data.get("verison").getAsString();

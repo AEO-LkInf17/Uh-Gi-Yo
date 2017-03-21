@@ -11,6 +11,7 @@ public class RegisterPacket extends IncomingPacket {
     private String version;
 
     public RegisterPacket(JsonObject data) {
+        super();
         //parse packet data
         username = data.get("username").getAsString();
         version = data.get("verison").getAsString();
