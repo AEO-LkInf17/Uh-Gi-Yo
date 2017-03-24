@@ -7,16 +7,12 @@ import java.util.List;
  * Created by jk0521 on 10.03.2017.
  */
 public abstract class IncomingPacket extends Packet {
-    private static List<Class<?>> packetTypes = new ArrayList<Class<?>>();
+    private static List<Class<? extends IncomingPacket>> packetTypes = new ArrayList<Class<? extends IncomingPacket>>();
 
-    private static void registerPacketType(Class<?> packetType) {
+    public static void registerPacketType(Class<? extends IncomingPacket> packetType) {
         if(!packetTypes.contains(packetType))
             packetTypes.add(packetType);
     }
 
     public abstract void handlePacket();
-
-    protected IncomingPacket() {
-        registerPacketType(this.getClass());
-    }
 }

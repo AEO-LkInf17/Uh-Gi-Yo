@@ -1,8 +1,10 @@
 package server.communication.packet.packets.outgoing;
 
 import com.google.gson.JsonObject;
+import server.communication.packet.IncomingPacket;
 import server.communication.packet.OutgoingPacket;
 import server.communication.packet.Packet;
+import server.communication.packet.packets.incoming.LoginPacket;
 
 /**
  * Created by jk0521 on 10.03.2017.
@@ -22,19 +24,23 @@ public class LoginResultPacket extends OutgoingPacket {
     //banLenght = BANNED_PERM = 0 -> permamently banned; banLenght equals amount of minutes left banned
     private int banLenght = -1;
 
+    static {
+        OutgoingPacket.registerPacketType(LoginResultPacket.class);
+    }
+
     //success
     public LoginResultPacket() {
-        super();
+
     }
 
     //failure
     public LoginResultPacket(String failureReason) {
-        super();
+
     }
 
     //failure -> banned (banLenght = BANNED_PERM = 0 -> permamently banned; banLenght equals amount of minutes left banned)
     public LoginResultPacket(String failureReason, int banLength) {
-        super();
+
     }
 
     @Override

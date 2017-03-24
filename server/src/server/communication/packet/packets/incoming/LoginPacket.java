@@ -10,8 +10,11 @@ public class LoginPacket extends IncomingPacket {
     private String username;
     private String version;
 
+    static {
+        IncomingPacket.registerPacketType(LoginPacket.class);
+    }
+
     public LoginPacket(JsonObject data) {
-        super();
         //parse packet data
         username = data.get("username").getAsString();
         version = data.get("verison").getAsString();

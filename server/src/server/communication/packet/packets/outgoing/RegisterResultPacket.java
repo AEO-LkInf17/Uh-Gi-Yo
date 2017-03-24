@@ -16,14 +16,19 @@ public class RegisterResultPacket extends OutgoingPacket {
 
     private boolean success = true;
     private boolean failureReason;
+
+    static {
+        OutgoingPacket.registerPacketType(RegisterResultPacket.class);
+    }
+
     //success
     public RegisterResultPacket() {
-        super();
+
     }
 
     //failure
     public RegisterResultPacket(String failureReason) {
-        super();
+
     }
 
     public boolean isSuccess() {
