@@ -6,9 +6,6 @@ import server.communication.packet.OutgoingPacket;
 import server.communication.packet.Packet;
 import server.communication.packet.packets.incoming.LoginPacket;
 
-/**
- * Created by jk0521 on 10.03.2017.
- */
 public class LoginResultPacket extends OutgoingPacket {
     public static final String FAILURE_WRONGVER = "WRONGVER";
     public static final String FAILURE_NOTEXIST = "NOTEXIST";
