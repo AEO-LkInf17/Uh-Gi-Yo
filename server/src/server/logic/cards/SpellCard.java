@@ -1,5 +1,5 @@
 package server.logic.cards;
 
-public class Zauberkarte extends Card {
+public class Spellcard extends Card {
     // private ?? effekt;
 }

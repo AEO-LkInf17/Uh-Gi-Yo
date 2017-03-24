@@ -1,8 +1,8 @@
 package server.logic.cards;
 
-class Propertie {
-    private String bezeichnung;
+class property {
+    private String designation;
 
-    public Propertie (String a){bezeichnung = a;}
+    public property (String a){designation = a;}
 
 }
