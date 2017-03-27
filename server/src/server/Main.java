@@ -1,5 +1,8 @@
 package server;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +13,7 @@ public class Main {
     public static final int SERVER_PORT = 42042;
 
     public static void main(String args[]) {
+        Gson gson = new Gson();
         try {
             ServerSocket server = new ServerSocket(SERVER_PORT);
             while(true) {
@@ -19,7 +23,8 @@ public class Main {
                     try {
                         BufferedReader inFromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
                         while(true) {
-                            String message = inFromClient.readLine();
+                            JsonObject packet = gson.fromJson(inFromClient.readLine(), JsonObject.class);
+
                             //TODO: convert message to jsonobject, lookup command and instanciate the message, handle the packet
                         }
                     } catch (IOException e) {
