@@ -5,7 +5,7 @@
 			"assets": [
 				{
 					"type": "com.badlogic.gdx.graphics.Texture",
-					"path": "client/res/badlogic.jpg"
+					"path": "badlogic.jpg"
 				}
 			]
 		}

@@ -16,7 +16,7 @@ public class MainMenuScreen extends Screen {
         AssetManager.getInstance().load("group 1");
         AssetManager.getInstance().finishLoading();
         System.out.println("SUCCESS!");
-        texture = AssetManager.getInstance().get("client/res/badlogic.jpg", Texture.class);
+        texture = AssetManager.getInstance().get("badlogic.jpg", Texture.class);
     }
 
     @Override
