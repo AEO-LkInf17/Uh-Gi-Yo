@@ -5,7 +5,7 @@ import server.logic.cards.Spellcard;
 
 import java.util.ArrayList;
 
-public class field extends ArrayList<Card> {
+public class Field extends ArrayList<Card> {
 
     private Player player;
     private ArrayList<MonsterCard> monster;
