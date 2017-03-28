@@ -12,19 +12,10 @@ public class LoginPacket extends IncomingPacket {
 
     public static final String COMMAND = "LOGIN";
 
-    static {
-        IncomingPacket.registerPacketType(LoginPacket.class);
-    }
-
     public LoginPacket(JsonObject data) {
         //parse packet data
         username = data.get("username").getAsString();
         version = data.get("verison").getAsString();
-    }
-
-    @Override
-    public String getCommand() {
-        return COMMAND;
     }
 
     @Override

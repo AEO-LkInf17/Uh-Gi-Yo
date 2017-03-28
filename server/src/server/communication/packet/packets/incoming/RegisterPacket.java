@@ -12,10 +12,6 @@ public class RegisterPacket extends IncomingPacket {
 
     public static final String COMMAND = "REGISTER";
 
-    static {
-        IncomingPacket.registerPacketType(RegisterPacket.class);
-    }
-
     public RegisterPacket(JsonObject data) {
         //parse packet data
         username = data.get("username").getAsString();
