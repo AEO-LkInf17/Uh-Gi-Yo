@@ -14,5 +14,15 @@ public abstract class IncomingPacket extends Packet {
             packetTypes.add(packetType);
     }
 
-    public abstract void handlePacket();
+    public static Class<? extends IncomingPacket> getClassOfCommand(String command) {
+        for(Class<? extends IncomingPacket> c : packetTypes) {
+
+        }
+        return null;
+    }
+
+
+    abstract public String getCommand();
+
+    abstract public void handlePacket();
 }

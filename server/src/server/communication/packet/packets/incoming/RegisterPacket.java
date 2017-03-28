@@ -10,6 +10,8 @@ public class RegisterPacket extends IncomingPacket {
     private String username;
     private String version;
 
+    public static final String COMMAND = "REGISTER";
+
     static {
         IncomingPacket.registerPacketType(RegisterPacket.class);
     }

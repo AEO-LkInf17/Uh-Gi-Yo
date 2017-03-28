@@ -16,7 +16,9 @@ public abstract class OutgoingPacket extends Packet {
             packetTypes.add(packetType);
     }
 
-    public abstract JsonObject generatePacketObject();
+    abstract public String getCommand();
+
+    abstract public JsonObject generatePacketObject();
 
     protected void sendJSONObject(JsonObject packet) {
 

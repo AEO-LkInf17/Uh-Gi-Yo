@@ -2,6 +2,7 @@ package server;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import server.communication.packet.IncomingPacket;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class Main {
                         BufferedReader inFromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
                         while(true) {
                             JsonObject packet = gson.fromJson(inFromClient.readLine(), JsonObject.class);
+                            String command = packet.get("command").getAsString();
 
                             //TODO: convert message to jsonobject, lookup command and instanciate the message, handle the packet
                         }
