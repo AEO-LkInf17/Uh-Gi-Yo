@@ -2,42 +2,40 @@ package server.logic.cards;
 
 public class MonsterCard extends Card {
     protected int attackpoints;
-    protected int verteidigungspunkte;
-    protected int stufe;
-    protected boolean verdeckt;
-    protected boolean angriffsmodus;
+    protected int defensepoints;
+    protected int level; //star points
+    protected boolean hidden;
+    protected boolean offensiveMode;
 
-    public void setAngriffspunkte(int attackpoints) {
+    public void setAttackpoints(int attackpoints) {
         this.attackpoints = attackpoints;
     }
 
-    public void setVerteidigungspunkte(int verteidigungspunkte) {
-        this.verteidigungspunkte = verteidigungspunkte;
+    public void setDefensepoints(int defensepoints) {
+        this.defensepoints = defensepoints;
     }
 
-    public void setStufe(int stufe) {
-        this.stufe = stufe;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    public int getAngriffspunkte() {
+    public int getAttackpoints() {
         return attackpoints;
     }
 
-    public int getVerteidigungspunkte() {
-        return verteidigungspunkte;
+    public int getDefensepoints() {
+        return defensepoints;
     }
 
     public int getStufe() {
-        return stufe;
+        return level;
     }
-    public void conceal(){
-        verdeckt = true;
-    }
+    public void conceal(){hidden = true;}
     public void reveal(){
-        verdeckt = false;
+        hidden = false;
     }
     public void changemode(){
-        angriffsmodus = !angriffsmodus;
+        offensiveMode = !offensiveMode;
     }
 
 }

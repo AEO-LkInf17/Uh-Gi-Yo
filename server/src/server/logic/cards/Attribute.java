@@ -1,8 +1,8 @@
 package server.logic.cards;
 
-class Attribute {
-    private String bezeichnung;
+class property {
+    private String designation;
 
-    public Attribute (String a){bezeichnung = a;}
+    public property (String a){designation = a;}
 
 }

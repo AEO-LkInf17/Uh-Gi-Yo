@@ -14,7 +14,7 @@ public class Game implements ApplicationListener {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        AssetManager.getInstance().initialize("client/res/test.json");
+        AssetManager.getInstance().initialize("test.json");
 
         ScreenManager.getInstance().initialize(this);
         ScreenManager.getInstance().setScreen(ScreenEnum.SPLASH);

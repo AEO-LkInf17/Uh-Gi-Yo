@@ -1,11 +1,13 @@
 package server.logic;
 
+import java.util.ArrayList;
+
 public class DeckEditor {
 
     private Connection con;
     private Statement st;
     private ResultSet rs;
-    private ArrayList<Effektmonsterkarte> cards = new ArrayList();
+    private ArrayList<EffectMonsterCard> cards = new ArrayList<>();
 
     public DeckEditor() {
         try {

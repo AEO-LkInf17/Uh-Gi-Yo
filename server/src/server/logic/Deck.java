@@ -1,6 +1,6 @@
 package server.logic;
 
-import javax.smartcardio.Card;
+import server.logic.cards.card;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -12,12 +12,12 @@ public class Deck {
     // be reset at the beginning of a new game
        private ArrayList<Card> configuration;
 
-    // references
+
     private ArrayList<Card> cards;
     private Player player;
 
-    // methods
-    // getter/setter
+
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -39,7 +39,7 @@ public class Deck {
         return player;
     }
 
-    // other methods
+
     public int getSizeCards(){return cards.size();}
     public void addCard(Card a){
         cards.add(a);
@@ -53,5 +53,5 @@ public class Deck {
     public void removeCard(Card a){
         cards.remove(a);
     }
-    //comment translation by Niels
+
 }
