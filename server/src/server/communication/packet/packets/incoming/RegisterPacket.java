@@ -10,9 +10,7 @@ public class RegisterPacket extends IncomingPacket {
     private String username;
     private String version;
 
-    static {
-        IncomingPacket.registerPacketType(RegisterPacket.class);
-    }
+    public static final String COMMAND = "REGISTER";
 
     public RegisterPacket(JsonObject data) {
         //parse packet data

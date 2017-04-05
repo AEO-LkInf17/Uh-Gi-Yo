@@ -10,9 +10,7 @@ public class LoginPacket extends IncomingPacket {
     private String username;
     private String version;
 
-    static {
-        IncomingPacket.registerPacketType(LoginPacket.class);
-    }
+    public static final String COMMAND = "LOGIN";
 
     public LoginPacket(JsonObject data) {
         //parse packet data

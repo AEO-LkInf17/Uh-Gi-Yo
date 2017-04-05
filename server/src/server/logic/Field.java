@@ -1,7 +1,7 @@
 package server.logic;
 
+import server.logic.cards.*;
 import server.logic.cards.MonsterCard;
-import server.logic.cards.Spellcard;
 
 import java.util.ArrayList;
 
@@ -10,19 +10,22 @@ public class Field extends ArrayList<Card> {
     private Player player;
     private ArrayList<MonsterCard> monster;
     private ArrayList<Card> spell;
-    private Spellcard fieldspell;
+    private SpellCard fieldspell;
 
+    public Field (Player p){player = p;}
 
-    public ArrayList<MonsterCard> getMonster() {return monster;}
-    public ArrayList<Card> getSpell() {return spell;}
-    public Spellcard getFieldspell() {return fieldspell;}
-    public Player getSpieler() { return player; }
-
-    //andere
     public void addMonster(MonsterCard k){monster.add(k);}
-    public void addZauber(Card k){spell.add(k);}
-    public void setFeldzauber(Spellcard k){fieldspell = k;}
-    public void nimmKarteHeraus(Card a){
+    public ArrayList<MonsterCard> getMonster() {return monster;}
+
+    public void addSpell(Card card){spell.add(card);}
+    public ArrayList<Card> getSpell() {return spell;}
+
+    public void setFieldspell(SpellCard card){fieldspell = card;}
+    public SpellCard getFieldspell() {return fieldspell;}
+
+    public Player getPlayer() { return player; }
+
+    public void removeCard(Card card){
         //if a.getClass()==MonsterCard {
         //    monster.remove(a);
         //}else if a.getClass()==Spellcard{
