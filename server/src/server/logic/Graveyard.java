@@ -4,24 +4,22 @@ import server.logic.cards.Card;
 
 import java.util.ArrayList;
 
-public class Graveyard {
-    // Referenzen
+public class Graveyard extends ArrayList<Card> {
     private Player player;
-    private ArrayList<Card> karten;
+    private ArrayList<Card> cards;
 
-    // getter/setter
     public Player getPlayer() { return player; }
-    public ArrayList<Card> getKarten() { return karten; }
-    //andere
-    public void nimmKarteHeraus(Card a){
-        karten.remove(a);
-    }
-    public Card gibObersteKarte(){
-        return karten.get(0);
-    }
-    public void fuegeKartehinzu (Card k){
-        karten.add(k);
 
+    public ArrayList<Card> getCards() { return cards; }
+
+    public void addCard (Card card){
+        cards.add(card);
+    }
+    public void removeCard(Card card){
+        cards.remove(card);
     }
 
+    public Card getTopCard(){
+        return cards.get(0);
+    }
 }

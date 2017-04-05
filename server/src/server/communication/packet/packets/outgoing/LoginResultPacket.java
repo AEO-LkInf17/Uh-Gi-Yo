@@ -21,10 +21,6 @@ public class LoginResultPacket extends OutgoingPacket {
     //banLenght = BANNED_PERM = 0 -> permamently banned; banLenght equals amount of minutes left banned
     private int banLenght = -1;
 
-    static {
-        OutgoingPacket.registerPacketType(LoginResultPacket.class);
-    }
-
     //success
     public LoginResultPacket() {
 
