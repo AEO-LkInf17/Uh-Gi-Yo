@@ -1,6 +1,6 @@
 package server.logic;
 
-import server.logic.cards.card;
+import server.logic.cards.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 

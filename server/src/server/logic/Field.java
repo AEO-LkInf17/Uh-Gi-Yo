@@ -1,11 +1,12 @@
 package server.logic;
 
+import server.logic.cards.Card;
 import server.logic.cards.MonsterCard;
 import server.logic.cards.Spellcard;
 
 import java.util.ArrayList;
 
-public class field extends ArrayList<Card> {
+class Field extends ArrayList<Card> {
 
     private Player player;
     private ArrayList<MonsterCard> monster;

@@ -1,5 +1,8 @@
 package server.logic;
 
+import server.logic.cards.Card;
+import server.logic.cards.MonsterCard;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -11,7 +14,7 @@ public class Player {
     private ArrayList<Deck> decks;
     private Deck momentaryDeck;
     private Hand hand;
-    private Gamefield gamefield;
+    private Field gamefield;
     private Graveyard graveyard;
 
     // Methoden
@@ -37,7 +40,7 @@ public class Player {
     public void setHand(Hand hand) {
         this.hand = hand;
     }
-    public void setGamefield(Gamefield gamefield) {
+    public void setGamefield(Field gamefield) {
         this.gamefield = gamefield;
     }
     public void setGraveyard(Graveyard graveyard) {
@@ -63,7 +66,7 @@ public class Player {
     public Hand getHand() {
         return hand;
     }
-    public Gamefield getGamefield() {
+    public Field getGamefield() {
         return gamefield;
     }
     public Graveyard getGraveyard() {
@@ -79,12 +82,12 @@ public class Player {
     }
     public void set(MonsterCard k){
         k.reveal();
-        gamefield.addCard(k);
+        gamefield.add(k);
         hand.removeCard(k);
     }
     public void place(MonsterCard k){
         k.conceal();
-        gamefield.addCard(k);
+        gamefield.addMonster(k);
         hand.removeCard(k);
     }
     public void changeposition(MonsterCard k){
@@ -95,11 +98,11 @@ public class Player {
     }
 
     public void destroy(Card k){
-        graveyard.add(k);
+        graveyard.fuegeKartehinzu(k);
         gamefield.remove(k);
     }
     public void revive(Card k){
         gamefield.add(k);
-        graveyard.remove(k);
+        graveyard.nimmKarteHeraus(k);
     }
 }

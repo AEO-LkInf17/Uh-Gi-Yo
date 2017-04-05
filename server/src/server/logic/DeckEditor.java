@@ -35,6 +35,7 @@ public class DeckEditor {
             System.out.println("Defense Points: " + c.getDefensePoints());
             System.out.println("Effect Name: " + c.getEffectName());
             System.out.println("Effect Description: " + c.getEffectDescription());*/
+
         }
     }
 
@@ -65,5 +66,6 @@ public class DeckEditor {
     public static void main(String[] args) {
         new DeckEditor();
     }
+
 }
 
