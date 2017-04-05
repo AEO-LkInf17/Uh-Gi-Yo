@@ -3,11 +3,18 @@ import server.logic.Deck;
 
 import java.util.ArrayList;
 
+/** This class is here to give cards a type/attribute and define them
+ * @author minh & simo
+ * @version 1
+ */
+
 public abstract class Card {
     protected String name;
     protected String type;
     protected int priority;
     protected int max;
+    /** this attribute puts a limit on to how many cards of the same name one can have in a deck
+     */
     // Referenzen
     protected ArrayList<Deck> decks;
     protected ArrayList<String> properties;
@@ -16,10 +23,9 @@ public abstract class Card {
     // getter / setter
 
     public void Card() {
-
     }
 
-    public void setName(String name) {
+    p ublic void setName(String name) {
         this.name = name;
     }
     public void setType(String type) {

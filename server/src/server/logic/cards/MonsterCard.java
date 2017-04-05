@@ -2,17 +2,17 @@ package server.logic.cards;
 
 public class MonsterCard extends Card {
     protected int attackpoints;
-    protected int defensepoints;
+    protected int defencepoints;
     protected int level; //star points
     protected boolean hidden;
-    protected boolean offensiveMode;
+    protected boolean attackMode;
 
     public void setAttackpoints(int attackpoints) {
         this.attackpoints = attackpoints;
     }
 
-    public void setDefensepoints(int defensepoints) {
-        this.defensepoints = defensepoints;
+    public void setDefencepoints(int defencepoints) {
+        this.defencepoints = defencepoints;
     }
 
     public void setLevel(int level) {
@@ -23,8 +23,8 @@ public class MonsterCard extends Card {
         return attackpoints;
     }
 
-    public int getDefensepoints() {
-        return defensepoints;
+    public int getDefencepoints() {
+        return defencepoints;
     }
 
     public int getStufe() {
@@ -35,7 +35,7 @@ public class MonsterCard extends Card {
         hidden = false;
     }
     public void changemode(){
-        offensiveMode = !offensiveMode;
+        attackMode = !attackMode;
     }
 
 }
