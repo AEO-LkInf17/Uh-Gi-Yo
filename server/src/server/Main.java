@@ -15,8 +15,9 @@ import java.net.Socket;
 public class Main {
     public static final int SERVER_PORT = 42042;
 
+    public static final Gson GSON = new Gson();
+
     public static void main(String args[]) {
-        Gson gson = new Gson();
         try {
             ServerSocket server = new ServerSocket(SERVER_PORT);
             System.out.println("Server started running on port " + SERVER_PORT);
@@ -27,7 +28,7 @@ public class Main {
                     try {
                         BufferedReader inFromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
                         while(true) {
-                            JsonObject packetJson = gson.fromJson(inFromClient.readLine(), JsonObject.class);
+                            JsonObject packetJson = GSON.fromJson(inFromClient.readLine(), JsonObject.class);
                             String command = packetJson.get("command").getAsString();
                             IncomingPacket packet = null;
                             switch(command) {
