@@ -1,4 +1,4 @@
 package server.logic.cards;
 
-public class FieldSpellCard {
+public class FieldSpellCard extends SpellCard{
 }
