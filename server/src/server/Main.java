@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import server.communication.packet.IncomingPacket;
 import server.communication.packet.packets.incoming.LoginPacket;
 import server.communication.packet.packets.incoming.RegisterPacket;
+import server.user.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class Main {
             while(true) {
                 Socket client = server.accept();
                 new Thread(()->{
+                    User user = new User(client);
                     //recieving
                     try {
                         BufferedReader inFromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
@@ -33,10 +35,10 @@ public class Main {
                             IncomingPacket packet = null;
                             switch(command) {
                                 case "LOGIN":
-                                    packet = new LoginPacket(packetJson.getAsJsonObject("data"));
+                                    packet = new LoginPacket(user, packetJson.getAsJsonObject("data"));
                                     break;
                                 case "REGISTER":
-                                    packet = new RegisterPacket(packetJson.getAsJsonObject("data"));
+                                    packet = new RegisterPacket(user, packetJson.getAsJsonObject("data"));
                                     break;
                                 default:
                                     System.out.println("unknown command incomingpacket command: " + command);

@@ -4,9 +4,6 @@ import com.google.gson.JsonObject;
 import server.communication.packet.IncomingPacket;
 import server.user.User;
 
-/**
- * Created by jk0521 on 07.03.2017.
- */
 public class RegisterPacket extends IncomingPacket {
     private String username;
     private String version;
