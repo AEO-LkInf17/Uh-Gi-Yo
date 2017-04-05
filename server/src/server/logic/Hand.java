@@ -9,6 +9,8 @@ public class Hand extends ArrayList<Card> {
     private Player player;
     private ArrayList<Card> cards;
 
+    public Hand (Player p){player = p;}
+
     public void setPlayer(Player player) {
         this.player = player;
     }

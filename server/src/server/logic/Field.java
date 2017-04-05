@@ -12,6 +12,8 @@ public class Field extends ArrayList<Card> {
     private ArrayList<Card> spell;
     private SpellCard fieldspell;
 
+    public Field (Player p){player = p;}
+
     public void addMonster(MonsterCard k){monster.add(k);}
     public ArrayList<MonsterCard> getMonster() {return monster;}
 
