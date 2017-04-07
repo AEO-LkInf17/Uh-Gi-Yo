@@ -4,13 +4,13 @@ import server.logic.cards.Card;
 
 import java.util.ArrayList;
 
-public class Hand extends ArrayList<Card> {
+class Hand extends ArrayList<Card> {
 
     private Player player;
     private ArrayList<Card> cards;
 
 
-    public Hand (Player p){player = p;}
+    public Hand (Player p){player = p;player.setHand(this);}
 
     public void setPlayer(Player player) {
         this.player = player;

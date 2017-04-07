@@ -1,5 +1,9 @@
 package server.logic;
 
+/**Class Const is there to give each phase one number, so we don´t must write always the phase
+ * @author Simo ß Minh
+ * @version 1.0
+ */
 public class Const {
 
     // Phasen: Draw- Standby- Main- Battle- Main2- End-

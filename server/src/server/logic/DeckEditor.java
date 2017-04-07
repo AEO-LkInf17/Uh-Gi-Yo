@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * This class is representing the deck editor of the game
  */
-public class DeckEditor {
+class DeckEditor {
 
     private Connection con;
     private Statement st;
