@@ -1,5 +1,6 @@
 package server.logic;
 
+
 import server.logic.cards.EffectMonsterCard;
 
 import java.sql.*;
@@ -63,7 +64,7 @@ public class DeckEditor {
                 int defense_points = Integer.parseInt(rs.getString("defense points"));
                 String effect_name = rs.getString("effect name");
                 String effect_description = rs.getString("effect description");
-                cards.add(new EffectMonsterCard(name,type,priority,attack_points,defense_points,level,effect_name,effect_description));
+                //cards.add(new EffectMonsterCard(name,type,priority,attack_points,defense_points,level,effect_name,effect_description));
             }
             return this.cards;
         } catch (SQLException e) {

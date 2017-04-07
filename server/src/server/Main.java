@@ -15,7 +15,7 @@ import java.net.Socket;
 
 public class Main {
     public static final int SERVER_PORT = 42042;
-
+    public static final String VERSION = "0.0-dev";
     public static final Gson GSON = new Gson();
 
     public static void main(String args[]) {
@@ -31,6 +31,10 @@ public class Main {
                         BufferedReader inFromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
                         while(true) {
                             JsonObject packetJson = GSON.fromJson(inFromClient.readLine(), JsonObject.class);
+                            if(packetJson==null) {
+                                user.disconnect();
+                                break;
+                            }
                             String command = packetJson.get("command").getAsString();
                             IncomingPacket packet = null;
                             switch(command) {

@@ -23,11 +23,11 @@ public class Field extends ArrayList<Card> {
     public Player getPlayer() { return player; }
 
     public void removeCard(Card card){
-        if (card.getClass()==MonsterCard.class) {
+        if (card instanceof MonsterCard) {
             monster.remove(card);
-        }else if (card.getClass()==SpellCard.class) {
+        }else if (card instanceof SpellCard) {
             spell.remove(card);
-        }else if (card.getClass()==FieldSpellCard.class){
+        }else if (card instanceof FieldSpellCard){
              fieldspell = null;
         }
     }

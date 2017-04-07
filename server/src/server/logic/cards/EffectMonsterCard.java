@@ -1,6 +1,6 @@
 package server.logic.cards;
 
-class EffectMonsterCard extends MonsterCard {
+public class EffectMonsterCard extends MonsterCard {
     private String effectName,effectDescription;
 
     public EffectMonsterCard(String n,String t,int p,int l,int a,int d,int le){
