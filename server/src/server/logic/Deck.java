@@ -19,6 +19,10 @@ public class Deck {
 
     private Player player;
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }

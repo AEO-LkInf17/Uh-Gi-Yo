@@ -2,7 +2,9 @@ package server.logic;
 
 import java.util.ArrayList;
 
-/**Die Klasse Game beinhaltet eine Schleife, die den ganzen Spielverlauf organisiert. Das beinhaltet auch die einzelnen Phasen eines Zugs.
+/**The class Game
+ * . Das beinhaltet auch die einzelnen Phasen eines Zugs.
+ *
  * */
 public class Game {
 
