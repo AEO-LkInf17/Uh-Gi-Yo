@@ -14,30 +14,85 @@ public class User {
     private Socket clientSocket;
     private PrintWriter socketOut;
 
-    private String username = null;
+    private Connection con;
+    private Statement st;
+    private ResultSet rs;
 
-    private String loginStatus = LOGIN_STATUS_LOGGEDOFF;
+    private String username = null;
+    private String password = null;
+
+    private String loginStatus = LOGIN_STATUS_LOGGEDOUT;
 
     public static final String LOGIN_STATUS_LOGGEDIN = "LOGGEDIN";
-    public static final String LOGIN_STATUS_LOGGEDOFF = "LOGGEDOFF";
+    public static final String LOGIN_STATUS_LOGGEDOUT = "LOGGEDOUT";
 
     private static List<User> userOnline = new ArrayList<User>();
 
-    public User(Socket clientSocket) {
+    public User(Socket clientSocket, String username, String password) {
         this.clientSocket = clientSocket;
+        this.username = username;
+        this.password = password;
         try {
             socketOut = new PrintWriter(clientSocket.getOutputStream(), true);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
+            // Connection of database with driver manager
+            String host = "dbserver-w10-die.einstein";
+            String databaseName="UhGiYo_INFLK17";
+            String userName = "root";
+            String password = "w10";
+
+            con = DriverManager.getConnection("jdbc:mysql://"+host+":3306/"+databaseName,userName,password);
+            st = con.createStatement();
+
+        } catch(Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+
+        // registration
+        try {
+            register(username, password);
+        } catch(ClientAlreadyLoggedinException ex) {
+            System.out.println(ex.getMessage());
+        } catch(NameNotAvailableException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
-    //TODO->SQL TEAM: IMPLEMENT IT!!!
-    public void login(String username) throws ClientAlreadyLoggedinException, UserNotExistException, UserIsOnlineException, UserBannedException {
+    /**
+     * login of a user
+     * @param username username of the user
+     * @param password of the user
+     * @throws ClientAlreadyLoggedinException checking whether the client is already logged in
+     * @throws UserNotExistException checking whether the user does not exists
+     * @throws UserIsOnlineException checking whether the user is already online
+     * @throws UserBannedException checking whether the user is banned
+     */
+    public void login(String username, String password) throws ClientAlreadyLoggedinException, UserNotExistException, UserIsOnlineException, UserBannedException {
+        boolean permitted = false;
         if(isLoggedIn())
             throw new ClientAlreadyLoggedinException();
 
-        //TODO->SQL TEAM: Check if the user exists, if the user doesnt exist, throw a UserNotExistException
+        // Checking whether the user exists
+        try {
+            String query = "SELECT username,password FROM users";
+            rs = st.executeQuery(query);
+            while(rs.next()) {
+                String un = rs.getString("username");
+                String pw = rs.getString("password");
+                if(username.equals(un) && password.equals(pw))
+                    permitted = true;
+            }
+            if(!permitted)
+                throw new UserNotExistException();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
 
         boolean userIsOnline = false;
         for(User user : userOnline) {
@@ -51,27 +106,70 @@ public class User {
             throw new UserIsOnlineException();
 
         //TODO->SQL TEAM: Check if the user is banned and if so throw a UserBanned exception (look into the class contructor comment, inside the class to give correct parameters regarding the amount of minutes left banned/being banned permamently)
+        try {
+            String query = "SELECT username FROM users WHERE username = '" + username + "'";
+            rs = st.executeQuery(query);
+            while(rs.next()) {
+                int banned = Integer.parseInt(rs.getString("banned")); // 0 = not banned, 1 = banned
+                int banLength = Integer.parseInt(rs.getString("banLength"));
+                if(banned == 1) {
+                    throw new UserBannedException(banLength);
+                }
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
 
         //TODO->SQL TEAM + Julian K. let the user login (mark it in the sql database, aswell as in the server(add itself to userOnline))
         //TODO fill this.username
         new LoginResultPacket(this).sendPacket();
     }
 
-    //TODO->SQL TEAM: IMPLEMENT IT!!! (the register method should register an user AND automatically let him login)
-    public void register(String username) throws ClientAlreadyLoggedinException, NameNotAvaiableException {
+    /**
+     * registration and automatic login of a user
+     * @param username username of the user
+     * @param password password of the user
+     * @throws ClientAlreadyLoggedinException checking whether the client is already logged in
+     * @throws NameNotAvailableException checking whether the username is available
+     */
+    public void register(String username, String password) throws ClientAlreadyLoggedinException, NameNotAvailableException {
         if(isLoggedIn())
             throw new ClientAlreadyLoggedinException();
 
-        //TODO->SQL TEAM: Check if the username is avaiable. If its not, then throw a NameNotAvaiableException
+        // Checking whether the username is available
+        try {
+        String query = "SELECT username FROM users";
+        rs = st.executeQuery(query);
+        while(rs.next()) {
+            String un = rs.getString("username");
+            if(username.equals(un)) throw new NameNotAvailableException();
+        }
+        st.executeUpdate("INSERT INTO users (username, password) "
+                + "VALUES ('" + username + "', '" + password + "')");
+        JOptionPane.showMessageDialog(null, "Saved");
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        // login automically
+        try {
+            login(username,password);
+        } catch (ClientAlreadyLoggedinException ex) {
+            System.out.println(ex.getMessage());
+        } catch(UserNotExistException ex) {
+            System.out.println(ex.getMessage());
+        } catch(UserIsOnlineException ex) {
+            System.out.println(ex.getMessage());
+        } catch(UserBannedException ex) {
+            System.out.println(ex.getMessage());
+        }
 
-        //TODO->SQL TEAM: Register this user
         //TODO->SQL TEAM + Julian K. let the user login (mark it in the sql database, aswell as in the server(add itself to userOnline))
         new LoginResultPacket(this).sendPacket();
     }
 
     public void disconnect() {
         System.out.println("A client disconnected");
-        if(isLoggedIn()) logOff();
+        if(isLoggedIn()) logOut();
         try {
             clientSocket.close();
         } catch (IOException e) {
@@ -79,7 +177,7 @@ public class User {
         }
     }
 
-    public void logOff() {
+    public void logOut() {
 
     }
 
@@ -94,4 +192,6 @@ public class User {
     public String getUsername() {
         return username;
     }
+
+    public String getPassword() { return password; }
 }
