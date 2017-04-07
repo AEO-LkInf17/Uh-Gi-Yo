@@ -1,7 +1,7 @@
 package server.user;
 
 import server.communication.packet.OutgoingPacket;
-import server.user.UserExceptions.*;
+import server.user.exceptions.*;
 
 import java.net.Socket;
 

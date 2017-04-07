@@ -1,4 +1,4 @@
-package server.user.UserExceptions;
+package server.user.exceptions;
 
 public class UserBannedException extends Exception {
     private int banLength;

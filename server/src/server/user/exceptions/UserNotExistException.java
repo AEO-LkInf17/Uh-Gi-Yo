@@ -1,4 +1,4 @@
-package server.user.UserExceptions;
+package server.user.exceptions;
 
 public class UserNotExistException extends Exception {
     public UserNotExistException() {
