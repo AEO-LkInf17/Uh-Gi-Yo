@@ -6,7 +6,7 @@ import java.util.Collections;
 
 /**The class Deck is there to create and save a deck, also to know his details (how many cards, which is the top card, to shuffle)
  *@author Simo ß Minh
- * @version
+ * @version 1.0
  */
 public class Deck {
     private String description;
