@@ -1,7 +1,9 @@
 package server.logic;
 
 
-/**Die Klasse Game beinhaltet eine Schleife, die den ganzen Spielverlauf organisiert. Das beinhaltet auch die einzelnen Phasen eines Zugs.
+/**The class Game
+ * . Das beinhaltet auch die einzelnen Phasen eines Zugs.
+ *
  * */
 class Game {
 
