@@ -1,5 +1,6 @@
 package server.logic;
 
+
 import server.logic.cards.EffectMonsterCard;
 
 import java.sql.*;
