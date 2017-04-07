@@ -14,8 +14,11 @@ public abstract class Card {
     protected ArrayList<Deck> decks;
     protected ArrayList<String> properties;
 
-    public void Card() {
-
+    public Card(String n,String t,int p,int l) {
+        name = n;
+        type = t;
+        priority = p;
+        limitation = l;
     }
 
     public void setName(String name) {

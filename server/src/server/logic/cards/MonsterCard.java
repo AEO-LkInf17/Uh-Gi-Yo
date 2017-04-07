@@ -8,6 +8,13 @@ public class MonsterCard extends Card {
     protected boolean hidden;
     protected boolean offensiveMode;
 
+    public MonsterCard(String n,String t,int p,int l,int a,int d,int le){
+        super(n,t,p,l);
+        attackpoints = a;
+        defensepoints = d;
+        level = le;
+    }
+
     public void setAttackpoints(int attackpoints) {
         this.attackpoints = attackpoints;
     }

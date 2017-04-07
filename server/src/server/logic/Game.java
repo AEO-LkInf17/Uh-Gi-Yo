@@ -1,12 +1,11 @@
 package server.logic;
 
-import java.util.ArrayList;
 
 /**The class Game
  * . Das beinhaltet auch die einzelnen Phasen eines Zugs.
  *
  * */
-public class Game {
+class Game {
 
     private static final int DRAW_PHASE = 0;
     private static final int STANDBY_PHASE = 1;
@@ -37,7 +36,19 @@ public class Game {
         else{phase = 0;}
     }
 
-    public void createStandartGame(){
+    public void nextPlayer(){
+        if (currentPlayersTurn == challenger){
+            currentPlayersTurn = opponent;
+        }else{
+            currentPlayersTurn = challenger;
+        }
+    }
+
+    public void nextRound(){
+        round = round +1;
+    }
+
+    public void createStandardGame(){
         Hand h1 = new Hand(challenger);
         Hand h2 = new Hand(opponent);
         Field f1 = new Field(challenger);
@@ -49,8 +60,18 @@ public class Game {
     }
 
     public void startStandartGame(){
-        createStandartGame();
+        createStandardGame();
 
+
+
+
+
+        if (challenger.getLifepoints() == 0){
+            // Spielende
+        }
+        if (opponent.getLifepoints() == 0){
+            // Spielende
+        }
     }
 
 }

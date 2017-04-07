@@ -1,4 +1,4 @@
-package server.user.UserExceptions;
+package server.user.exceptions;
 
 public class UserIsOnlineException extends Exception {
     public UserIsOnlineException() {
