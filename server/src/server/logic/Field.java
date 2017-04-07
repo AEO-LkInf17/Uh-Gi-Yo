@@ -5,14 +5,14 @@ import server.logic.cards.MonsterCard;
 
 import java.util.ArrayList;
 
-public class Field extends ArrayList<Card> {
+class Field extends ArrayList<Card> {
 
     private Player player;
     private ArrayList<MonsterCard> monster;
     private ArrayList<Card> spell;
     private SpellCard fieldspell;
 
-    public Field (Player p){player = p;}
+    public Field (Player p){player = p;player.setGamefield(this);}
 
     public void addMonster(MonsterCard k){monster.add(k);}
     public ArrayList<MonsterCard> getMonster() {return monster;}

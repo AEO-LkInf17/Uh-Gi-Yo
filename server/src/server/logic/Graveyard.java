@@ -4,13 +4,13 @@ import server.logic.cards.Card;
 
 import java.util.ArrayList;
 
-public class Graveyard extends ArrayList<Card> {
+class Graveyard extends ArrayList<Card> {
 
     private Player player;
     private ArrayList<Card> cards;
 
 
-    public Graveyard (Player p){player = p;}
+    public Graveyard (Player p){player = p;player.setGraveyard(this);}
 
     public Player getPlayer() { return player; }
     public ArrayList<Card> getCards() { return cards; }

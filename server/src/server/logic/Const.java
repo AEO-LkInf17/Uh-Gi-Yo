@@ -1,6 +1,6 @@
 package server.logic;
 
-public class Const {
+class Const {
 
     // Phasen: Draw- Standby- Main- Battle- Main2- End-
     private static final int DRAW_PHASE = 0;

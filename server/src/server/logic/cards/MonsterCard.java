@@ -1,6 +1,6 @@
 package server.logic.cards;
 
-class MonsterCard extends Card {
+public class MonsterCard extends Card {
     protected int attackpoints;
     protected int defensepoints;
     protected int level; //star points
