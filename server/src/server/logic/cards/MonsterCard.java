@@ -1,5 +1,7 @@
 package server.logic.cards;
 
+import server.logic.exceptions.AttacksuccessfulException;
+
 public class MonsterCard extends Card {
     protected int attackpoints;
     protected int defensepoints;
@@ -8,6 +10,16 @@ public class MonsterCard extends Card {
     protected boolean hidden;
     protected boolean offensiveMode;
 
+    /***
+     * @param n name
+     * @param t type
+     * @param p priority
+     * @param l limitation
+     * @param a attacpoints
+     * @param d defensepoints
+     * @param le level
+     */
+    /
     public MonsterCard(String n,String t,int p,int l,int a,int d,int le){
         super(n,t,p,l);
         attackpoints = a;
@@ -36,12 +48,32 @@ public class MonsterCard extends Card {
         return level;
     }
 
+    public boolean getOffensivmode(){return offensiveMode;}
+
     public void conceal(){hidden = true;}
     public void reveal(){
         hidden = false;
     }
     public void changemode(){
         offensiveMode = !offensiveMode;
+    }
+
+    public void attack(MonsterCard target)throws AttacksuccessfulException{
+        if (offensiveMode){
+            if (target.getOffensivmode()){
+                if (attackpoints > target.getAttackpoints()){
+                   //throw AttacksuccessfulException;
+                }else{
+
+                }
+            }else{
+                if (attackpoints > target.getDefensepoints()){
+
+                }else{
+
+                }
+            }
+        }
     }
 }
 

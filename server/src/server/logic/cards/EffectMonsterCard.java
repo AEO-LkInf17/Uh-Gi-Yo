@@ -3,6 +3,15 @@ package server.logic.cards;
 public class EffectMonsterCard extends MonsterCard {
     private String effectName,effectDescription;
 
+    /***
+     * @param n name
+     * @param t type
+     * @param p priority
+     * @param l limitation
+     * @param a attacpoints
+     * @param d defensepoints
+     * @param le level
+     */
     public EffectMonsterCard(String n,String t,int p,int l,int a,int d,int le){
         super(n,t,p,l,a,d,le);
     }
