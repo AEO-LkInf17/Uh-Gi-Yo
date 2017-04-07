@@ -17,6 +17,7 @@ public class Field extends ArrayList<Card> {
     private ArrayList<Card> spell;
     private SpellCard fieldspell;
 
+    public Field (Player player){this.player = player;}
     /**
      * This method is there to add a monstercard
      * @param k k is the card
