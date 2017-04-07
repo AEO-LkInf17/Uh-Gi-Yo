@@ -61,11 +61,12 @@ public class Field extends ArrayList<Card> {
     public Player getPlayer() { return player; }
 
     public void removeCard(Card card){
-        //if a.getClass()==MonsterCard {
-        //    monster.remove(a);
-        //}else if a.getClass()==Spellcard{
-        //    if a.getTyp()==fieldspell {
-
-        //    }
+        if (card instanceof MonsterCard) {
+            monster.remove(card);
+        }else if (card instanceof SpellCard) {
+            spell.remove(card);
+        }else if (card instanceof FieldSpellCard){
+            fieldspell = null;
+        }
     }
 }

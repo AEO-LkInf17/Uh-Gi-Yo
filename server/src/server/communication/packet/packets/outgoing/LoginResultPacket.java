@@ -8,6 +8,7 @@ import server.user.User;
 
 public class LoginResultPacket extends OutgoingPacket {
     public static final String FAILURE_WRONGVER = "WRONGVER";
+    public static final String FAILURE_ALREADYLOGGEDIN = "ALREADYLOGGEDIN";
     public static final String FAILURE_NOTEXIST = "NOTEXIST";
     public static final String FAILURE_ISONLINE = "ISONLINE";
     public static final String FAILURE_BANNED = "BANNED";
