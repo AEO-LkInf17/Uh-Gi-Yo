@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * This class is representing the deck editor of the game
  */
-class DeckEditor {
+public class DeckEditor {
 
     private Connection con;
     private Statement st;
@@ -22,7 +22,7 @@ class DeckEditor {
 
             // connection of the database with the driver-manager
             String host = "dbserver-w10-die.einstein";
-            String databaseName="sampleSchema";
+            String databaseName="UhGiYo_INFLK17";
             String userName = "root";
             String password = "w10";
 
@@ -33,10 +33,11 @@ class DeckEditor {
             System.out.println("Error: " + ex);
         }
 
-        for(EffectMonsterCard c : getCards()) {
+        for(EffectMonsterCard c : getEffectMonsters()) {
             System.out.println("Name: " + c.getName());
             System.out.println("Type: " + c.getType());
             System.out.println("Priority: " + c.getPriority());
+            System.out.println("Limitation: " + c.getLimitation());
             System.out.println("Level: " + c.getLevel());
             System.out.println("Attack Points: " + c.getAttackpoints());
             System.out.println("Defense Points: " + c.getDefensepoints());
@@ -50,7 +51,7 @@ class DeckEditor {
      * are being returned with their parameters in an arraylist
      * @return arraylist with effectmonstercards
      */
-    private ArrayList<EffectMonsterCard> getCards() {
+    private ArrayList<EffectMonsterCard> getEffectMonsters() {
         try {
             String query = "select * from effectmonsters";
             rs = st.executeQuery(query);
@@ -59,12 +60,13 @@ class DeckEditor {
                 String name = rs.getString("name");
                 String type = rs.getString("type");
                 int priority = Integer.parseInt(rs.getString("priority"));
+                int limitation = Integer.parseInt(rs.getString("limitation"));
                 int level = Integer.parseInt(rs.getString("level"));
                 int attack_points = Integer.parseInt(rs.getString("attack points"));
                 int defense_points = Integer.parseInt(rs.getString("defense points"));
                 String effect_name = rs.getString("effect name");
                 String effect_description = rs.getString("effect description");
-                //cards.add(new EffectMonsterCard(name,type,priority,attack_points,defense_points,level,effect_name,effect_description));
+                cards.add(new EffectMonsterCard(name,type,priority,limitation,attack_points,defense_points,level,effect_name,effect_description));
             }
             return this.cards;
         } catch (SQLException e) {
@@ -73,6 +75,10 @@ class DeckEditor {
         System.out.println("Records from database");
         return null;
     }
+
+    /**
+     * OTHER TYPES OF CARDS WILL BE ADDED SOON
+     */
 
     public static void main(String[] args) {
         new DeckEditor();

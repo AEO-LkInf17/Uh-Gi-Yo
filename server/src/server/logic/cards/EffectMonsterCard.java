@@ -11,9 +11,13 @@ public class EffectMonsterCard extends MonsterCard {
      * @param a attacpoints
      * @param d defensepoints
      * @param le level
+     * @param en effect name
+     * @param en effect description
      */
-    public EffectMonsterCard(String n,String t,int p,int l,int a,int d,int le){
+    public EffectMonsterCard(String n,String t,int p,int l,int a,int d,int le, String en, String ed){
         super(n,t,p,l,a,d,le);
+        effectName = en;
+        effectDescription = ed;
     }
 
     public String getEffectName() {
