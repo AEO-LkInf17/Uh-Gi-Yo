@@ -21,7 +21,7 @@ public class MonsterCard extends Card {
      * @param d defensepoints
      * @param le level
      */
-    /
+
     public MonsterCard(String n,String t,int p,int l,int a,int d,int le){
         super(n,t,p,l);
         attackpoints = a;

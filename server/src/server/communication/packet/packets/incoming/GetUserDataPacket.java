@@ -20,6 +20,13 @@ public class GetUserDataPacket extends IncomingPacket {
     public void handlePacket() {
         System.out.println("packet arrived: " + COMMAND + ":: username: " + username);
 
+        if(!sourceUser.isLoggedIn()) {
+            new GetUserDataResult(sourceUser, GetUserDataResult.FAILURE_NOTLOGGEDIN).sendPacket();
+            return;
+        }
+
+        //TODO: handle username doesnt exist
+
         new GetUserDataResult(sourceUser).sendPacket();
     }
 }

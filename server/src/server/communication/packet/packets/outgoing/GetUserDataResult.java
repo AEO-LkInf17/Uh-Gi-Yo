@@ -8,16 +8,29 @@ import server.user.User;
 public class GetUserDataResult extends OutgoingPacket {
     public static final String COMMAND = "GETUSERDATARESULT";
 
+    public static final String FAILURE_NOTEXIST = "NOTEXIST";
+    public static final String FAILURE_NOTLOGGEDIN = "NOTLOGGEDIN";
+
+    private boolean success = true;
+    private String failureReason = null;
+
     public GetUserDataResult(User targetUser) {
         super(targetUser);
+    }
+
+    public GetUserDataResult(User targetUser, String failureReason) {
+        super(targetUser);
+        success = false;
+        this.failureReason = failureReason;
     }
 
     @Override
     public JsonObject generatePacketObject() {
         JsonObject packetObject = new JsonObject();
         packetObject.addProperty("command", COMMAND);
-        JsonObject data = new JsonObject();
-        packetObject.add("data", Main.GSON.toJsonTree(data));
+        JsonObject result = new JsonObject();
+        result.addProperty("success", true);
+        packetObject.add("result", Main.GSON.toJsonTree(result));
 
         return packetObject;
     }

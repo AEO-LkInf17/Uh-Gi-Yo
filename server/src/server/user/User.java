@@ -24,6 +24,18 @@ public class User {
 
     private static List<User> userOnline = new ArrayList<User>();
 
+    public static boolean isUserOnline(String username) {
+        boolean userIsOnline = false;
+        for(User user : userOnline) {
+            if(!user.isLoggedIn()) continue;
+            if(user.getUsername().equals(username)) {
+                userIsOnline = true;
+                break;
+            }
+        }
+        return userIsOnline;
+    }
+
     public User(Socket clientSocket) {
         this.clientSocket = clientSocket;
         try {
@@ -48,15 +60,7 @@ public class User {
 
         //TODO->SQL TEAM: Check if the user exists, if the user doesnt exist, throw a UserNotExistException
 
-        boolean userIsOnline = false;
-        for(User user : userOnline) {
-            if(!user.isLoggedIn()) continue;
-            if(user.getUsername().equals(username)) {
-                userIsOnline = true;
-                break;
-            }
-        }
-        if(userIsOnline)
+        if(isUserOnline(username))
             throw new UserIsOnlineException();
 
         //TODO->SQL TEAM: Check if the user is banned and if so throw a UserBanned exception (look into the class contructor comment, inside the class to give correct parameters regarding the amount of minutes left banned/being banned permamently)
