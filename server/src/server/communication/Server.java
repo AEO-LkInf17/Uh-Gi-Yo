@@ -4,6 +4,8 @@ package server.communication;
 import com.google.gson.JsonObject;
 import server.Main;
 import server.communication.packet.IncomingPacket;
+import server.communication.packet.packets.incoming.GetUserDataPacket;
+import server.communication.packet.packets.incoming.KeepAlivePacket;
 import server.communication.packet.packets.incoming.LoginPacket;
 import server.communication.packet.packets.incoming.RegisterPacket;
 import server.user.User;
@@ -39,11 +41,17 @@ public class Server {
                                 String command = packetJson.get("command").getAsString();
                                 IncomingPacket packet = null;
                                 switch(command) {
-                                    case "LOGIN":
+                                    case LoginPacket.COMMAND:
                                         packet = new LoginPacket(user, packetJson.getAsJsonObject("data"));
                                         break;
-                                    case "REGISTER":
+                                    case RegisterPacket.COMMAND:
                                         packet = new RegisterPacket(user, packetJson.getAsJsonObject("data"));
+                                        break;
+                                    case KeepAlivePacket.COMMAND:
+                                        packet = new KeepAlivePacket(user);
+                                        break;
+                                    case GetUserDataPacket.COMMAND:
+                                        packet = new GetUserDataPacket(user, packetJson.getAsJsonObject("data"));
                                         break;
                                     default:
                                         System.out.println("unknown command incomingpacket command: " + command);

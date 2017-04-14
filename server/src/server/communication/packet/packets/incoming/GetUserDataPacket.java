@@ -2,6 +2,7 @@ package server.communication.packet.packets.incoming;
 
 import com.google.gson.JsonObject;
 import server.communication.packet.IncomingPacket;
+import server.communication.packet.packets.outgoing.GetUserDataResult;
 import server.user.User;
 
 public class GetUserDataPacket extends IncomingPacket {
@@ -17,6 +18,8 @@ public class GetUserDataPacket extends IncomingPacket {
 
     @Override
     public void handlePacket() {
+        System.out.println("packet arrived: " + COMMAND + ":: username: " + username);
 
+        new GetUserDataResult(sourceUser).sendPacket();
     }
 }
