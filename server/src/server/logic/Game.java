@@ -1,8 +1,8 @@
 package server.logic;
 
 
-/**The class Game
- * . Das beinhaltet auch die einzelnen Phasen eines Zugs.
+/**The class Game organize the game process which got all phases in it.
+ *
  *
  * */
 class Game {

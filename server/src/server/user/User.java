@@ -13,15 +13,28 @@ import java.util.List;
 public class User {
     private Socket clientSocket;
     private PrintWriter socketOut;
+    private long lastKeepAliveArrival = System.currentTimeMillis();
 
     private String username = null;
 
-    private String loginStatus = LOGIN_STATUS_LOGGEDOFF;
-
+    public static final String LOGIN_STATUS_LOGGEDOUT = "LOGGEDOUT";
     public static final String LOGIN_STATUS_LOGGEDIN = "LOGGEDIN";
-    public static final String LOGIN_STATUS_LOGGEDOFF = "LOGGEDOFF";
+
+    private String loginStatus = LOGIN_STATUS_LOGGEDOUT;
 
     private static List<User> userOnline = new ArrayList<User>();
+
+    public static boolean isUserOnline(String username) {
+        boolean userIsOnline = false;
+        for(User user : userOnline) {
+            if(!user.isLoggedIn()) continue;
+            if(user.getUsername().equals(username)) {
+                userIsOnline = true;
+                break;
+            }
+        }
+        return userIsOnline;
+    }
 
     public User(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -32,55 +45,60 @@ public class User {
         }
     }
 
-    //TODO->SQL TEAM: IMPLEMENT IT!!!
+    /**
+     * login of a user
+     * @param username username of the user
+     * @throws ClientAlreadyLoggedinException checking whether the client is already logged in
+     * @throws UserNotExistException checking whether the user does not exists
+     * @throws UserIsOnlineException checking whether the user is already online
+     * @throws UserBannedException checking whether the user is banned, and if so, if the user is permamently banned or temporarly, and if so, how long temporarly
+     */
     public void login(String username) throws ClientAlreadyLoggedinException, UserNotExistException, UserIsOnlineException, UserBannedException {
-        if(isLoggedIn())
+        if(isLoggedIn()) {
             throw new ClientAlreadyLoggedinException();
+        }
 
         //TODO->SQL TEAM: Check if the user exists, if the user doesnt exist, throw a UserNotExistException
 
-        boolean userIsOnline = false;
-        for(User user : userOnline) {
-            if(!user.isLoggedIn()) continue;
-            if(user.getUsername().equals(username)) {
-                userIsOnline = true;
-                break;
-            }
-        }
-        if(userIsOnline)
+        if(isUserOnline(username))
             throw new UserIsOnlineException();
 
         //TODO->SQL TEAM: Check if the user is banned and if so throw a UserBanned exception (look into the class contructor comment, inside the class to give correct parameters regarding the amount of minutes left banned/being banned permamently)
 
-        //TODO->SQL TEAM + Julian K. let the user login (mark it in the sql database, aswell as in the server(add itself to userOnline))
-        //TODO fill this.username
+        //TODO->SQL TEAM + Julian K. let the user login (mark it in the sql database, aswell as in the server(username, userOnline List, loginStatus))
+
         new LoginResultPacket(this).sendPacket();
     }
 
     //TODO->SQL TEAM: IMPLEMENT IT!!! (the register method should register an user AND automatically let him login)
-    public void register(String username) throws ClientAlreadyLoggedinException, NameNotAvaiableException {
+    public void register(String username) throws ClientAlreadyLoggedinException, NameNotAvailableException {
         if(isLoggedIn())
             throw new ClientAlreadyLoggedinException();
 
         //TODO->SQL TEAM: Check if the username is avaiable. If its not, then throw a NameNotAvaiableException
 
         //TODO->SQL TEAM: Register this user
-        //TODO->SQL TEAM + Julian K. let the user login (mark it in the sql database, aswell as in the server(add itself to userOnline))
+
+        //TODO->SQL TEAM + Julian K. let the user login (mark it in the sql database, aswell as in the server(username, userOnline List, loginStatus))
+
         new LoginResultPacket(this).sendPacket();
     }
 
     public void disconnect() {
-        System.out.println("A client disconnected");
-        if(isLoggedIn()) logOff();
+        if(isLoggedIn()) logOut();
         try {
             clientSocket.close();
+            System.out.println("A client disconnected");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void logOff() {
-
+    public void logOut() {
+        username = null;
+        userOnline.remove(this);
+        loginStatus=LOGIN_STATUS_LOGGEDOUT;
+        System.out.println("A user logged out");
     }
 
     public void sendPacket(OutgoingPacket packet) {
@@ -89,6 +107,10 @@ public class User {
 
     public boolean isLoggedIn() {
         return loginStatus.equals(LOGIN_STATUS_LOGGEDIN);
+    }
+
+    public void updateKeepAlive() {
+        lastKeepAliveArrival = System.currentTimeMillis();
     }
 
     public String getUsername() {

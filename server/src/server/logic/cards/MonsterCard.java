@@ -1,6 +1,8 @@
 package server.logic.cards;
 
+import server.logic.exceptions.AttackfailedException;
 import server.logic.exceptions.AttacksuccessfulException;
+import server.logic.exceptions.SubtractLifepointsException;
 
 public class MonsterCard extends Card {
     protected int attackpoints;
@@ -19,7 +21,7 @@ public class MonsterCard extends Card {
      * @param d defensepoints
      * @param le level
      */
-    /
+
     public MonsterCard(String n,String t,int p,int l,int a,int d,int le){
         super(n,t,p,l);
         attackpoints = a;
@@ -58,19 +60,23 @@ public class MonsterCard extends Card {
         offensiveMode = !offensiveMode;
     }
 
-    public void attack(MonsterCard target)throws AttacksuccessfulException{
+    public void attack(MonsterCard target)throws AttacksuccessfulException,AttackfailedException,SubtractLifepointsException{
         if (offensiveMode){
-            if (target.getOffensivmode()){
+            if (target == null){
+                throw new SubtractLifepointsException(attackpoints);
+            }
+            if (target.getOffensivmode()) {
                 if (attackpoints > target.getAttackpoints()){
-                   //throw AttacksuccessfulException;
+                    throw new AttacksuccessfulException();
+                    //throw new SubtractLifepointsException(8000);
                 }else{
-
+                    throw new AttackfailedException();
                 }
             }else{
                 if (attackpoints > target.getDefensepoints()){
-
+                    throw new AttacksuccessfulException();
                 }else{
-
+                    throw new AttackfailedException();
                 }
             }
         }
