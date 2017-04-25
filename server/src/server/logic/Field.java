@@ -60,6 +60,10 @@ public class Field extends ArrayList<Card> {
      */
     public Player getPlayer() { return player; }
 
+    /**This method is there to  remove a card form the field
+     *
+     * @param card  Card
+     */
     public void removeCard(Card card){
         if (card instanceof MonsterCard) {
             monster.remove(card);
