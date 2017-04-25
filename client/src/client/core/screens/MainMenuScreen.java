@@ -7,10 +7,12 @@ import com.badlogic.gdx.graphics.Texture;
 import client.core.Game;
 import client.core.managers.AssetManager;
 
+
 public class MainMenuScreen extends Screen {
 
     private Texture texture;
     private Music music;
+
 
     public MainMenuScreen(Game game) {
         super(game);
@@ -25,6 +27,9 @@ public class MainMenuScreen extends Screen {
         music.getVolume();
         music.setLooping(true);
         music.isLooping();
+
+
+
     }
 
     @Override
