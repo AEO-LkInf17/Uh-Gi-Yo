@@ -8,7 +8,7 @@ public class EffectMonsterCard extends MonsterCard {
      * @param t type
      * @param p priority
      * @param l limitation
-     * @param a attacpoints
+     * @param a attackpoints
      * @param d defensepoints
      * @param le level
      * @param en effect name

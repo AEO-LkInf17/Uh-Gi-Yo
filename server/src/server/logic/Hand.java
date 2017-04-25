@@ -12,15 +12,26 @@ class Hand extends ArrayList<Card> {
 
     public Hand (Player p){player = p;player.setHand(this);}
 
+
     public void setPlayer(Player player) {
         this.player = player;
     }
     public Player getPlayer() {
         return player;
     }
+
+    /**This method is there to set a ArrayList for Cards
+     *
+     * @param cards cards
+     */
     public void setCards(ArrayList<Card> cards) {
         this.cards = cards;
     }
+
+    /**This method is there to get the cards fform the ArrayList
+     *
+     * @return return cards
+     */
     public ArrayList<Card> getCards() {
         return cards;
     }
