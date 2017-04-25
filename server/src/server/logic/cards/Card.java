@@ -14,6 +14,8 @@ public abstract class Card {
     protected ArrayList<Deck> decks;
     protected ArrayList<String> properties;
 
+    protected int momentaryID;
+
     /***
      * @param n name
      * @param t type
@@ -62,4 +64,7 @@ public abstract class Card {
         properties.add(a);
     }
     public ArrayList getProperties(){ return properties; }
+
+    public void setMomentaryID(int m){ momentaryID = m;}
+    public int getMomentaryID(){return momentaryID;}
 }
