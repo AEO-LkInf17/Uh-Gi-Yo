@@ -32,9 +32,9 @@ public class RegisterPacket extends IncomingPacket {
         try {
             sourceUser.register(username); //TODO
         } catch (ClientAlreadyLoggedinException e) {
-            e.printStackTrace();
+            new RegisterResultPacket(sourceUser, RegisterResultPacket.FAILURE_ALREADYLOGGEDIN).sendPacket();
         } catch (NameNotAvailableException e) {
-            e.printStackTrace();
+            new RegisterResultPacket(sourceUser, RegisterResultPacket.FAILURE_NAMENOTAVAIABLE).sendPacket();
         }
     }
 }
