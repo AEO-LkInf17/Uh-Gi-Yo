@@ -60,7 +60,6 @@ class Game {
         Graveyard g2 = new Graveyard(opponent);
         challenger.setLifepoints(8000);
         opponent.setLifepoints(8000);
-        setIDcounter(0);
     }
 
     public void startStandartGame(){
