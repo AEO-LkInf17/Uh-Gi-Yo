@@ -14,8 +14,18 @@ public abstract class Card {
     protected ArrayList<Deck> decks;
     protected ArrayList<String> properties;
 
-    public void Card() {
 
+    /***
+     * @param n name
+     * @param t type
+     * @param p priority
+     * @param l limitation
+     */
+    public Card(String n,String t,int p,int l) {
+        name = n;
+        type = t;
+        priority = p;
+        limitation = l;
     }
 
     public void setName(String name) {
@@ -53,4 +63,5 @@ public abstract class Card {
         properties.add(a);
     }
     public ArrayList getProperties(){ return properties; }
+
 }

@@ -3,10 +3,8 @@ package server.communication.packet.packets.outgoing;
 import com.google.gson.JsonObject;
 import server.communication.packet.OutgoingPacket;
 import server.communication.packet.Packet;
+import server.user.User;
 
-/**
- * Created by jk0521 on 10.03.2017.
- */
 public class RegisterResultPacket extends OutgoingPacket {
     public static final String FAILURE_WRONGVER = "WRONGVER";
     public static final String FAILURE_ALREADYLOGGEDIN = "ALREADYLOGGEDIN";
@@ -15,28 +13,37 @@ public class RegisterResultPacket extends OutgoingPacket {
     public static final String COMMAND = "LOGINRESULT";
 
     private boolean success = true;
-    private boolean failureReason;
+    private String failureReason;
 
     //success
-    public RegisterResultPacket() {
-
+    public RegisterResultPacket(User targetUser) {
+        super(targetUser);
     }
 
     //failure
-    public RegisterResultPacket(String failureReason) {
-
+    public RegisterResultPacket(User targetUser, String failureReason) {
+        super(targetUser);
+        success = false;
+        this.failureReason = failureReason;
     }
 
     public boolean isSuccess() {
         return success;
     }
 
-    public boolean isFailureReason() {
+    public String getFailureReason() {
         return failureReason;
     }
 
     @Override
     public JsonObject generatePacketObject() {
+        JsonObject packetObject = new JsonObject();
+        packetObject.addProperty("command", COMMAND);
+        JsonObject result = new JsonObject();
+        result.addProperty("success", Boolean.toString(success));
+        if(!success) {
+            result.addProperty("reason", failureReason);
+        }
         return null;
     }
 }

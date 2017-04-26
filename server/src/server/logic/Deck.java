@@ -4,10 +4,14 @@ import server.logic.cards.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**The class Deck is there to create and save a deck, also to know his details (how many cards, which is the top card, to shuffle)
+ *@author Simo ß Minh
+ * @version 1.1
+ */
 public class Deck {
     private String description;
     // "ausstattung" speichert alle im Deck befindlichen Karten, damit
-    // diese zu beginn eines neuen Spiels zurückgesetzt werden können.
+    // diese zu Beginn eines neuen Spiels zurückgesetzt werden können.
     // "configuration"(="Ausstattung"?) saves all the cards in your deck, so they can
     // be reset at the beginning of a new game
     private ArrayList<Card> configuration;
@@ -15,6 +19,10 @@ public class Deck {
 
     private Player player;
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }

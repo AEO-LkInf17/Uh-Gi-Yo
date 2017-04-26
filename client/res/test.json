@@ -6,6 +6,18 @@
 				{
 					"type": "com.badlogic.gdx.graphics.Texture",
 					"path": "badlogic.jpg"
+				},
+
+				{
+					"type": "com.badlogic.gdx.audio.Music",
+					"path": "intro.wav"
+
+				},
+
+				{
+					"type": "com.badlogic.gdx.audio.Music",
+					"path": "BATTLE.wav"
+
 				}
 			]
 		}
