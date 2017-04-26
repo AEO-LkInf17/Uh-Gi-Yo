@@ -21,6 +21,7 @@ class Game {
     private Player currentPlayersTurn;
     private int round;
     private boolean running;
+    private int roundcounter;
 
 
     public Game(Player c,Player o){phase = 0;round = 0;challenger = c;opponent = o;}
@@ -47,6 +48,11 @@ class Game {
         }
     }
 
+    public void roundcounter(){
+        if (roundcounter == 1){roundcounter = 2;}
+        else {roundcounter = 1;nextRound();}
+    }
+
     public void nextRound(){
         round = round +1;
     }
@@ -67,15 +73,17 @@ class Game {
         setCurrentPlayersTurn(challenger);
         setPhase(0);
         setRunning(true);
-        setRound(1);
+        setRound(0);
+        roundcounter = 2;
         while (running){
             //Drawphase
+            roundcounter();
             getCurrentPlayersTurn().drawCard();
             //Anketten
             nextPhase();
             //Standbyphase
             //Fallen und Schnellzauber aktivieren
-            //Anketten keine Schnellzauber
+            //Anketten
             nextPhase();
             //Mainphase1
             //setzen von Zauber- Fallenkartren
@@ -86,7 +94,7 @@ class Game {
             nextPhase();
             //Battlephase
             //Angriffe
-            //Fallen aktivieren
+            //Fallen aktivieren + Schnellzauber
             //anketten
             nextPhase();
             //Mainphase2
@@ -107,12 +115,6 @@ class Game {
             if (opponent.getMomentaryDeck().getSizeCards() <= 0){running = false;}
         }
 
-
-
-
-
     }
-
-
 
 }
