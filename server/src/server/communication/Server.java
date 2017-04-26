@@ -8,6 +8,7 @@ import server.communication.packet.packets.incoming.GetUserDataPacket;
 import server.communication.packet.packets.incoming.KeepAlivePacket;
 import server.communication.packet.packets.incoming.LoginPacket;
 import server.communication.packet.packets.incoming.RegisterPacket;
+import server.communication.packet.packets.outgoing.ActivityListPacket;
 import server.user.User;
 
 import java.io.BufferedReader;

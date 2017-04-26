@@ -20,16 +20,20 @@ class Game {
     private int phase;
     private Player currentPlayersTurn;
     private int round;
+    private boolean running;
+    private int roundcounter;
 
 
     public Game(Player c,Player o){phase = 0;round = 0;challenger = c;opponent = o;}
 
     public void setPhase(int p){phase = p;}
     public int getPhase(){return phase;}
-    public void SetCurrentPlayersTurn(Player p){currentPlayersTurn = p;}
+    public void setCurrentPlayersTurn(Player p){currentPlayersTurn = p;}
     public Player getCurrentPlayersTurn(){return currentPlayersTurn;}
     public void setRound(int r){round = r;}
     public int getRound(){return round;}
+    public void setRunning(boolean c){running = c;}
+    public boolean getRunning(){return running;}
 
     public void nextPhase(){
         if (phase<5){phase = phase +1;}
@@ -42,6 +46,11 @@ class Game {
         }else{
             currentPlayersTurn = challenger;
         }
+    }
+
+    public void roundcounter(){
+        if (roundcounter == 1){roundcounter = 2;}
+        else {roundcounter = 1;nextRound();}
     }
 
     public void nextRound(){
@@ -59,19 +68,53 @@ class Game {
         opponent.setLifepoints(8000);
     }
 
-    public void startStandartGame(){
+    public void startStandardGame(){
         createStandardGame();
-
-
-
-
-
-        if (challenger.getLifepoints() == 0){
-            // Spielende
+        setCurrentPlayersTurn(challenger);
+        setPhase(0);
+        setRunning(true);
+        setRound(0);
+        roundcounter = 2;
+        while (running){
+            //Drawphase
+            roundcounter();
+            getCurrentPlayersTurn().drawCard();
+            //Anketten
+            nextPhase();
+            //Standbyphase
+            //Fallen und Schnellzauber aktivieren
+            //Anketten
+            nextPhase();
+            //Mainphase1
+            //setzen von Zauber- Fallenkartren
+            //Monster beschwören
+            //Anketten
+            //Fallenkarten aktivieren auch der Gegner
+            //Monstereffekte
+            nextPhase();
+            //Battlephase
+            //Angriffe
+            //Fallen aktivieren + Schnellzauber
+            //anketten
+            nextPhase();
+            //Mainphase2
+            //setzen von Zauber- Fallenkartren
+            //Monster beschwören
+            //Anketten
+            //Fallenkarten aktivieren auch der Gegner
+            //Monstereffekte
+            nextPhase();
+            //Endphase
+            //Fallen aktivieren
+            //Anketten
+            nextPhase();
+            nextPlayer();
+            if (challenger.getLifepoints() == 0){running = false;}
+            if (opponent.getLifepoints() == 0){running = false;}
+            if (challenger.getMomentaryDeck().getSizeCards() <= 0){running = false;}
+            if (opponent.getMomentaryDeck().getSizeCards() <= 0){running = false;}
         }
-        if (opponent.getLifepoints() == 0){
-            // Spielende
-        }
+
     }
 
 }

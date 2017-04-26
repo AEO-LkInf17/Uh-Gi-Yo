@@ -14,6 +14,7 @@ public abstract class Card {
     protected ArrayList<Deck> decks;
     protected ArrayList<String> properties;
 
+
     /***
      * @param n name
      * @param t type
@@ -62,4 +63,5 @@ public abstract class Card {
         properties.add(a);
     }
     public ArrayList getProperties(){ return properties; }
+
 }
