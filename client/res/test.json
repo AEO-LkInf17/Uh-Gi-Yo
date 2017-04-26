@@ -10,7 +10,7 @@
 
 				{
 					"type": "com.badlogic.gdx.audio.Music",
-					"path": "introwav."
+					"path": "intro.wav"
 
 				},
 
