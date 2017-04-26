@@ -20,6 +20,7 @@ class Game {
     private int phase;
     private Player currentPlayersTurn;
     private int round;
+    private int IDcounter;
 
 
     public Game(Player c,Player o){phase = 0;round = 0;challenger = c;opponent = o;}
@@ -30,6 +31,8 @@ class Game {
     public Player getCurrentPlayersTurn(){return currentPlayersTurn;}
     public void setRound(int r){round = r;}
     public int getRound(){return round;}
+    public void setIDcounter(int c){IDcounter = c;}
+    public int getIDcounter(){return IDcounter;}
 
     public void nextPhase(){
         if (phase<5){phase = phase +1;}
