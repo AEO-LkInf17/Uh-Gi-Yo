@@ -10,14 +10,18 @@ import javax.swing.JOptionPane;
 
 public class SQL {
 
-	private static Connection con;
-	private static Statement st;
-	private static ResultSet rs;
-	
+	public Connection con;
+	public Statement st;
+	public ResultSet rs;
+
+	public SQL() {
+		connectDatabase();
+	}
+
 	/**
 	 * connects the database with the driver manager
 	 */
-	public static void connectDatabase() {
+	public void connectDatabase() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
@@ -39,7 +43,7 @@ public class SQL {
 	 * @param username the username of the user
 	 * @return whether the user exists or not
 	 */
-	public static boolean userExists(String username) {
+	public boolean userExists(String username) {
 		try {
 			String query = "SELECT username FROM users";
 			rs = st.executeQuery(query);
@@ -61,7 +65,7 @@ public class SQL {
 	 * @param bl the time of how long the user is banned
 	 * @return whether the user is banned or not
 	 */
-	public static boolean userIsBanned(String username, int bl) {
+	public boolean userIsBanned(String username, int bl) {
 		try {
 			String query = "SELECT username FROM users WHERE username = '" + username + "'";
 			rs = st.executeQuery(query);
@@ -82,7 +86,7 @@ public class SQL {
 	 * saves the new username in the database (registration)
 	 * @param username the username to be saved
 	 */
-	public static void saveNewUsername(String username) {
+	public void saveNewUsername(String username) {
 		try {
 			st.executeUpdate("INSERT INTO users (username) " + "VALUES ('" + username + "')");
 		} catch (SQLException e) {
@@ -96,7 +100,7 @@ public class SQL {
 	 * @param loginStatus the value of whether the user is going to be logged in or out
 	 * @param username the username of the user
 	 */
-	public static void changeLoginStatusTo(boolean loginStatus, String username) {
+	public void changeLoginStatusTo(boolean loginStatus, String username) {
 		try {
 			st.executeUpdate("UPDATE users SET loginStatus = " + loginStatus + " + WHERE username = " + username + ";");
 		} catch (SQLException e) {
@@ -110,7 +114,7 @@ public class SQL {
 	 * @param banLength the time of how long the user is banned
 	 * @param username the username of the user that is going to be banned
 	 */
-	public static void changeBanLengthTo(int banLength, String username) {
+	public void changeBanLengthTo(int banLength, String username) {
 		try {
 			st.executeUpdate("UPDATE users SET banLength = " + banLength + "WHERE username = " + username + ";");
 		} catch (SQLException e) {
@@ -123,7 +127,7 @@ public class SQL {
 	 * @param username the username that has been typed in during the registration
 	 * @return whether the username is available or not
 	 */
-	public static boolean usernameIsAvailable(String username) {
+	public boolean usernameIsAvailable(String username) {
 		try {
 			String query = "SELECT username FROM users";
 			rs = st.executeQuery(query);
