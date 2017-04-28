@@ -1,7 +1,7 @@
 package client.core.managers;
 
 import client.core.Game;
-import client.core.screens.Screen;
+import client.core.screens.AbstractScreen;
 import client.core.screens.ScreenEnum;
 
 import java.util.Stack;
@@ -10,7 +10,7 @@ public class ScreenManager {
 
     private static ScreenManager instance;
 
-    private Stack<Screen> screens;
+    private Stack<AbstractScreen> abstractScreens;
 
     private Game game;
 
@@ -26,32 +26,32 @@ public class ScreenManager {
     }
 
     public void initialize(Game game) {
-        this.screens = new Stack<Screen>();
+        this.abstractScreens = new Stack<AbstractScreen>();
         this.game = game;
     }
 
     public void resize(int width, int height) {
-        screens.peek().resize(width, height);
+        abstractScreens.peek().resize(width, height);
     }
 
     public void render(float delta) {
-        screens.peek().render(delta);
+        abstractScreens.peek().render(delta);
     }
 
     public void dispose() {
-        for (Screen screen : screens) {
-            screen.dispose();
+        for (AbstractScreen abstractScreen : abstractScreens) {
+            abstractScreen.dispose();
         }
     }
 
-    public Screen getScreen() {
-        return screens.peek();
+    public AbstractScreen getScreen() {
+        return abstractScreens.peek();
     }
 
     public void setScreen(ScreenEnum screenEnum) {
-        if (!screens.empty()) {
-            screens.pop().dispose();
+        if (!abstractScreens.empty()) {
+            abstractScreens.pop().dispose();
         }
-        screens.push(screenEnum.getScreen(game));
+        abstractScreens.push(screenEnum.getScreen(game));
     }
 }

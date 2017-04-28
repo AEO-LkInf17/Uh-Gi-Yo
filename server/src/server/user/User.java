@@ -2,6 +2,7 @@ package server.user;
 
 import server.communication.packet.OutgoingPacket;
 import server.communication.packet.packets.outgoing.LoginResultPacket;
+import server.sql.SQL;
 import server.user.exceptions.*;
 
 import java.io.IOException;
@@ -43,6 +44,8 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        SQL.connectDatabase();
     }
 
     /**
@@ -58,14 +61,19 @@ public class User {
             throw new ClientAlreadyLoggedinException();
         }
 
-        //TODO->SQL TEAM: Check if the user exists, if the user doesnt exist, throw a UserNotExistException
+        if(!SQL.userExists(username)) {
+            throw new UserNotExistException();
+        }
 
         if(isUserOnline(username))
             throw new UserIsOnlineException();
 
-        //TODO->SQL TEAM: Check if the user is banned and if so throw a UserBanned exception (look into the class contructor comment, inside the class to give correct parameters regarding the amount of minutes left banned/being banned permamently)
+        int banLength = 0;
+        if(SQL.userIsBanned(username,banLength)) {
+            throw new UserBannedException(banLength);
+        }
 
-        //TODO->SQL TEAM + Julian K. let the user login (mark it in the sql database, aswell as in the server(username, userOnline List, loginStatus))
+        SQL.changeLoginStatusTo(true,username);
 
         new LoginResultPacket(this).sendPacket();
     }
@@ -75,11 +83,12 @@ public class User {
         if(isLoggedIn())
             throw new ClientAlreadyLoggedinException();
 
-        //TODO->SQL TEAM: Check if the username is avaiable. If its not, then throw a NameNotAvaiableException
+        if(!SQL.usernameIsAvailable(username)) {
+            throw new NameNotAvailableException();
+        }
 
-        //TODO->SQL TEAM: Register this user
-
-        //TODO->SQL TEAM + Julian K. let the user login (mark it in the sql database, aswell as in the server(username, userOnline List, loginStatus))
+        SQL.saveNewUsername(username);
+        SQL.changeLoginStatusTo(true,username);
 
         new LoginResultPacket(this).sendPacket();
     }
