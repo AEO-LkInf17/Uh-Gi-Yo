@@ -3,8 +3,11 @@ package client.core;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import client.core.managers.ScreenManager;
+import com.badlogic.gdx.graphics.g2d.Batch;
 
 public class Game implements ApplicationListener {
+
+    public Batch batch;
 
     @Override
     public void create() {
