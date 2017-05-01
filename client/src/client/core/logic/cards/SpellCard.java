@@ -9,7 +9,7 @@ public class SpellCard extends Card {
      * @param p priority
      * @param l limitation
      */
-    public SpellCard(String n,String t,int p,int l){
+    public SpellCard(String n,String t,int p,int l) {
         super(n,t,p,l);
     }
 }

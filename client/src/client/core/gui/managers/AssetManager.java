@@ -1,4 +1,4 @@
-package client.core.managers;
+package client.core.gui.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.*;

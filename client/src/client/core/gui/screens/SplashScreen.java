@@ -1,11 +1,11 @@
-package client.core.screens;
+package client.core.gui.screens;
 
-import client.core.Game;
+import client.core.Application;
 
 public class SplashScreen extends AbstractScreen {
 
-    public SplashScreen(Game game) {
-        super(game);
+    public SplashScreen(Application application) {
+        super(application);
     }
 
     @Override
