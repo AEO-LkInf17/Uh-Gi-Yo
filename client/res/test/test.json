@@ -1,0 +1,13 @@
+{
+	"groups": [
+		{
+			"name": "LOADING",
+			"assets": [
+				{
+					"type": "com.badlogic.gdx.graphics.Texture",
+					"path": "badlogic.jpg"
+				}
+			]
+		}
+	]
+}
