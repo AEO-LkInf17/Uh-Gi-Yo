@@ -1,13 +1,13 @@
-package client.core.screens;
+package client.core.gui.screens;
 
-import client.core.Game;
+import client.core.Application;
 
 public abstract class AbstractScreen implements com.badlogic.gdx.Screen {
 
-    protected Game game;
+    protected Application application;
 
-    public AbstractScreen(Game game) {
-        this.game = game;
+    public AbstractScreen(Application application) {
+        this.application = application;
     }
 
     @Override

@@ -1,11 +1,11 @@
-package client.core.screens;
+package client.core.gui.screens;
 
-import client.core.Game;
+import client.core.Application;
 
 public class MainMenuScreen extends AbstractScreen {
 
-    public MainMenuScreen(Game game) {
-        super(game);
+    public MainMenuScreen(Application application) {
+        super(application);
     }
 
     @Override

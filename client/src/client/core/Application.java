@@ -1,14 +1,24 @@
 package client.core;
 
+import client.core.gui.managers.AssetManager;
+import client.core.gui.screens.ScreenEnum;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import client.core.managers.ScreenManager;
+import client.core.gui.managers.ScreenManager;
+import com.badlogic.gdx.graphics.g2d.Batch;
 
-public class Game implements ApplicationListener {
+public class Application implements ApplicationListener {
+
+    public Batch batch;
 
     @Override
     public void create() {
+        AssetManager.getInstance().initialize();
+        AssetManager.getInstance().loadGroups("/test/test.json");
+
         ScreenManager.getInstance().initialize(this);
+
+        ScreenManager.getInstance().setScreen(ScreenEnum.LOADING);
     }
 
     @Override
@@ -23,10 +33,12 @@ public class Game implements ApplicationListener {
 
     @Override
     public void pause() {
+        ScreenManager.getInstance().pause();
     }
 
     @Override
     public void resume() {
+        ScreenManager.getInstance().resume();
     }
 
     @Override

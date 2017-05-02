@@ -1,5 +1,6 @@
 package server.user;
 
+import server.Main;
 import server.communication.packet.OutgoingPacket;
 import server.communication.packet.packets.outgoing.LoginResultPacket;
 import server.sql.SQL;
@@ -44,8 +45,6 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        SQL.connectDatabase();
     }
 
     /**
@@ -61,7 +60,7 @@ public class User {
             throw new ClientAlreadyLoggedinException();
         }
 
-        if(!SQL.userExists(username)) {
+        if(!Main.getSql().userExists(username)) {
             throw new UserNotExistException();
         }
 
@@ -69,11 +68,11 @@ public class User {
             throw new UserIsOnlineException();
 
         int banLength = 0;
-        if(SQL.userIsBanned(username,banLength)) {
+        if(Main.getSql().userIsBanned(username,banLength)) {
             throw new UserBannedException(banLength);
         }
 
-        SQL.changeLoginStatusTo(true,username);
+        Main.getSql().changeLoginStatusTo(true,username);
 
         new LoginResultPacket(this).sendPacket();
     }
@@ -83,12 +82,12 @@ public class User {
         if(isLoggedIn())
             throw new ClientAlreadyLoggedinException();
 
-        if(!SQL.usernameIsAvailable(username)) {
+        if(!Main.getSql().usernameIsAvailable(username)) {
             throw new NameNotAvailableException();
         }
 
-        SQL.saveNewUsername(username);
-        SQL.changeLoginStatusTo(true,username);
+        Main.getSql().saveNewUsername(username);
+        Main.getSql().changeLoginStatusTo(true,username);
 
         new LoginResultPacket(this).sendPacket();
     }
