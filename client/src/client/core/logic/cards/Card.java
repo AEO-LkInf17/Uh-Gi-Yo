@@ -11,7 +11,7 @@ public abstract class Card {
     protected int priority;
     protected int limitation;
 
-    protected ArrayList<Deck> decks;
+
     protected ArrayList<String> properties;
 
 
@@ -55,9 +55,6 @@ public abstract class Card {
     public int getLimitation() {
         return limitation;
     }
-
-    public void addDecks(Deck a) { decks.add(a); }
-    public ArrayList getDecks(){ return decks; }
 
     public void addProperty(String a){
         properties.add(a);

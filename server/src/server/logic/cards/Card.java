@@ -15,7 +15,7 @@ public abstract class Card {
     protected ArrayList<String> properties;
 
 
-    /***
+    /**
      * @param n name
      * @param t type
      * @param p priority
