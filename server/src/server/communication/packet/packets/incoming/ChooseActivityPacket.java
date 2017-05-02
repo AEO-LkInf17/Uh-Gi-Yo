@@ -19,7 +19,9 @@ public class ChooseActivityPacket extends IncomingPacket {
     public void handlePacket() {
         System.out.println("packet arrived: " + COMMAND + ":: choice: " + choice);
 
-        //check if the user is logged in, if not just ignore the packet it as we dont have/want a ChooseActivityResultPacket cause were lazy
+        if(!sourceUser.isLoggedIn())
+            return;
+
         //get the instance of the activity via the ID(choice), check Activity#isValid(), then call Activity#handleActivity (one of the interfaces between logic and communication :3 )
     }
 }
