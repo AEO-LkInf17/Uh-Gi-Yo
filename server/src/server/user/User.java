@@ -3,6 +3,7 @@ package server.user;
 import server.Main;
 import server.communication.packet.OutgoingPacket;
 import server.communication.packet.packets.outgoing.LoginResultPacket;
+import server.communication.packet.packets.outgoing.RegisterResultPacket;
 import server.sql.SQL;
 import server.user.exceptions.*;
 
@@ -80,7 +81,6 @@ public class User {
         new LoginResultPacket(this).sendPacket();
     }
 
-    //TODO->SQL TEAM: IMPLEMENT IT!!! (the register method should register an user AND automatically let him login)
     public void register(String username) throws ClientAlreadyLoggedinException, NameNotAvailableException {
         if(isLoggedIn())
             throw new ClientAlreadyLoggedinException();
@@ -91,8 +91,10 @@ public class User {
 
         Main.getSql().saveNewUsername(username);
         Main.getSql().changeLoginStatusTo(true, username);
+        userOnline.add(this);
+        loginStatus = LOGIN_STATUS_LOGGEDIN;
 
-        new LoginResultPacket(this).sendPacket();
+        new RegisterResultPacket(this).sendPacket();
     }
 
     public void disconnect() {

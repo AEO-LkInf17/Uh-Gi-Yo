@@ -30,7 +30,7 @@ public class SQL {
 			String databaseName="UhGiYo_INFLK17";
 			String userName = "root";
 			String password = "w10";
-			
+
 			con = DriverManager.getConnection("jdbc:mysql://"+host+":3306/"+databaseName,userName,password);
 			st = con.createStatement();
 			System.out.println("SQL init succeed");
@@ -89,10 +89,10 @@ public class SQL {
 	 */
 	public void saveNewUsername(String username) {
 		try {
-			st.executeUpdate("INSERT INTO users (username) " + "VALUES ('" + username + "')");
+			st.executeUpdate("INSERT INTO users (username) VALUES ('" + username + "')");
 		} catch (SQLException e) {
 			e.printStackTrace();
-		  }
+		}
 		JOptionPane.showMessageDialog(null, "Saved");
 	}
 
