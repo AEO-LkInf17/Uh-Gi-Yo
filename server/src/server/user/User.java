@@ -72,7 +72,10 @@ public class User {
             throw new UserBannedException(banLength);
         }
 
-        Main.getSql().changeLoginStatusTo(true,username);
+        Main.getSql().changeLoginStatusTo(true, username);
+
+        userOnline.add(this);
+        loginStatus = LOGIN_STATUS_LOGGEDIN;
 
         new LoginResultPacket(this).sendPacket();
     }
@@ -87,7 +90,7 @@ public class User {
         }
 
         Main.getSql().saveNewUsername(username);
-        Main.getSql().changeLoginStatusTo(true,username);
+        Main.getSql().changeLoginStatusTo(true, username);
 
         new LoginResultPacket(this).sendPacket();
     }
@@ -103,9 +106,10 @@ public class User {
     }
 
     public void logOut() {
-        username = null;
+        Main.getSql().changeLoginStatusTo(false, username);
         userOnline.remove(this);
         loginStatus=LOGIN_STATUS_LOGGEDOUT;
+        username = null;
         System.out.println("A user logged out");
     }
 

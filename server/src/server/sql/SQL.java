@@ -23,6 +23,7 @@ public class SQL {
 	 */
 	public void connectDatabase() {
 		try {
+			System.out.println("SQL init started");
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			String host = "dbserver-w10-die.einstein";
@@ -32,7 +33,7 @@ public class SQL {
 			
 			con = DriverManager.getConnection("jdbc:mysql://"+host+":3306/"+databaseName,userName,password);
 			st = con.createStatement();
-			
+			System.out.println("SQL init succeed");
 		} catch(Exception ex) {
 			System.out.println("Error: " + ex);
 		}

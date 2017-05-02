@@ -1,8 +1,6 @@
 package server.logic.cards;
 
-import server.logic.exceptions.AttackfailedException;
-import server.logic.exceptions.AttacksuccessfulException;
-import server.logic.exceptions.SubtractLifepointsException;
+import server.logic.exceptions.*;
 
 public class MonsterCard extends Card {
     protected int attackpoints;
@@ -17,7 +15,7 @@ public class MonsterCard extends Card {
      * @param t type
      * @param p priority
      * @param l limitation
-     * @param a attacpoints
+     * @param a attackpoints
      * @param d defensepoints
      * @param le level
      */
@@ -60,26 +58,35 @@ public class MonsterCard extends Card {
         offensiveMode = !offensiveMode;
     }
 
-    public void attack(MonsterCard target)throws AttacksuccessfulException,AttackfailedException,SubtractLifepointsException{
+    public void selfDistruction(){player.destroy(this);}
+
+    public int attack(MonsterCard target){
         if (offensiveMode){
             if (target == null){
-                throw new SubtractLifepointsException(attackpoints);
+                return 0;
             }
             if (target.getOffensivmode()) {
                 if (attackpoints > target.getAttackpoints()){
-                    throw new AttacksuccessfulException();
-                    //throw new SubtractLifepointsException(8000);
+                    return 1;
                 }else{
-                    throw new AttackfailedException();
+                    if(attackpoints == target.getAttackpoints()){
+                        return 2;
+                    }else {
+                        return 3;
+                    }
                 }
             }else{
                 if (attackpoints > target.getDefensepoints()){
-                    throw new AttacksuccessfulException();
+                    return 4;
+                }else{if(attackpoints == target.getDefensepoints()){
+                    return 5;
                 }else{
-                    throw new AttackfailedException();
+                    return 6;
+                }
                 }
             }
         }
     }
+
 }
 

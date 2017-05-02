@@ -5,7 +5,7 @@ import server.logic.cards.MonsterCard;
 
 import java.util.ArrayList;
 
-class Player {
+public class Player {
     private String name;
     private String rank;
     private int lifepoints;
