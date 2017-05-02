@@ -65,12 +65,12 @@ public class Server {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    }).run();
+                    }).start();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }).run();
+        }).start();
 
         new Thread(()->{
             //each second:
@@ -81,6 +81,6 @@ public class Server {
 
             //2.
             //send each client a keepalivepacket
-        }).run();
+        }).start();
     }
 }

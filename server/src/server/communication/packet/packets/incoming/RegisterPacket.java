@@ -30,7 +30,7 @@ public class RegisterPacket extends IncomingPacket {
             return;
         }
         try {
-            sourceUser.register(username); //TODO
+            sourceUser.register(username);
         } catch (ClientAlreadyLoggedinException e) {
             new RegisterResultPacket(sourceUser, RegisterResultPacket.FAILURE_ALREADYLOGGEDIN).sendPacket();
         } catch (NameNotAvailableException e) {

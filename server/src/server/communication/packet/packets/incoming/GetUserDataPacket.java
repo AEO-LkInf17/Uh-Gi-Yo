@@ -1,6 +1,7 @@
 package server.communication.packet.packets.incoming;
 
 import com.google.gson.JsonObject;
+import server.Main;
 import server.communication.packet.IncomingPacket;
 import server.communication.packet.packets.outgoing.GetUserDataResult;
 import server.user.User;
@@ -25,7 +26,10 @@ public class GetUserDataPacket extends IncomingPacket {
             return;
         }
 
-        //TODO: handle username doesnt exist
+        if(!Main.getSql().userExists(username)) {
+            new GetUserDataResult(sourceUser, GetUserDataResult.FAILURE_NOTEXIST).sendPacket();
+            return;
+        }
 
         new GetUserDataResult(sourceUser).sendPacket();
     }
