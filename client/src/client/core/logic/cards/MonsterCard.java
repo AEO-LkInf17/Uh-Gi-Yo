@@ -60,26 +60,5 @@ public class MonsterCard extends Card {
         offensiveMode = !offensiveMode;
     }
 
-    public void attack(MonsterCard target)throws AttacksuccessfulException,AttackfailedException,SubtractLifepointsException{
-        if (offensiveMode){
-            if (target == null){
-                throw new SubtractLifepointsException(attackpoints);
-            }
-            if (target.getOffensivmode()) {
-                if (attackpoints > target.getAttackpoints()){
-                    throw new AttacksuccessfulException();
-                    //throw new SubtractLifepointsException(8000);
-                }else{
-                    throw new AttackfailedException();
-                }
-            }else{
-                if (attackpoints > target.getDefensepoints()){
-                    throw new AttacksuccessfulException();
-                }else{
-                    throw new AttackfailedException();
-                }
-            }
-        }
-    }
 }
 

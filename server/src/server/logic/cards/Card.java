@@ -1,6 +1,7 @@
 package server.logic.cards;
 
 import server.logic.Deck;
+import server.logic.Player;
 
 import java.util.ArrayList;
 
@@ -13,9 +14,10 @@ public abstract class Card {
 
     protected ArrayList<Deck> decks;
     protected ArrayList<String> properties;
+    protected Player player;
 
 
-    /***
+    /**
      * @param n name
      * @param t type
      * @param p priority
@@ -55,6 +57,8 @@ public abstract class Card {
     public int getLimitation() {
         return limitation;
     }
+
+    public Player getPlayer() { return player; }
 
     public void addDecks(Deck a) { decks.add(a); }
     public ArrayList getDecks(){ return decks; }
