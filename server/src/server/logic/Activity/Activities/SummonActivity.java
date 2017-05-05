@@ -7,9 +7,7 @@ public class SummonActivity extends Activity {
 
     private MonsterCard target;
 
-    public SummonActivity (MonsterCard m){
-        target = m;
-    }
+    public SummonActivity (MonsterCard m){target = m;}
 
     @Override
     public void handleActivity() {
