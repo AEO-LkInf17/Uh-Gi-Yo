@@ -1,11 +1,32 @@
 {
 	"groups": [
 		{
+			"name": "LOADINGSCREEN",
+			"assets": [
+				{
+					"type": "",
+					"path": "default.fnt"
+				},
+				{
+					"type": "",
+					"path": "skin.atlas"
+				},
+				{
+					"type": "",
+					"path": "skin.json"
+				},
+				{
+					"type": "",
+					"path": "skin.png"
+				}
+			]
+		},
+		{
 			"name": "LOADING",
 			"assets": [
 				{
-					"type": "com.badlogic.gdx.graphics.Texture",
-					"path": "badlogic.jpg"
+					"type": "",
+					"path": ""
 				}
 			]
 		}

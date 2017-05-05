@@ -8,10 +8,6 @@ sourceSets.main.java.srcDirs = [ "src/" ]
 project.ext.mainClassName = "server.Main"
 project.ext.assetsDir = new File("/res");
 
-dependencies {
-    compile group: 'mysql', name: 'mysql-connector-java', version: '5.0.8'
-}
-
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
