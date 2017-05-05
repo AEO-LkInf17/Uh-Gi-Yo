@@ -6,7 +6,7 @@ public class Panel extends Group{
 
     private int width;
     private int height;
-    
+    private int index;
 
     public Panel() {
     }
