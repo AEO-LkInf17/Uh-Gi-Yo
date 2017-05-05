@@ -10,7 +10,7 @@ public class AttackActivity extends Activity{
 
     public AttackActivity (MonsterCard target,MonsterCard attacker){
         this.attacker = attacker;
-        this.target = target;
+        this.target = target; //Testkommentar
     }
 
     private static final int TARGET_IS_NULL = 0;
