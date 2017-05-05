@@ -86,6 +86,7 @@ public class MonsterCard extends Card {
                 }
             }
         }
+        return 0;
     }
 
 }
