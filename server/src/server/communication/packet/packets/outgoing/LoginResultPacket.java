@@ -48,7 +48,7 @@ public class LoginResultPacket extends OutgoingPacket {
         JsonObject packetObject = new JsonObject();
         packetObject.addProperty("command", COMMAND);
         JsonObject result = new JsonObject();
-        result.addProperty("success", Boolean.toString(success));
+        result.addProperty("success", success);
         if(!success) {
             JsonObject reason = new JsonObject();
             reason.addProperty("reason", failureReason);
