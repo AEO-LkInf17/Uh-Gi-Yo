@@ -93,7 +93,6 @@ public class SQL {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		JOptionPane.showMessageDialog(null, "Saved");
 	}
 
 	/**
@@ -108,7 +107,6 @@ public class SQL {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		JOptionPane.showMessageDialog(null, "Saved");
 	}
 
 	/**

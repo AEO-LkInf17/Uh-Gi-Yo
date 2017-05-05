@@ -29,7 +29,12 @@ public class GetUserDataResult extends OutgoingPacket {
         JsonObject packetObject = new JsonObject();
         packetObject.addProperty("command", COMMAND);
         JsonObject result = new JsonObject();
-        result.addProperty("success", true);
+        result.addProperty("success", success);
+        if(!success) {
+            JsonObject reason = new JsonObject();
+            reason.addProperty("reason", failureReason);
+            result.add("reason", Main.GSON.toJsonTree(reason));
+        }
         packetObject.add("result", Main.GSON.toJsonTree(result));
 
         return packetObject;

@@ -4,7 +4,7 @@ import server.logic.cards.Card;
 
 import java.util.ArrayList;
 
-class Hand extends ArrayList<Card> {
+public class Hand extends ArrayList<Card> {
 
     private Player player;
     private ArrayList<Card> cards;
