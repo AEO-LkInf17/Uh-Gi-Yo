@@ -18,8 +18,8 @@ public class Storyteller {
     public void addHandcard(Card c) {handcards.add(c);}
     public FieldSpellCard getFieldspellcard() {return fieldspellcard;}
     public void setFieldspellcard(FieldSpellCard fieldspellcard) {this.fieldspellcard = fieldspellcard;}
-    public ArrayList<Card> getGaveyard() {return graveyard;}
-    public void addGaveyard(Card c) {graveyard.add(c);}
+    public ArrayList<Card> getGraveyard() {return graveyard;}
+    public void addGraveyard(Card c) {graveyard.add(c);}
     public Card getTopCard(){return graveyard.get(0);}
 
 

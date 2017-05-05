@@ -17,7 +17,7 @@ public abstract class Card {
     protected Player player;
 
 
-    /***
+    /**
      * @param n name
      * @param t type
      * @param p priority

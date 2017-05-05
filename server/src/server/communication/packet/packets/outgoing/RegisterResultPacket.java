@@ -1,6 +1,7 @@
 package server.communication.packet.packets.outgoing;
 
 import com.google.gson.JsonObject;
+import server.Main;
 import server.communication.packet.OutgoingPacket;
 import server.communication.packet.Packet;
 import server.user.User;
@@ -44,6 +45,7 @@ public class RegisterResultPacket extends OutgoingPacket {
         if(!success) {
             result.addProperty("reason", failureReason);
         }
-        return null;
+        packetObject.add("result", Main.GSON.toJsonTree(result));
+        return packetObject;
     }
 }
