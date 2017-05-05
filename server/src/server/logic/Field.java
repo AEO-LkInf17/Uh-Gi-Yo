@@ -10,11 +10,11 @@ import java.util.ArrayList;
  * @Version 1.0
  */
 
-public class Field extends ArrayList<Card> {
+public class Field {
 
     private Player player;
-    private ArrayList<MonsterCard> monster;
-    private ArrayList<Card> spell;
+    private MonsterCard[] monster = new MonsterCard[5];
+    private Card[] spell = new Card[5];
     private SpellCard fieldspell;
 
     public Field (Player player){this.player = player;}
@@ -22,25 +22,25 @@ public class Field extends ArrayList<Card> {
      * This method is there to add a monstercard
      * @param k k is the card
      */
-    public void addMonster(MonsterCard k){monster.add(k);}
+    public void addMonster(MonsterCard k,int index){monster[index] = k;}
 
     /**This method is there to show a monster
      *
      * @return returns monster
      */
-    public ArrayList<MonsterCard> getMonster() {return monster;}
+    public MonsterCard[] getMonster() {return monster;}
 
     /**This method is there to add a Spell in the ArrayList
      *
      * @param card
      */
-    public void addSpell(Card card){spell.add(card);}
+    public void addSpell(Card card,int index){spell[index] = card;}
 
     /**This ArrayList is there to get the Spell from the list
      *
      * @return returns the spell
      */
-    public ArrayList<Card> getSpell() {return spell;}
+    public Card[] getSpell() {return spell;}
 
     /**This Method is there to set a fieldspell in the field
      *
@@ -66,9 +66,17 @@ public class Field extends ArrayList<Card> {
      */
     public void removeCard(Card card){
         if (card instanceof MonsterCard) {
-            monster.remove(card);
+            for (int i = 0 ;i < monster.length;i++) {
+                if (card == monster[i]) {
+                    monster[i] = null;
+                }
+            }
         }else if (card instanceof SpellCard) {
-            spell.remove(card);
+            for (int i = 0;i < spell.length;i++){
+                if (card == spell[i]){
+                    spell[i] = null;
+                }
+            }
         }else if (card instanceof FieldSpellCard){
             fieldspell = null;
         }
