@@ -11,6 +11,7 @@ public class SummonActivity extends Activity {
 
     @Override
     public void handleActivity() {
-
+        target.getPlayer().getGamefield().add(target);
+        target.getPlayer().getHand().remove(target);
     }
 }

@@ -4,7 +4,7 @@ import client.core.Application;
 
 public abstract class AbstractScreen implements com.badlogic.gdx.Screen {
 
-    protected Application application;
+    protected final Application application;
 
     public AbstractScreen(Application application) {
         this.application = application;

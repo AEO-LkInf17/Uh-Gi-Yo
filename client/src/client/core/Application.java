@@ -6,6 +6,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import client.core.gui.managers.ScreenManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Application implements ApplicationListener {
 
@@ -13,6 +14,8 @@ public class Application implements ApplicationListener {
 
     @Override
     public void create() {
+        batch = new SpriteBatch();
+
         AssetManager.getInstance().initialize();
         AssetManager.getInstance().loadGroups("/test/test.json");
 
