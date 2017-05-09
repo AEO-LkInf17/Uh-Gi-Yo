@@ -1,11 +1,13 @@
 package server.logic;
 
 
+import server.logic.exceptions.NoDeckFoundException;
+
 /**The class Game organize the game process which got all phases in it.
  *
  *
  * */
-class Game {
+public class Game {
 
     private static final int DRAW_PHASE = 0;
     private static final int STANDBY_PHASE = 1;
@@ -57,7 +59,9 @@ class Game {
         round = round +1;
     }
 
-    public void createStandardGame(){
+    public void createStandardGame() throws NoDeckFoundException{
+        if (challenger.getMomentaryDeck() == null){throw new NoDeckFoundException(challenger);}
+        if (opponent.getMomentaryDeck() == null){throw new NoDeckFoundException(opponent);}
         Hand h1 = new Hand(challenger);
         Hand h2 = new Hand(opponent);
         Field f1 = new Field(challenger);
@@ -68,6 +72,7 @@ class Game {
         opponent.setLifepoints(8000);
     }
 
+    /*
     public void startStandardGame(){
         createStandardGame();
         setCurrentPlayersTurn(challenger);
@@ -113,8 +118,8 @@ class Game {
             if (opponent.getLifepoints() == 0){running = false;}
             if (challenger.getMomentaryDeck().getSizeCards() <= 0){running = false;}
             if (opponent.getMomentaryDeck().getSizeCards() <= 0){running = false;}
-        }
+
 
     }
-
+    **/
 }
