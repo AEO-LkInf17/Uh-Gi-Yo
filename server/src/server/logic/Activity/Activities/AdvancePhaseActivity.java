@@ -5,4 +5,5 @@ package server.logic.Activity.Activities;
  */
 public class AdvancePhaseActivity {
 }
-// test 6
+// test 7
+
