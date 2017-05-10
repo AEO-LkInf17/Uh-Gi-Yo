@@ -10,6 +10,7 @@ public class Player {
     private String rank;
     private int lifepoints;
     private int points;
+    private Game game;
 
     private ArrayList<Deck> decks;
     private Deck momentaryDeck;
@@ -78,19 +79,22 @@ public class Player {
         return graveyard;
     }
 
+    public void setGame (Game g){game = g;}
+    public Game getGame (){return game;}
+
     public void drawCard(){
         Card card = momentaryDeck.getTopCard();
         hand.addCard(card);
         momentaryDeck.removeCard(card);
     }
-    public void set(MonsterCard card){
+    public void set(MonsterCard card,int index){
         card.reveal();
-        gamefield.addMonster(card);
+        gamefield.addMonster(card,index);
         hand.removeCard(card);
     }
-    public void place(MonsterCard card){
+    public void place(MonsterCard card,int index){
         card.conceal();
-        gamefield.addMonster(card);
+        gamefield.addMonster(card,index);
         hand.removeCard(card);
     }
     public void changeposition(MonsterCard card){
@@ -102,10 +106,10 @@ public class Player {
 
     public void destroy(Card card){
         graveyard.add(card);
-        gamefield.remove(card);
+        gamefield.removeCard(card);
     }
-    public void revive(Card card){
-        gamefield.add(card);
+    public void revive(MonsterCard card,int index){
+        gamefield.addMonster(card,index);
         graveyard.remove(card);
     }
 }

@@ -39,7 +39,11 @@ public class Game {
 
     public void nextPhase(){
         if (phase<5){phase = phase +1;}
-        else{phase = 0;}
+        else{
+            phase = 0;
+            nextPlayer();
+            roundcounter();
+        }
     }
 
     public void nextPlayer(){
@@ -62,6 +66,7 @@ public class Game {
     public void createStandardGame() throws NoDeckFoundException{
         if (challenger.getMomentaryDeck() == null){throw new NoDeckFoundException(challenger);}
         if (opponent.getMomentaryDeck() == null){throw new NoDeckFoundException(opponent);}
+        round = 1;
         Hand h1 = new Hand(challenger);
         Hand h2 = new Hand(opponent);
         Field f1 = new Field(challenger);
@@ -72,6 +77,9 @@ public class Game {
         opponent.setLifepoints(8000);
     }
 
+    public void sendPossibleActivities(){
+
+    }
     /*
     public void startStandardGame(){
         createStandardGame();
