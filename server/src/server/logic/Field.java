@@ -81,4 +81,8 @@ public class Field {
             fieldspell = null;
         }
     }
+
+    public void add(MonsterCard target) {
+
+    }
 }
