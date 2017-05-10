@@ -1,5 +1,15 @@
 package server.logic.Activity.Activities;
 
-public class SpecialSummonActivity {
+import server.logic.Activity.Activity;
+
+public class SpecialSummonActivity extends Activity{
+    @Override
+    public void handleActivity() {
+
+    }
+
+    @Override
+    public String getName() {
+        return "SpecialSummon";
+    }
 }
-//test

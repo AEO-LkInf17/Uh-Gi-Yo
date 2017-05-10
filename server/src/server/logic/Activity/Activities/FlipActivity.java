@@ -8,4 +8,9 @@ public class FlipActivity extends Activity {
     public void handleActivity() {
 
     }
+
+    @Override
+    public String getName() {
+        return "Flip";
+    }
 }
