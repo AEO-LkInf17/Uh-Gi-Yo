@@ -2,8 +2,10 @@ package server.user;
 
 import server.Main;
 import server.communication.packet.OutgoingPacket;
+import server.communication.packet.packets.outgoing.ActivityListPacket;
 import server.communication.packet.packets.outgoing.LoginResultPacket;
 import server.communication.packet.packets.outgoing.RegisterResultPacket;
+import server.logic.Activity.Activity;
 import server.sql.SQL;
 import server.user.exceptions.*;
 
@@ -69,7 +71,7 @@ public class User {
             throw new UserIsOnlineException();
 
         int banLength = 0;
-        if(Main.getSql().userIsBanned(username,banLength)) {
+        if(Main.getSql().userIsBanned(username)) {
             throw new UserBannedException(banLength);
         }
 
@@ -113,6 +115,10 @@ public class User {
         loginStatus=LOGIN_STATUS_LOGGEDOUT;
         username = null;
         System.out.println("A user logged out");
+    }
+
+    public void sendActivityList(int time, Activity ... activities) {
+        new ActivityListPacket(this, time);
     }
 
     public void sendPacket(OutgoingPacket packet) {
