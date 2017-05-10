@@ -23,4 +23,9 @@ public class SetSpellOrTrapCardActivity extends Activity{
         card.getPlayer().getGamefield().addSpell(card,index);
         card.getPlayer().getHand().removeCard(card);
     }
+
+    @Override
+    public String getName() {
+        return "SetSpellOrTrapCard";
+    }
 }

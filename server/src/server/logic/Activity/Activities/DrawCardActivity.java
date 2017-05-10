@@ -16,4 +16,9 @@ public class DrawCardActivity extends Activity{
         player.getGame().nextPhase();
         player.getGame().sendPossibleActivities();
     }
+
+    @Override
+    public String getName() {
+        return "DrawCard";
+    }
 }

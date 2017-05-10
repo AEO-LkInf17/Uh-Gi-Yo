@@ -15,6 +15,11 @@ public class AdvancePhaseActivity extends Activity{
         player.getGame().nextPhase();
         player.getGame().sendPossibleActivities();
     }
+
+    @Override
+    public String getName() {
+        return "AdvancePhase";
+    }
 }
 
 

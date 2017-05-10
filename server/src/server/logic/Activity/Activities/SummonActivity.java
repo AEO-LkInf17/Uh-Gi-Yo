@@ -18,4 +18,9 @@ public class SummonActivity extends Activity {
         target.getPlayer().getGamefield().addMonster(target,index);
         target.getPlayer().getHand().remove(target);
     }
+
+    @Override
+    public String getName() {
+        return "Summon";
+    }
 }

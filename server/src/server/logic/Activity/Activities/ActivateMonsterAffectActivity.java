@@ -1,7 +1,15 @@
 package server.logic.Activity.Activities;
 
-/**
- * Created by minh_n on 05.05.2017.
- */
-public class ActivateMonsterAffectActivity {
+import server.logic.Activity.Activity;
+
+public class ActivateMonsterAffectActivity extends Activity{
+    @Override
+    public void handleActivity() {
+
+    }
+
+    @Override
+    public String getName() {
+        return "ActivateMonsterAffect";
+    }
 }

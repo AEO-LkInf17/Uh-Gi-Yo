@@ -23,4 +23,9 @@ public class FlipActivity extends Activity {
 
 
     }
+
+    @Override
+    public String getName() {
+        return "Flip";
+    }
 }
