@@ -38,4 +38,9 @@ public class AttackActivity extends Activity{
 
 
     }
+
+    @Override
+    public String getName() {
+        return "ATTACK";
+    }
 }

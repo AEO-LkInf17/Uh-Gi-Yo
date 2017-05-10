@@ -1,7 +1,26 @@
 package server.logic.Activity.Activities;
 
-/**
- * Created by minh_n on 05.05.2017.
- */
-public class PositionChangeActivity {
+import server.logic.Activity.Activity;
+import server.logic.Player;
+import server.logic.cards.MonsterCard;
+
+public class PositionChangeActivity extends Activity{
+    private MonsterCard monster;
+    private Player player;
+
+    public PositionChangeActivity (MonsterCard m,Player p){
+        monster = m;
+        player = p;
+    }
+
+    @Override
+    public void handleActivity() {
+        monster.changemode();
+        player.getGame().sendPossibleActivities();
+    }
+
+    @Override
+    public String getName() {
+        return "PositionChange";
+    }
 }
