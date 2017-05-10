@@ -3,9 +3,6 @@ package server.logic.Activity.Activities;
 import server.logic.Activity.Activity;
 import server.logic.Player;
 
-/**
- * Created by minh_n on 05.05.2017.
- */
 public class DrawCardActivity extends Activity{
     private Player player;
 
@@ -16,5 +13,7 @@ public class DrawCardActivity extends Activity{
     @Override
     public void handleActivity() {
         player.drawCard();
+        player.getGame().nextPhase();
+        player.getGame().sendPossibleActivities();
     }
 }

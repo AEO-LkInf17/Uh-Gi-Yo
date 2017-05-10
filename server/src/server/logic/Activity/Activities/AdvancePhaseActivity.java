@@ -3,9 +3,6 @@ package server.logic.Activity.Activities;
 import server.logic.Activity.Activity;
 import server.logic.Player;
 
-/**
- * Created by minh_n on 05.05.2017.
- */
 public class AdvancePhaseActivity extends Activity{
     private Player player;
 
@@ -15,7 +12,8 @@ public class AdvancePhaseActivity extends Activity{
 
     @Override
     public void handleActivity() {
-
+        player.getGame().nextPhase();
+        player.getGame().sendPossibleActivities();
     }
 }
 
