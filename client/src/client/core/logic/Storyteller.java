@@ -39,5 +39,6 @@ public class Storyteller {
     public void addSpell(Card card,int index){spell[index] = card;}
     // allows the player to see the spells or traps
     public Card[] getSpell() {return spell;}
+    // test
 
 }
