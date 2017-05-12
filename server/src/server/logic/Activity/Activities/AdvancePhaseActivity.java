@@ -10,6 +10,10 @@ public class AdvancePhaseActivity extends Activity{
         player = p;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
     @Override
     public void handleActivity() {
         player.getGame().nextPhase();

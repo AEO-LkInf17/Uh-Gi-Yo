@@ -16,6 +16,14 @@ public class FlipActivity extends Activity {
      player = p;
     }
 
+    public MonsterCard getMonstercard() {
+        return monstercard;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
     @Override
     public void handleActivity() {
       monstercard.reveal();

@@ -10,6 +10,10 @@ public class DrawCardActivity extends Activity{
         player = p;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
     @Override
     public void handleActivity() {
         player.drawCard();

@@ -13,6 +13,14 @@ public class PositionChangeActivity extends Activity{
         player = p;
     }
 
+    public MonsterCard getMonster() {
+        return monster;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
     @Override
     public void handleActivity() {
         monster.changemode();

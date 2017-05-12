@@ -2,6 +2,7 @@ package server.logic;
 
 import server.logic.cards.*;
 import server.logic.cards.MonsterCard;
+import server.logic.exceptions.PlaceAlreadyTakenException;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,11 @@ public class Field {
      * This method is there to add a monstercard
      * @param k k is the card
      */
-    public void addMonster(MonsterCard k,int index){monster[index] = k;}
+    public void addMonster(MonsterCard k,int index)throws PlaceAlreadyTakenException{
+        if (monster[index]!=null){
+            throw new PlaceAlreadyTakenException();
+        }
+        monster[index] = k;}
 
     /**This method is there to show a monster
      *
@@ -36,7 +41,12 @@ public class Field {
      *
      * @param card
      */
-    public void addSpell(Card card,int index){spell[index] = card;}
+    public void addSpell(Card card,int index) throws PlaceAlreadyTakenException {
+        if (monster[index]!=null){
+            throw new PlaceAlreadyTakenException();
+        }
+        spell[index] = card;
+    }
 
     /**This ArrayList is there to get the Spell from the list
      *

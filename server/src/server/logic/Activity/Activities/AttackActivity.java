@@ -8,11 +8,6 @@ public class AttackActivity extends Activity{
     private MonsterCard attacker;
     private MonsterCard target;
 
-    public AttackActivity (MonsterCard target,MonsterCard attacker){
-        this.attacker = attacker;
-        this.target = target; //Testkommentar
-    }
-
     private static final int TARGET_IS_NULL = 0;
     private static final int ATTACK_SUCCESSFUL_PLUS_OVERFLOATING_DAMAGE = 1;
     private static final int DESTROY_BOTH = 2;
@@ -20,6 +15,19 @@ public class AttackActivity extends Activity{
     private static final int ATTACK_SUCCESSFUL = 4;
     private static final int NOTHING_HAPPENED = 5;
     private static final int ATTACK_FAILED_PLUS_OVERFLOATING_DAMAGE = 6;
+
+    public AttackActivity (MonsterCard target,MonsterCard attacker){
+        this.attacker = attacker;
+        this.target = target; //Testkommentar
+    }
+
+    public MonsterCard getAttacker() {
+        return attacker;
+    }
+
+    public MonsterCard getTarget() {
+        return target;
+    }
 
     @Override
     public void handleActivity() {
