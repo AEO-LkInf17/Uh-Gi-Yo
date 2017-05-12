@@ -6,7 +6,7 @@ public class UserBannedException extends Exception {
     public static final int BANNED_PERM = 0;
 
     public UserBannedException(int banLength) {
-        super(banLength==0 ? "User is permamently banned!" : "User is banned for " + banLength + " minutes!");
+        super(banLength==0 ? "User is permanently banned!" : "User is banned for " + banLength + " minutes!");
         this.banLength = banLength;
     }
 
