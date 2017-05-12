@@ -102,7 +102,7 @@ public class SQL {
 	 */
 	public void changeLoginStatusTo(boolean loginStatus, String username) {
 		try {
-			st.executeUpdate("UPDATE users SET loginStatus = " + loginStatus + " + WHERE username = " + username + ";");
+			st.executeUpdate("UPDATE users SET loginStatus = " + loginStatus + " + WHERE username = '" + username + "';");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -114,7 +114,7 @@ public class SQL {
 	 */
 	public void changeBannedStatusTo(boolean bannedStatus, String username) {
 		try {
-			st.executeUpdate("UPDATE users SET bannedUntil = " + bannedStatus + "WHERE username = " + username + ";");
+			st.executeUpdate("UPDATE users SET bannedUntil = " + bannedStatus + "WHERE username = '" + username + "';");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

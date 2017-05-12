@@ -8,7 +8,7 @@ import server.communication.packet.packets.incoming.GetUserDataPacket;
 import server.communication.packet.packets.incoming.KeepAlivePacket;
 import server.communication.packet.packets.incoming.LoginPacket;
 import server.communication.packet.packets.incoming.RegisterPacket;
-import server.communication.packet.packets.outgoing.ActivityListPacket;
+import server.communication.packet.packets.incoming.ChooseActivityPacket;
 import server.user.User;
 
 import java.io.BufferedReader;
@@ -54,6 +54,8 @@ public class Server {
                                     case GetUserDataPacket.COMMAND:
                                         packet = new GetUserDataPacket(user, packetJson.getAsJsonObject("data"));
                                         break;
+                                    case ChooseActivityPacket.COMMAND:
+                                        packet = new ChooseActivityPacket(user, packetJson.getAsJsonObject("data"));
                                     default:
                                         System.out.println("unknown command incomingpacket command: " + command);
                                         break;

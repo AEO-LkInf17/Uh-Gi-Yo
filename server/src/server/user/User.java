@@ -118,7 +118,7 @@ public class User {
     }
 
     public void sendActivityList(int time, Activity ... activities) {
-        new ActivityListPacket(this, time);
+        new ActivityListPacket(this, time, activities).sendPacket();
     }
 
     public void sendPacket(OutgoingPacket packet) {

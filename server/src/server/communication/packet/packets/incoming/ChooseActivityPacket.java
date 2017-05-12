@@ -2,6 +2,7 @@ package server.communication.packet.packets.incoming;
 
 import com.google.gson.JsonObject;
 import server.communication.packet.IncomingPacket;
+import server.logic.Activity.Activity;
 import server.user.User;
 
 public class ChooseActivityPacket extends IncomingPacket {
@@ -22,6 +23,7 @@ public class ChooseActivityPacket extends IncomingPacket {
         if(!sourceUser.isLoggedIn())
             return;
 
-        //get the instance of the activity via the ID(choice), check Activity#isValid(), then call Activity#handleActivity (one of the interfaces between logic and communication :3 )
+        //TODO: Check if valid(timer)
+        Activity.getActiviyID(choice).handleActivity();
     }
 }

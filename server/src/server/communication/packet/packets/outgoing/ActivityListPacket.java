@@ -1,6 +1,7 @@
 package server.communication.packet.packets.outgoing;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import server.Main;
 import server.communication.packet.OutgoingPacket;
@@ -32,11 +33,16 @@ public class ActivityListPacket extends OutgoingPacket {
         JsonArray activities = new JsonArray();
         for(Activity activity : this.activities) {
             JsonObject activityElement = new JsonObject();
-            if(activity instanceof ActivateMonsterAffectActivity) {
+            activityElement.addProperty("type", activity.getName());
+            activityElement.addProperty("id", activity.getID());
+            JsonObject parameter = new JsonObject();
+            if(activity instanceof ActivateMonsterAffectActivity) { //TODO: add all parameter ):
 
             } else if(activity instanceof ActivateSpellActivity) {
 
             } else if(activity instanceof ActivateTrapActivity) {
+
+            } else if(activity instanceof AdvancePhaseActivity) {
 
             } else if(activity instanceof AttackActivity) {
 
@@ -53,8 +59,10 @@ public class ActivityListPacket extends OutgoingPacket {
             } else if(activity instanceof SpecialSummonActivity) {
 
             } else if(activity instanceof SummonActivity) {
-                
+
             }
+            activityElement.add("parameter", Main.GSON.toJsonTree(parameter));
+            activities.add(activityElement);
         }
 
 
