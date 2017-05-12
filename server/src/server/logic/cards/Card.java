@@ -5,7 +5,7 @@ import server.logic.Player;
 
 import java.util.ArrayList;
 
-public abstract class Card {
+public class Card {
     protected String name;
     protected String type;
 
@@ -29,6 +29,7 @@ public abstract class Card {
         priority = p;
         limitation = l;
     }
+
 
     public void setName(String name) {
         this.name = name;
