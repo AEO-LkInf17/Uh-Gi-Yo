@@ -11,4 +11,9 @@ public class ActivateMonsterAffectActivity extends Activity {
     public void handleActivity() {
 
     }
+
+    @Override
+    public String getName() {
+        return "ActivateMonsterEffect";
+    }
 }
