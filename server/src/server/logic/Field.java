@@ -17,7 +17,9 @@ public class Field {
     private Card[] spell = new Card[5];
     private SpellCard fieldspell;
 
-    public Field (Player player){this.player = player;}
+    public Field(Player player) {
+        this.player = player;
+    }
     /**
      * This method is there to add a monstercard
      * @param k k is the card
