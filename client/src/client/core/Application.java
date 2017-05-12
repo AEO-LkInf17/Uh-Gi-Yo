@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import client.core.gui.managers.ScreenManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.kotcrab.vis.ui.VisUI;
 
 public class Application implements ApplicationListener {
 

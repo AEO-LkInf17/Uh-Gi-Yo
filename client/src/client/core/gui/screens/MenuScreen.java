@@ -2,9 +2,9 @@ package client.core.gui.screens;
 
 import client.core.Application;
 
-public class MainMenuScreen extends AbstractScreen {
+public class MenuScreen extends AbstractScreen {
 
-    public MainMenuScreen(Application application) {
+    public MenuScreen(Application application) {
         super(application);
     }
 
