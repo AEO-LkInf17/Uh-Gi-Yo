@@ -2,6 +2,7 @@ package server.logic;
 
 import server.logic.cards.Card;
 import server.logic.cards.MonsterCard;
+import server.logic.exceptions.PlaceAlreadyTakenException;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,17 @@ public class Player {
     private Hand hand;
     private Field gamefield;
     private Graveyard graveyard;
+
+    private int denyDrawing;
+    private int denyAttack;
+    private int denySpellCardEffect;
+    private int denyTrapCardEffect;
+    private int denyMonsterCardEffect;
+    private int denySummon;
+    private int denySpecialSummon;
+    private int denyPositionChange;
+    private int denySetSpell;
+    private int denySetTrap;
 
     public void setName(String name) {
         this.name = name;
@@ -82,6 +94,86 @@ public class Player {
     public void setGame (Game g){game = g;}
     public Game getGame (){return game;}
 
+    public int getDenyDrawing() {
+        return denyDrawing;
+    }
+
+    public int getDenyAttack() {
+        return denyAttack;
+    }
+
+    public int getDenySpellCardEffect() {
+        return denySpellCardEffect;
+    }
+
+    public int getDenyTrapCardEffect() {
+        return denyTrapCardEffect;
+    }
+
+    public int getDenyMonsterCardEffect() {
+        return denyMonsterCardEffect;
+    }
+
+    public int getDenySummon() {
+        return denySummon;
+    }
+
+    public int getDenySpecialSummon() {
+        return denySpecialSummon;
+    }
+
+    public int getDenyPositionChange() {
+        return denyPositionChange;
+    }
+
+    public int getDenySetSpell() {
+        return denySetSpell;
+    }
+
+    public int getDenySetTrap() {
+        return denySetTrap;
+    }
+
+    public void setDenyDrawing(int denyDrawing) {
+        this.denyDrawing = denyDrawing;
+    }
+
+    public void setDenyAttack(int denyAttack) {
+        this.denyAttack = denyAttack;
+    }
+
+    public void setDenySpellCardEffect(int denySpellCardEffect) {
+        this.denySpellCardEffect = denySpellCardEffect;
+    }
+
+    public void setDenyTrapCardEffect(int denyTrapCardEffect) {
+        this.denyTrapCardEffect = denyTrapCardEffect;
+    }
+
+    public void setDenyMonsterCardEffect(int denyMonsterCardEffect) {
+        this.denyMonsterCardEffect = denyMonsterCardEffect;
+    }
+
+    public void setDenySummon(int denySummon) {
+        this.denySummon = denySummon;
+    }
+
+    public void setDenySpecialSummon(int denySpecialSummon) {
+        this.denySpecialSummon = denySpecialSummon;
+    }
+
+    public void setDenyPositionChange(int denyPositionChange) {
+        this.denyPositionChange = denyPositionChange;
+    }
+
+    public void setDenySetSpell(int denySetSpell) {
+        this.denySetSpell = denySetSpell;
+    }
+
+    public void setDenySetTrap(int denySetTrap) {
+        this.denySetTrap = denySetTrap;
+    }
+
     public void drawCard(){
         Card card = momentaryDeck.getTopCard();
         hand.addCard(card);
@@ -89,12 +181,20 @@ public class Player {
     }
     public void set(MonsterCard card,int index){
         card.reveal();
-        gamefield.addMonster(card,index);
+        try {
+            gamefield.addMonster(card,index);
+        } catch (PlaceAlreadyTakenException e) {
+            e.printStackTrace();
+        }
         hand.removeCard(card);
     }
     public void place(MonsterCard card,int index){
         card.conceal();
-        gamefield.addMonster(card,index);
+        try {
+            gamefield.addMonster(card,index);
+        } catch (PlaceAlreadyTakenException e) {
+            e.printStackTrace();
+        }
         hand.removeCard(card);
     }
     public void changeposition(MonsterCard card){
@@ -109,7 +209,11 @@ public class Player {
         gamefield.removeCard(card);
     }
     public void revive(MonsterCard card,int index){
-        gamefield.addMonster(card,index);
+        try {
+            gamefield.addMonster(card,index);
+        } catch (PlaceAlreadyTakenException e) {
+            e.printStackTrace();
+        }
         graveyard.remove(card);
     }
 }

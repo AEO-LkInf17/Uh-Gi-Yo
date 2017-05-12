@@ -26,6 +26,8 @@ public class Game {
     private int roundcounter;
 
 
+
+
     public Game(Player c,Player o){phase = 0;round = 0;challenger = c;opponent = o;}
 
     public void setPhase(int p){phase = p;}
@@ -77,7 +79,42 @@ public class Game {
         opponent.setLifepoints(8000);
     }
 
-    public void sendPossibleActivities(){
+    public void sendPossibleActivities(Player player){
+        if (currentPlayersTurn == player){
+            if (phase == DRAW_PHASE){
+                if (player.getDenyDrawing()==0){
+
+                }
+
+            }else if (phase == STANDBY_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
+
+            }else if (phase == MAIN_PHASE_I){
+
+            }else if (phase == BATTLE_PHASE){
+
+            }else if (phase == MAIN_PHASE_II){
+
+            }else if (phase == END_PHASE){
+
+            }
+        }else if(currentPlayersTurn != player){
+            if (phase == DRAW_PHASE){
+
+            }else if (phase == STANDBY_PHASE){
+
+            }else if (phase == MAIN_PHASE_I){
+
+            }else if (phase == BATTLE_PHASE){
+
+            }else if (phase == MAIN_PHASE_II){
+
+            }else if (phase == END_PHASE){
+
+            }
+        }
 
     }
     /*
