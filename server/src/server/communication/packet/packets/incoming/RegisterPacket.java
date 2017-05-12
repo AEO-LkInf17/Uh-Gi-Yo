@@ -40,7 +40,5 @@ public class RegisterPacket extends IncomingPacket {
         } catch (NameNotAvailableException e) {
             new RegisterResultPacket(sourceUser, RegisterResultPacket.FAILURE_NAMENOTAVAIABLE).sendPacket();
         }
-        //TESTING STUFF
-        sourceUser.sendActivityList(100, new DrawCardActivity(new Player()), new AttackActivity(new MonsterCard("t", "f", 3, 4, 6, 7, 8), new MonsterCard("t", "f", 3, 4, 6, 7, 8)));
     }
 }
