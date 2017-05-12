@@ -23,6 +23,8 @@ public class Storyteller {
     public Card getTopCard(){return graveyard.get(0);}
 
     public void addMonster(MonsterCard k,int index){monster[index] = k;}
-
+    public MonsterCard[] getMonster() {return monster;}
+    public void addSpell(Card card,int index){spell[index] = card;}
+    public Card[] getSpell() {return spell;}
 
 }
