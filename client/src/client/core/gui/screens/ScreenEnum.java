@@ -7,11 +7,6 @@ public enum ScreenEnum {
         public AbstractScreen getScreen(Application application) {
             return new LoadingScreen(application);
         }
-    }, SPLASH {
-        public AbstractScreen getScreen(Application application) {
-            return new SplashScreen(application);
-        }
-
     }, MAIN_MENU {
         public AbstractScreen getScreen(Application application) {
             return new MainMenuScreen(application);
