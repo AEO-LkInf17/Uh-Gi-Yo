@@ -64,60 +64,37 @@ public class SQL {
 	}
 
 	/**
+	 * checks whether the user is permanently banned
+	 * @param username the username of the user
+	 * @return whether the user is permanently banned
+	 */
+	public boolean userIsPermanentlyBanned(String username) {
+		try {
+			String query = "SELECT banned FROM users WHERE username = '" + username + "'";
+			rs = st.executeQuery(query);
+			int banned = Integer.parseInt(rs.getString("banned"));
+			if (banned == -1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	/**
 	 * checks whether the user is banned
 	 * @param username the username of the user
 	 * @return whether the user is banned or not
 	 */
 	public boolean userIsBanned(String username) {
 		try {
-			String query = "SELECT username FROM users WHERE username = '" + username + "'";
+			String query = "SELECT banned FROM users WHERE username = '" + username + "'";
 			rs = st.executeQuery(query);
-			while (rs.next()) {
-				int banned = Integer.parseInt(rs.getString("banned"));
-				if (banned == 1 || banned == -1)
-					return true;
-			}
+			int banned = Integer.parseInt(rs.getString("banned"));
+			if (banned == 1) return true;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
-	}
-
-	/**
-	 * saves the new username in the database (registration)
-	 * @param username the username to be saved
-	 */
-	public void saveNewUsername(String username) {
-		try {
-			st.executeUpdate("INSERT INTO users (username) VALUES ('" + username + "')");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * changes the login status of the user
-	 * @param loginStatus the value of whether the user is going to be logged in or out
-	 * @param username    the username of the user
-	 */
-	public void changeLoginStatusTo(boolean loginStatus, String username) {
-		try {
-			st.executeUpdate("UPDATE users SET loginStatus = " + loginStatus + " + WHERE username = '" + username + "';");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * changes the time of how long the user is banned
-	 * @param username the username of the user that is going to be banned
-	 */
-	public void changeBannedStatusTo(boolean bannedStatus, String username) {
-		try {
-			st.executeUpdate("UPDATE users SET bannedUntil = " + bannedStatus + "WHERE username = '" + username + "';");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -140,6 +117,20 @@ public class SQL {
 		}
 		return true;
 	}
+
+
+	/**
+	 * saves the new username in the database (registration)
+	 * @param username the username that is going to be saved
+	 */
+	public void saveNewUsername(String username) {
+		try {
+			st.executeUpdate("INSERT INTO users (username) VALUES ('" + username + "')");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	/**
 	 * returns the current date + time in an array
@@ -206,12 +197,18 @@ public class SQL {
 	}
 
 	/**
-	 * returns the date + time until the user is banned in an array
-	 * @param username the usernae of the user
+	 * returns the date + time of until the user is banned in an array
+	 * @param username the username of the user
 	 * @return the date + time until the user is banned
 	 */
 	public String[] getBannedDateTime(String username) {
-		// Code
+		try {
+			String query = "SELECT bannedUntil FROM users WHERE username = '" + username + "'";
+			rs = st.executeQuery(query);
+			return rs.getString("bannedUntil").split("");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -274,13 +271,121 @@ public class SQL {
 		return Integer.parseInt(getBannedDateTime(username)[12] + getBannedDateTime(username)[13]);
 	}
 
+
 	/**
-	 * checks wether the time until the user is banned is over
+	 * sets the login status of the user to the given parameter
+	 * @param loginStatus the value of the login status
 	 * @param username the username of the user
-	 * @return wether the time until the user is banned is over
+	 */
+	public void setLoginStatus(boolean loginStatus, String username) {
+		try {
+			st.executeUpdate("UPDATE users SET loginStatus = " + loginStatus + " + WHERE username = '" + username + "'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * returns the value of the login status of the user
+	 * @param username the username of the user
+	 * @return the value of the login status of the user
+	 */
+	public boolean getLoginStatus(String username) {
+		try {
+			String query = "SELECT loginStatus FROM users WHERE username = '" + username + "'";
+			rs = st.executeQuery(query);
+			return Boolean.parseBoolean(rs.getString("loginStatus"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	/**
+	 * sets the time of how long the user is banned
+	 * @param username the username of the user that is going to be banned
+	 */
+	public void setBannedStatus(int bannedStatus, String username) {
+		try {
+			st.executeUpdate("UPDATE users SET banned = " + bannedStatus + "WHERE username = '" + username + "'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * returns the value of the banned status of the user
+	 * @param username the username of the user
+	 * @return the value of the banned status of the user
+	 */
+	public int getBannedStatus(String username) {
+		try {
+			String query = "SELECT banned FROM users WHERE username = '" + username + "'";
+			rs = st.executeQuery(query);
+			return Integer.parseInt(rs.getString("banned"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	/**
+	 * sets the banned date time of the user to the given parameter
+	 * @param date the banned date as a string
+	 * @param username the username of the user
+	 */
+	public void setBannedDateTime(String date, String username) {
+		try {
+			st.executeUpdate("UPDATE users SET bannedUntil = " + date + "WHERE username = '" + username + "'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	/**
+	 * unbans the user
+	 * @param username the username of the user
+	 */
+	public void unBanUser(String username) {
+		setBannedStatus(0, username);
+		setBannedDateTime("0000-00-00 00:00:00", username);
+	}
+
+	/**
+	 * bans the user
+	 * @param username the username of the user
+	 * @param years the number of years the user is going to be banned
+	 * @param months the number of months the user is going to be banned
+	 * @param days the number of days the user is going to be banned
+	 */
+	public void banUser(String username, int years, int months, int days) {
+		String date = "";
+		// Code
+		setBannedStatus(1,username);
+		setBannedDateTime(date,username);
+	}
+
+	/**
+	 * bans the user permanently
+	 * @param username the username of the user
+	 */
+	public void banUserPermanently(String username) {
+		setBannedStatus(-1,username);
+	}
+
+	/**
+	 * checks whether the time until the user is banned is over
+	 * @param username the username of the user
+	 * @return whether the time until the user is banned is over
 	 */
 	public boolean bannedTimeIsOver(String username) {
-		// Code
-		return false;
+		return getBannedTimeYear(username) <= getCurrentYear() && (getBannedTimeYear(username) < getCurrentYear() ||
+				getBannedTimeMonthNumber(username) <= getCurrentMonthNumber() && (getBannedTimeMonthNumber(username) <
+				getCurrentMonthNumber() || getBannedTimeDayNumber(username) <= getCurrentDayNumber() &&
+				(getBannedTimeDayNumber(username) < getCurrentDayNumber() || getBannedTimeHour(username) <=
+				getCurrentHour() && (getBannedTimeHour(username) < getCurrentHour() || getBannedTimeMinute(username) <=
+				getCurrentMinute() && (getBannedTimeMinute(username) < getCurrentMinute() || getBannedTimeSecond(username)
+				<= getCurrentSecond() && getBannedTimeSecond(username) < getCurrentSecond())))));
 	}
 }

@@ -6,7 +6,7 @@ import server.logic.Player;
 public class AdvancePhaseActivity extends Activity{
     private Player player;
 
-    public AdvancePhaseActivity (Player p){
+    public AdvancePhaseActivity (Player p) {
         player = p;
     }
 
@@ -17,7 +17,7 @@ public class AdvancePhaseActivity extends Activity{
     @Override
     public void handleActivity() {
         player.getGame().nextPhase();
-        player.getGame().sendPossibleActivities();
+        player.getGame().sendPossibleActivities(player);
     }
 
     @Override

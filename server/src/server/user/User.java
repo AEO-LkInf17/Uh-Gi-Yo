@@ -70,12 +70,15 @@ public class User {
         if(isUserOnline(username))
             throw new UserIsOnlineException();
 
-        int banLength = 0;
-        if(Main.getSql().userIsBanned(username)) {
-            throw new UserBannedException(banLength);
+        if(Main.getSql().userIsPermanentlyBanned(username))
+            throw new UserBannedException(0);
+        else if(Main.getSql().userIsBanned(username)) {
+            if(!Main.getSql().bannedTimeIsOver(username))
+                throw new UserBannedException(5); // Just a random number
+            Main.getSql().unBanUser(username);
         }
 
-        Main.getSql().changeLoginStatusTo(true, username);
+        Main.getSql().setLoginStatus(true, username);
 
         userOnline.add(this);
         loginStatus = LOGIN_STATUS_LOGGEDIN;
@@ -92,7 +95,7 @@ public class User {
         }
 
         Main.getSql().saveNewUsername(username);
-        Main.getSql().changeLoginStatusTo(true, username);
+        Main.getSql().setLoginStatus(true, username);
         userOnline.add(this);
         loginStatus = LOGIN_STATUS_LOGGEDIN;
 
@@ -110,7 +113,7 @@ public class User {
     }
 
     public void logOut() {
-        Main.getSql().changeLoginStatusTo(false, username);
+        Main.getSql().setLoginStatus(false, username);
         userOnline.remove(this);
         loginStatus=LOGIN_STATUS_LOGGEDOUT;
         username = null;
