@@ -3,8 +3,10 @@ package server.logic;
 import server.logic.cards.Card;
 import server.logic.cards.MonsterCard;
 import server.logic.exceptions.PlaceAlreadyTakenException;
+import server.user.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private String name;
@@ -12,6 +14,7 @@ public class Player {
     private int lifepoints;
     private int points;
     private Game game;
+    private User user;
 
     private ArrayList<Deck> decks;
     private Deck momentaryDeck;
@@ -174,6 +177,15 @@ public class Player {
         this.denySetTrap = denySetTrap;
     }
 
+    public static Player getPlayerByUser(User user){ //dirty implementation in Game, i (Julian) will change it later
+        List<Player> players = Game.getPlayers();
+        for(Player player : players) {
+            if(player.getUser().equals(user))
+                return player;
+        }
+        return null;
+    }
+
     public void drawCard(){
         Card card = momentaryDeck.getTopCard();
         hand.addCard(card);
@@ -215,5 +227,8 @@ public class Player {
             e.printStackTrace();
         }
         graveyard.remove(card);
+    }
+    public User getUser() {
+        return user;
     }
 }

@@ -1,10 +1,12 @@
 package server.logic;
 
+import server.logic.Activity.Activities.ActivateTrapActivity;
 import server.logic.Activity.Activities.DrawCardActivity;
 import server.logic.Activity.Activity;
 import server.logic.exceptions.NoDeckFoundException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**The class Game organize the game process which got all phases in it.
  *
@@ -21,6 +23,10 @@ public class Game {
 
     private Player challenger;
     private Player opponent;
+    private static List<Player> players = new ArrayList<Player>();
+    public static List<Player> getPlayers() {
+        return players;
+    }
 
     private int phase;
     private Player currentPlayersTurn;
@@ -30,7 +36,14 @@ public class Game {
     private ArrayList<Activity> possibleActivities;
 
 
-    public Game(Player c,Player o){phase = 0;round = 0;challenger = c;opponent = o;}
+    public Game(Player c,Player o){
+        phase = 0;
+        round = 0;
+        challenger = c;
+        opponent = o;
+        players.add(c);
+        players.add(o);
+    }
 
     public void setPhase(int p){phase = p;}
     public int getPhase(){return phase;}
