@@ -92,27 +92,90 @@ public class Game {
                 }
 
             }else if (phase == MAIN_PHASE_I){
+                if (player.getDenySetSpell()==0){
+
+                }
+                if (player.getDenySetTrap()==0){
+
+                }
+                if (player.getDenySummon()==0){
+
+                }
+                if (player.getDenySpecialSummon()==0){
+
+                }
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
+                if (player.getDenyMonsterCardEffect()==0){
+
+                }
 
 
             }else if (phase == BATTLE_PHASE){
+                if (player.getDenyAttack()==0){
+
+                }
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
 
             }else if (phase == MAIN_PHASE_II){
+                if (player.getDenySetSpell()==0){
+
+                }
+                if (player.getDenySetTrap()==0){
+
+                }
+                if (player.getDenySummon()==0){
+
+                }
+                if (player.getDenySpecialSummon()==0){
+
+                }
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
+                if (player.getDenyMonsterCardEffect()==0){
+
+                }
 
             }else if (phase == END_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
 
             }
         }else if(currentPlayersTurn != player){
             if (phase == DRAW_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
 
             }else if (phase == STANDBY_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
 
+                }
+                //Andauernde Effekte ausführen
             }else if (phase == MAIN_PHASE_I){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
 
             }else if (phase == BATTLE_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
 
             }else if (phase == MAIN_PHASE_II){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
 
             }else if (phase == END_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
 
             }
         }
