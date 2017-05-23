@@ -24,7 +24,6 @@ public class PositionChangeActivity extends Activity{
     @Override
     public void handleActivity() {
         monster.changemode();
-        player.getGame().sendPossibleActivities();
     }
 
     @Override
