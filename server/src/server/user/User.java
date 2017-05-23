@@ -78,7 +78,7 @@ public class User {
             Main.getSql().unBanUser(username);
         }
 
-        Main.getSql().setLoginStatus(true, username);
+        Main.getSql().setLoginStatus(1, username);
 
         userOnline.add(this);
         loginStatus = LOGIN_STATUS_LOGGEDIN;
@@ -95,7 +95,7 @@ public class User {
         }
 
         Main.getSql().saveNewUsername(username);
-        Main.getSql().setLoginStatus(true, username);
+        Main.getSql().setLoginStatus(1, username);
         userOnline.add(this);
         loginStatus = LOGIN_STATUS_LOGGEDIN;
 
@@ -113,7 +113,7 @@ public class User {
     }
 
     public void logOut() {
-        Main.getSql().setLoginStatus(false, username);
+        Main.getSql().setLoginStatus(0, username);
         userOnline.remove(this);
         loginStatus=LOGIN_STATUS_LOGGEDOUT;
         username = null;

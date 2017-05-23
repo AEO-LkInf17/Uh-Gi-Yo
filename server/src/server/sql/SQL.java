@@ -277,7 +277,7 @@ public class SQL {
 	 * @param loginStatus the value of the login status
 	 * @param username the username of the user
 	 */
-	public void setLoginStatus(boolean loginStatus, String username) {
+	public void setLoginStatus(int loginStatus, String username) {
 		try {
 			st.executeUpdate("UPDATE users SET loginStatus = " + loginStatus + " + WHERE username = '" + username + "'");
 		} catch (SQLException e) {
@@ -291,7 +291,7 @@ public class SQL {
 	 * @return the value of the login status of the user
 	 */
 	public boolean getLoginStatus(String username) {
-		try {
+	try {
 			String query = "SELECT loginStatus FROM users WHERE username = '" + username + "'";
 			rs = st.executeQuery(query);
 			return Boolean.parseBoolean(rs.getString("loginStatus"));
