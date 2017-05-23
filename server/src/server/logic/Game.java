@@ -1,6 +1,5 @@
 package server.logic;
 
-
 import server.logic.Activity.Activities.DrawCardActivity;
 import server.logic.Activity.Activity;
 import server.logic.exceptions.NoDeckFoundException;
