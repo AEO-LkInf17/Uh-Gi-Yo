@@ -1,7 +1,10 @@
 package server.logic;
 
-
+import server.logic.Activity.Activities.DrawCardActivity;
+import server.logic.Activity.Activity;
 import server.logic.exceptions.NoDeckFoundException;
+
+import java.util.ArrayList;
 
 /**The class Game organize the game process which got all phases in it.
  *
@@ -24,8 +27,7 @@ public class Game {
     private int round;
     private boolean running;
     private int roundcounter;
-
-
+    private ArrayList<Activity> possibleActivities;
 
 
     public Game(Player c,Player o){phase = 0;round = 0;challenger = c;opponent = o;}
@@ -65,6 +67,11 @@ public class Game {
         round = round +1;
     }
 
+    public void timeOut (){
+        nextPhase();
+        sendPossibleActivities(currentPlayersTurn);
+    }
+
     public void createStandardGame() throws NoDeckFoundException{
         if (challenger.getMomentaryDeck() == null){throw new NoDeckFoundException(challenger);}
         if (opponent.getMomentaryDeck() == null){throw new NoDeckFoundException(opponent);}
@@ -83,6 +90,73 @@ public class Game {
         if (currentPlayersTurn == player){
             if (phase == DRAW_PHASE){
                 if (player.getDenyDrawing()==0){
+                    possibleActivities.add(new DrawCardActivity(player));
+                }
+
+                possibleActivities.removeAll(possibleActivities);
+            }else if (phase == STANDBY_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
+
+            }else if (phase == MAIN_PHASE_I){
+                if (player.getDenySetSpell()==0){
+
+                }
+                if (player.getDenySetTrap()==0){
+
+                }
+                if (player.getDenySummon()==0){
+
+                }
+                if (player.getDenySpecialSummon()==0){
+
+                }
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
+                if (player.getDenyMonsterCardEffect()==0){
+
+                }
+
+
+            }else if (phase == BATTLE_PHASE){
+                if (player.getDenyAttack()==0){
+
+                }
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
+
+            }else if (phase == MAIN_PHASE_II){
+                if (player.getDenySetSpell()==0){
+
+                }
+                if (player.getDenySetTrap()==0){
+
+                }
+                if (player.getDenySummon()==0){
+
+                }
+                if (player.getDenySpecialSummon()==0){
+
+                }
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
+                if (player.getDenyMonsterCardEffect()==0){
+
+                }
+
+            }else if (phase == END_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
+
+            }
+        }else if(currentPlayersTurn != player){
+            if (phase == DRAW_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
 
                 }
 
@@ -90,34 +164,32 @@ public class Game {
                 if (player.getDenyTrapCardEffect()==0){
 
                 }
-
+                //Andauernde Effekte ausführen
             }else if (phase == MAIN_PHASE_I){
+                if (player.getDenyTrapCardEffect()==0){
 
+                }
 
             }else if (phase == BATTLE_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
 
             }else if (phase == MAIN_PHASE_II){
+                if (player.getDenyTrapCardEffect()==0){
+
+                }
 
             }else if (phase == END_PHASE){
+                if (player.getDenyTrapCardEffect()==0){
 
-            }
-        }else if(currentPlayersTurn != player){
-            if (phase == DRAW_PHASE){
-
-            }else if (phase == STANDBY_PHASE){
-
-            }else if (phase == MAIN_PHASE_I){
-
-            }else if (phase == BATTLE_PHASE){
-
-            }else if (phase == MAIN_PHASE_II){
-
-            }else if (phase == END_PHASE){
+                }
 
             }
         }
 
     }
+
     /*
     public void startStandardGame(){
         createStandardGame();
