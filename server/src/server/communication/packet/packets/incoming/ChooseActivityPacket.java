@@ -23,7 +23,10 @@ public class ChooseActivityPacket extends IncomingPacket {
         if(!sourceUser.isLoggedIn())
             return;
 
-        //TODO: Check if valid(timer)
-        Activity.getActiviyID(choice).handleActivity();
+        Activity activity = Activity.getActiviyID(choice);
+        if(activity.checkTimer()) {
+            activity.deactivateTimer();
+            activity.handleActivity();
+        }
     }
 }

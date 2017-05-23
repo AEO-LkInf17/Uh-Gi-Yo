@@ -8,6 +8,7 @@ import server.communication.packet.OutgoingPacket;
 import server.logic.Activity.Activities.*;
 import server.logic.Activity.Activity;
 import server.user.User;
+import server.util.Timer;
 
 public class ActivityListPacket extends OutgoingPacket {
     public static final String COMMAND = "ACTIVITYLIST";
@@ -15,11 +16,15 @@ public class ActivityListPacket extends OutgoingPacket {
     private int time;
     private Activity[] activities;
 
-    //TODO add timer
     public ActivityListPacket(User targetUser, int time, Activity[] activities) {
         super(targetUser);
-        this.time = time;
+        this.time = time-1; //latency? ._.
         this.activities = activities;
+
+        Timer timer = new Timer(time);
+        for(Activity activity : activities) {
+            activity.setTimer(timer);
+        }
     }
 
 

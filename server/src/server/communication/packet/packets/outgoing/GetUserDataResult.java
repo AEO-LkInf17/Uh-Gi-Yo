@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import server.Main;
 import server.communication.packet.OutgoingPacket;
 import server.user.User;
-//TODO Implement!
+
 public class GetUserDataResult extends OutgoingPacket {
     public static final String COMMAND = "GETUSERDATARESULT";
 
