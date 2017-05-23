@@ -18,7 +18,7 @@ public class DrawCardActivity extends Activity{
     public void handleActivity() {
         player.drawCard();
         player.getGame().nextPhase();
-        player.getGame().sendPossibleActivities();
+        player.getGame().sendPossibleActivities(player);
     }
 
     @Override
