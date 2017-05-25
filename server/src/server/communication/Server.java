@@ -75,14 +75,19 @@ public class Server {
         }).start();
 
         new Thread(()->{
-            //each second:
-
-            //1.
-            //iterate through all connected clients and check if the time between now and the clients last arrived KAP is less than 20 seconds
-            //via User#updateKeepAlive()
-
-            //2.
-            //send each client a keepalivepacket
+            while(true) {
+                long timeNow = System.currentTimeMillis();
+                for (User user : User.getUserConnected()) { //TODO: heres a race condition, congrats, you finally must fix all this stuff and make it synchron....... imma go kms
+                    if (user.getLastKeepAliveArrival() + 8000 < timeNow)
+                        user.disconnect();
+                    new server.communication.packet.packets.outgoing.KeepAlivePacket(user).sendPacket();
+                }
+                try {
+                    Thread.sleep(800);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }).start();
     }
 
