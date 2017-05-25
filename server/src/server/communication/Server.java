@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Server {
     public static final int SERVER_PORT = 42042;
@@ -64,6 +67,8 @@ public class Server {
                                     continue;
                                 packet.handlePacket();
                             }
+                        } catch (SocketException e) {
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -77,10 +82,15 @@ public class Server {
         new Thread(()->{
             while(true) {
                 long timeNow = System.currentTimeMillis();
-                for (User user : User.getUserConnected()) { //TODO: heres a race condition, congrats, you finally must fix all this stuff and make it synchron....... imma go kms
-                    if (user.getLastKeepAliveArrival() + 8000 < timeNow)
-                        user.disconnect();
+                List<User> userConnected = User.getUserConnected();
+                List<User> userToDisconnect = new ArrayList<User>();
+                for (User user : userConnected) { //TODO: heres a race condition, congrats, you finally must fix all this stuff and make it synchron....... imma go kms
+                    if (user.getLastKeepAliveArrival() + Main.timeout*1000 < timeNow)
+                        userToDisconnect.add(user);
                     new server.communication.packet.packets.outgoing.KeepAlivePacket(user).sendPacket();
+                }
+                for(User user : userToDisconnect) {
+                    user.disconnect();
                 }
                 try {
                     Thread.sleep(800);
