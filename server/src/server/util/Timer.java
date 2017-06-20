@@ -26,6 +26,7 @@ public class Timer {
     public boolean check() {
         return endTime > System.currentTimeMillis()&&active;
     }
+
     public void deactivate() {
         active = false;
     }

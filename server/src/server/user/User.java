@@ -45,6 +45,7 @@ public class User {
     public static List<User> getUserOnline() {
         return userOnline;
     }
+
     public static List<User> getUserConnected() {
         return userConnected;
     }
@@ -145,6 +146,7 @@ public class User {
     public void updateKeepAlive() {
         lastKeepAliveArrival = System.currentTimeMillis();
     }
+
     public long getLastKeepAliveArrival() {
         return lastKeepAliveArrival;
     }

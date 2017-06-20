@@ -17,9 +17,7 @@ public class AssetManager implements Disposable {
     }
 
     public static AssetManager getInstance() {
-        if (instance == null) {
-            instance = new AssetManager();
-        }
+        if (instance == null) instance = new AssetManager();
         return instance;
     }
 

@@ -1,16 +1,13 @@
-package server.communication.packet.packets.outgoing;
+package client.core.communication.packet.outgoing;
 
+import client.core.communication.packet.OutgoingPacket;
 import com.google.gson.JsonObject;
 
-import server.Main;
-import server.communication.packet.OutgoingPacket;
-import server.user.User;
-
 public class KeepAlivePacket extends OutgoingPacket {
+
     public static final String COMMAND = "KEEPAILVE";
 
-    public KeepAlivePacket(User targetUser) {
-        super(targetUser);
+    public KeepAlivePacket() {
     }
 
     @Override

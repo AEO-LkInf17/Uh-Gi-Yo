@@ -23,9 +23,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Server {
+
     public static final int SERVER_PORT = 42042;
 
-    public Server() {
+    private static Server instance;
+
+    private Server() {
+        super();
+    }
+
+    public static Server getInstance() {
+        if (instance == null) instance = new Server();
+        return instance;
+    }
+
+    public void initialize() {
         //cut
         new Thread(()->{
             try {
@@ -69,8 +81,7 @@ public class Server {
                                         System.out.println("unknown command incomingpacket command: " + command);
                                         break;
                                 }
-                                if(packet==null)
-                                    continue;
+                                if(packet==null) continue;
                                 packet.handlePacket();
                             }
                         } catch (SocketException e) {
@@ -106,6 +117,4 @@ public class Server {
             }
         }).start();
     }
-
-
 }

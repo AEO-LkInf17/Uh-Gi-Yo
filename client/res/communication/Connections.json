@@ -1,0 +1,12 @@
+[
+  {
+    "name": "string",
+    "ip": "string",
+    "port": "int"
+  },
+  {
+    "name": "string",
+    "ip": "string",
+    "port": "int"
+  }
+]

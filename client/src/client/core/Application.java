@@ -50,4 +50,3 @@ public class Application implements ApplicationListener {
         ScreenManager.getInstance().dispose();
     }
 }
-
