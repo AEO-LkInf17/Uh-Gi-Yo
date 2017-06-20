@@ -50,7 +50,8 @@ public class ActivityListPacket extends OutgoingPacket {
             } else if(activity instanceof AdvancePhaseActivity) {
 
             } else if(activity instanceof AttackActivity) {
-
+                parameter.addProperty("user", 623);
+                parameter.addProperty("target", 243);
             } else if(activity instanceof DrawCardActivity) {
 
             } else if(activity instanceof FlipActivity) {

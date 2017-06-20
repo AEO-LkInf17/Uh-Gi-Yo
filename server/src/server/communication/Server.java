@@ -9,6 +9,8 @@ import server.communication.packet.packets.incoming.KeepAlivePacket;
 import server.communication.packet.packets.incoming.LoginPacket;
 import server.communication.packet.packets.incoming.RegisterPacket;
 import server.communication.packet.packets.incoming.ChooseActivityPacket;
+import server.logic.Activity.Activities.AttackActivity;
+import server.logic.cards.MonsterCard;
 import server.user.User;
 
 import java.io.BufferedReader;
@@ -30,6 +32,10 @@ public class Server {
                     Socket client = server.accept();
                     new Thread(()->{
                         User user = new User(client);
+                        //TESTORT für sebastian
+                        user.sendActivityList(20, new AttackActivity(new MonsterCard("a", "t", 1, 2, 3, 4, 5), new MonsterCard("a", "t", 1, 2, 3, 4, 5)));
+
+                        //bis hier
                         //recieving
                         try {
                             BufferedReader inFromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
