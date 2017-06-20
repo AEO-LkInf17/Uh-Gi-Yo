@@ -27,6 +27,7 @@ public class User {
 
     private String loginStatus = LOGIN_STATUS_LOGGEDOUT;
 
+    private static List<User> userConnected = new ArrayList<User>();
     private static List<User> userOnline = new ArrayList<User>();
 
     public static boolean isUserOnline(String username) {
@@ -41,8 +42,16 @@ public class User {
         return userIsOnline;
     }
 
+    public static List<User> getUserOnline() {
+        return userOnline;
+    }
+    public static List<User> getUserConnected() {
+        return userConnected;
+    }
+
     public User(Socket clientSocket) {
         this.clientSocket = clientSocket;
+        userConnected.add(this);
         try {
             socketOut = new PrintWriter(clientSocket.getOutputStream(), true);
         } catch (IOException e) {
@@ -104,6 +113,7 @@ public class User {
 
     public void disconnect() {
         if(isLoggedIn()) logOut();
+        userConnected.remove(this);
         try {
             clientSocket.close();
             System.out.println("A client disconnected");
@@ -134,6 +144,9 @@ public class User {
 
     public void updateKeepAlive() {
         lastKeepAliveArrival = System.currentTimeMillis();
+    }
+    public long getLastKeepAliveArrival() {
+        return lastKeepAliveArrival;
     }
 
     public String getUsername() {

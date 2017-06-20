@@ -18,6 +18,7 @@ import java.util.Random;
 
 public class Main {
     public static final String VERSION = "0.0-dev";
+    public static final int timeout = 40; //seconds
     public static final Gson GSON = new Gson();
 
     private static Server server = new Server();

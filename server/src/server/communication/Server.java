@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Server {
     public static final int SERVER_PORT = 42042;
@@ -70,6 +73,8 @@ public class Server {
                                     continue;
                                 packet.handlePacket();
                             }
+                        } catch (SocketException e) {
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -81,14 +86,24 @@ public class Server {
         }).start();
 
         new Thread(()->{
-            //each second:
-
-            //1.
-            //iterate through all connected clients and check if the time between now and the clients last arrived KAP is less than 20 seconds
-            //via User#updateKeepAlive()
-
-            //2.
-            //send each client a keepalivepacket
+            while(true) {
+                long timeNow = System.currentTimeMillis();
+                List<User> userConnected = User.getUserConnected();
+                List<User> userToDisconnect = new ArrayList<User>();
+                for (User user : userConnected) { //TODO: heres a race condition, congrats, you finally must fix all this stuff and make it synchron....... imma go kms
+                    if (user.getLastKeepAliveArrival() + Main.timeout*1000 < timeNow)
+                        userToDisconnect.add(user);
+                    new server.communication.packet.packets.outgoing.KeepAlivePacket(user).sendPacket();
+                }
+                for(User user : userToDisconnect) {
+                    user.disconnect();
+                }
+                try {
+                    Thread.sleep(800);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }).start();
     }
 
