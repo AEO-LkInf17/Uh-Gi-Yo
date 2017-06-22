@@ -1,10 +1,9 @@
 package client.core.communication;
 
 import client.core.communication.exceptions.ClientAlreadyConnectedException;
-import client.core.communication.exceptions.ClientHasNoConnection;
 import client.core.communication.exceptions.ServerNotReachableException;
+import client.core.communication.packet.IncomingPacket;
 import client.core.communication.packet.OutgoingPacket;
-import client.core.communication.packet.outgoing.LoginPacket;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -57,7 +56,7 @@ public class Client {
         }
     }
 
-    public void run() {
+    public void start() {
         if (isConnected()) {
             new Thread(() -> {
                 while (isConnected()) {
@@ -65,6 +64,27 @@ public class Client {
                         JsonObject result = gson.fromJson(in.readLine(), JsonObject.class);
                         if (result == null) disconnect();
                         String command = result.get("command").getAsString();
+                        IncomingPacket packet = null;
+                        /*
+                        switch (command) {
+                            case LoginPacket.COMMAND:
+                                packet = new LoginPacket(user, result.getAsJsonObject("data"));
+                                break;
+                            case RegisterPacket.COMMAND:
+                                packet = new RegisterPacket(user, result.getAsJsonObject("data"));
+                                break;
+                            case KeepAlivePacket.COMMAND:
+                                packet = new KeepAlivePacket(user);
+                                break;
+                            case GetUserDataPacket.COMMAND:
+                                packet = new GetUserDataPacket(user, result.getAsJsonObject("data"));
+                                break;
+                            case ChooseActivityPacket.COMMAND:
+                                packet = new ChooseActivityPacket(user, result.getAsJsonObject("data"));
+                            default:
+                                break;
+                        }*/
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -75,8 +95,8 @@ public class Client {
 
     public void disconnect() {
         try {
-            currentConnection.close();
             currentConnection = null;
+            currentConnection.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -90,5 +110,17 @@ public class Client {
 
     public Gson getGson() {
         return gson;
+    }
+
+    public static void main(String[] args) {
+        Connection conn = new Connection("localhost", 42042);
+        try {
+            Client.getInstance().initialize();
+            Client.getInstance().connect(conn);
+        } catch (ClientAlreadyConnectedException e) {
+            e.printStackTrace();
+        } catch (ServerNotReachableException e) {
+            e.printStackTrace();
+        }
     }
 }
