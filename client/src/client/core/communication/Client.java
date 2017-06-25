@@ -15,7 +15,7 @@ import java.net.Socket;
 
 public class Client {
 
-    private static Client instance;
+    private static Client instance = null;
 
     private Socket currentConnection;
 
@@ -26,18 +26,15 @@ public class Client {
 
     private Client() {
         super();
+        this.currentConnection = null;
+        this.in = null;
+        this.out = null;
+        this.gson = new Gson();
     }
 
     public static Client getInstance() {
         if (instance == null) instance = new Client();
         return instance;
-    }
-
-    public void initialize() {
-        this.currentConnection = null;
-        this.in = null;
-        this.out = null;
-        this.gson = new Gson();
     }
 
     public boolean isConnected() {
@@ -102,10 +99,14 @@ public class Client {
         }
     }
 
-    public void sendPacket(OutgoingPacket packet) {
+    private void sendPacket(OutgoingPacket packet) {
         if (isConnected()) {
             out.println(packet.generatePacketObject().toString());
         }
+    }
+
+    public void addPacketToQueue(OutgoingPacket packet) {
+
     }
 
     public Gson getGson() {

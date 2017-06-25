@@ -4,11 +4,7 @@ package server.communication;
 import com.google.gson.JsonObject;
 import server.Main;
 import server.communication.packet.IncomingPacket;
-import server.communication.packet.packets.incoming.GetUserDataPacket;
-import server.communication.packet.packets.incoming.KeepAlivePacket;
-import server.communication.packet.packets.incoming.LoginPacket;
-import server.communication.packet.packets.incoming.RegisterPacket;
-import server.communication.packet.packets.incoming.ChooseActivityPacket;
+import server.communication.packet.packets.incoming.*;
 import server.logic.Activity.Activities.AttackActivity;
 import server.logic.cards.MonsterCard;
 import server.user.User;
@@ -37,7 +33,7 @@ public class Server {
         return instance;
     }
 
-    public void initialize() {
+    public void start() {
         //cut
         new Thread(()->{
             try {
@@ -117,4 +113,5 @@ public class Server {
             }
         }).start();
     }
+
 }
